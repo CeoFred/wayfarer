@@ -1,11 +1,10 @@
-import {expect} from 'chai';
-import config from  '../app/config/config';
-import server from '../bin/www';
-console.log(server.port)
+const chai = require('chai');
+const config = require('../app/config/config');
+const server = require('../bin/www');
 
-describe('Server', ()=>{
-    it('tests that server is running current port', async()=>{
-        expect(server.port).to.equal(config.server.port)
-   
-    })
+
+chai.describe('Server', ()=>{
+  chai.it('tests that server is running current port', async () => {
+    chai.expect(server.port).to.equal(config.server.port);
+  });
 });
