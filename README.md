@@ -1,1 +1,1 @@
-# wayfarer
+[![Build Status](https://travis-ci.org/CeoFred/wayfarer.svg?branch=develop)](https://travis-ci.org/CeoFred/wayfarer)
