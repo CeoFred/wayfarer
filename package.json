@@ -1,0 +1,49 @@
+{
+  "name": "wayfarer-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/www",
+  "scripts": {
+    "start:dev": "nodemon ./bin/www",
+    "test": "mocha --require babel-core/register --reporter spec --exit   test/ --exec babel-node",
+    "test:watch": "NODE_ENV=development mocha  --require babel-core/register --watch --reporter  spec   test/ --exec babel-node",
+    "eslint": "eslint app/**/*.js --ignore-pattern \"node_modules/\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CeoFred/wayfarer.git"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-node8": "^1.2.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "debug": "^4.1.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CeoFred/wayfarer/issues"
+  },
+  "homepage": "https://github.com/CeoFred/wayfarer#readme"
+}
