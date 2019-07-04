@@ -7,5 +7,5 @@ cache:
 env:
   -NODE_ENV=production
   -JWT_SIGNATURE=INSXSCOLABSNCKSFIRSTWSKWCCLADSJDRE234524__=654
-install:
-  -npm install 
+after_success:
+- npm run coveralls
