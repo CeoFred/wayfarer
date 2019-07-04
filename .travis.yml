@@ -1,10 +1,10 @@
 language: node_js
 node_js:
   - stable
-cache:
-  directories:
-    - node_modules
-before_install:
-  - npm install dredd@11.2.9 --global
+env:
+  -NODE_ENV=ci
+services:
+  - postgresql
 before_script:
-  - dredd
+  - psql -c 'create database wayfarer_test;' -U postgres
+  - psql -c "create user codemon with password 'iftrueconnect';" -U postgres

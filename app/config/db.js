@@ -9,6 +9,7 @@ const db = new Pg({
   database: config.database.database,
   password: config.database.password,
   port: config.database.port,
+  ssl: config.database.ssl,
 });
 
 db.connect().then(() => console.log('Connected')).catch((err) => {

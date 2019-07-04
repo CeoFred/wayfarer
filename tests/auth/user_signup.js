@@ -1,37 +1,55 @@
-process.env.NODE_ENV = 'test';
-
-let mongoose = require("mongoose");
-let Book = require('../app/models/book');
-
-//Require the dev-dependencies
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../../bin/www');
-let should = chai.should();
-
+'use-strict'
+// Require the dev-dependencies
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../../bin/www');
+const expect = chai.expect;
+const db = require('../../app/config/db')
 
 chai.use(chaiHttp);
-//Our parent block
-describe('Books', () => {
-    beforeEach((done) => { //Before each test we empty the database
-        Book.remove({}, (err) => { 
-           done();           
-        });        
+
+
+describe('User Authentication',()=> {
+
+
+describe('/POST User Signup', () => {
+  
+  before(done => {
+    db.query("DELETE FROM users").then(data => {
+      done()
+    }).catch(err => {
+      throw err
+    })
+  })
+    it('it should Register a new user', (done) => {    
+        chai.request(server.server)
+            .post('/api/v1/user/signup')
+            .set('Content-Type','Application/json')
+            .send({password: 'messilo18_',lastName : 'okb',firstName: 'kb',email:'handy@gmail.com' })
+            .end((err,res) => {
+              expect(res).to.have.status(201);
+              done()
+           })
     });
-/*
-  * Test the /GET route
-  */
-  describe('/POST Users', () => {
-      it('it should Register a new user', (done) => {
-        chai.request(server)
-            .get('/api/v1/user/signup')
-            .end((err, res) => {
-                  res.should.have.status(201);
-                  res.body.should.be.a('array');
-                  res.body.length.should.be.eql(0);
-              done();
-            });
-      });
+  });
+
+  
+describe('/POST User login', () => {
+  
+    it('it should login', (done) => {    
+        chai.request(server.server)
+            .post('/api/v1/user/login')
+            .set('Content-Type','Application/json')
+            .send({password: 'messilo18_',email:'handy@gmail.com' })
+            .end((err,res) => {
+              expect(res).to.have.status(200);
+              // expect(res.data.token).not.to.be('null')
+              expect(res.body.data.token, 'No token provided but why?').to.be.a('string')
+              expect(res.body.data.user_id, 'User ID was not a string,why?').to.be.a('string')
+
+              done()
+           })
+    });
   });
 
 });
