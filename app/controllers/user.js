@@ -59,8 +59,6 @@ router.post('/signup',
             };
             db.query(query)
               .then((respo) => {
-                console.log(respo.rows);
-
                 const token = jwt.sign({
                   data: {
                     email: respo.rows[0].email,
