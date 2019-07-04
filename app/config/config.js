@@ -7,7 +7,11 @@ const config = {
       hostname: process.env.HOSTNAME || 'localhost',
     },
     database: {
-      url: 'mongodb://localhost/express-development',
+      user: 'postgres',
+      host: 'localhost',
+      database: 'wayfarer',
+      password: 'iftrueconnect',
+      port: '5432',
     },
   },
 
@@ -17,17 +21,25 @@ const config = {
       hostname: process.env.HOSTNAME || 'localhost',
     },
     database: {
-      url: 'mongodb://localhost/express-test',
+      user: 'postgres',
+      host: 'localhost',
+      database: 'wayfarer',
+      password: 'iftrueconnect',
+      port: '5432',
     },
   },
 
   production: {
     server: {
-      port: process.env.PORT || 3200,
+      port: process.env.PORT || 8002,
       hostname: process.env.HOSTNAME || 'localhost',
     },
     database: {
-      url: 'mongodb://mongo:27017/express-production',
+      user: '',
+      host: '',
+      database: 'wayfarer',
+      password: '',
+      port: '5432',
     },
   },
 };
