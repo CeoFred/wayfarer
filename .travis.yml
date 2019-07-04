@@ -8,3 +8,5 @@ before_install:
   - npm install dredd@11.2.9 --global
 before_script:
   - dredd
+env:
+  -NODE_ENV=production
