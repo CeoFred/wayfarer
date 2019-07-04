@@ -10,4 +10,4 @@ env:
 after_success:
   - npm run coveralls
 before_install:
-  - npm install mocha nodemon -g
+  - npm install
