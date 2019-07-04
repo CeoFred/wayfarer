@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/CeoFred/wayfarer.svg?branch=develop)](https://travis-ci.org/CeoFred/wayfarer) [![Coverage Status](https://coveralls.io/repos/github/CeoFred/wayfarer/badge.svg?branch=master)](https://coveralls.io/github/CeoFred/wayfarer?branch=master)
+[![Build Status](https://travis-ci.org/CeoFred/wayfarer.svg?branch=develop)](https://travis-ci.org/CeoFred/wayfarer) [![Coverage Status](https://coveralls.io/repos/github/CeoFred/wayfarer/badge.svg?branch=v1)](https://coveralls.io/github/CeoFred/wayfarer?branch=v1)
