@@ -102,7 +102,6 @@ router.post('/signup',
       email,
       password,
     } = req.body;
-
     const searchQuery = `SELECT password,user_id,is_admin FROM users WHERE email = '${email}' LIMIT 1`;
 
     db.query(searchQuery).then((resp) => {

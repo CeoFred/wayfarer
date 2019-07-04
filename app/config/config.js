@@ -17,7 +17,7 @@ const config = {
 
   test: {
     server: {
-      port: process.env.PORT || 8001,
+      port: process.env.PORT || 8011,
       hostname: process.env.HOSTNAME || 'localhost',
     },
     database: {
