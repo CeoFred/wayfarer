@@ -5,10 +5,10 @@
   "main": "bin/www",
   "scripts": {
     "start:dev": "corss-env NODE_ENV=development nodemon ./bin/www",
-    "test": "cross-env NODE_ENV=test mocha --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node",
+    "test": "mocha --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node",
     "test:watch": "mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
     "eslint": "eslint app/**/*.js --fix --ignore-pattern \"node_modules/\"",
-    "test:dev": "mocha --require babel-core/register --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node"
+    "test:dev": "cross-env NODE_ENV=test mocha --require babel-core/register --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node"
   },
   "repository": {
     "type": "git",
