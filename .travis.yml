@@ -5,8 +5,8 @@ cache:
   directories:
     - node_modules
 env:
-  - NODE_ENV=production
-  - JWT_SIGNATURE=INSXSCOLABSNCKSFIRSTWSKWCCLADSJDRE234524__=654
+  -NODE_ENV=production
+  -JWT_SIGNATURE=INSXSCOLABSNCKSFIRSTWSKWCCLADSJDRE234524__=654
 after_success:
   - npm run coveralls
 before_install:
