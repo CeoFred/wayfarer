@@ -7,7 +7,7 @@ cache:
 before_install:
   - npm install dredd@11.2.9 nodemon mocha --global
   - npm run travis-test
-  - npm install babel-register
+  - npm install babel-register chai chai-http --save 
 before_script:
   - dredd
 env:
