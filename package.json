@@ -7,7 +7,8 @@
     "start:dev": "nodemon ./bin/www",
     "test": "mocha --require babel-core/register --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node",
     "test:watch": "mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
-    "eslint": "eslint app/**/*.js --fix --ignore-pattern \"node_modules/\""
+    "eslint": "eslint app/**/*.js --fix --ignore-pattern \"node_modules/\"",
+    "travis-test":"npm install --only=dev"
   },
   "repository": {
     "type": "git",
