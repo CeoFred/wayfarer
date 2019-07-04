@@ -5,9 +5,9 @@
   "main": "bin/www",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "test": "mocha --require babel-core/register --reporter spec --exit   test/ --exec babel-node",
-    "test:watch": "NODE_ENV=development mocha  --require babel-core/register --watch --reporter  spec   test/ --exec babel-node",
-    "eslint": "eslint app/**/*.js --ignore-pattern \"node_modules/\""
+    "test": "mocha --require babel-core/register --reporter spec --exit   tests/ --exec babel-node",
+    "test:watch": "mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
+    "eslint": "eslint app/**/*.js --fix --ignore-pattern \"node_modules/\""
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "coveralls": "^3.0.4",
     "debug": "^4.1.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -38,6 +39,18 @@
     "eslint-plugin-react": "^7.11.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1"
+  },"babel": {
+    "presets": [
+      "node8"
+    ]
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "node"
+    ]
   },
   "keywords": [],
   "author": "",
