@@ -23,7 +23,7 @@ const config = {
     database: {
       user: 'postgres',
       host: 'localhost',
-      database: 'wayfarer',
+      database: 'wayfarer_test',
       password: 'iftrueconnect',
       port: '5432',
     },
@@ -35,10 +35,10 @@ const config = {
       hostname: process.env.HOSTNAME || 'localhost',
     },
     database: {
-      user: '',
-      host: '',
-      database: 'wayfarer',
-      password: '',
+      user: 'iyfuthdxraayah',
+      host: 'ec2-174-129-29-101.compute-1.amazonaws.com',
+      database: 'df6k9h555q07ar',
+      password: '892b54e56f50fa41ea695d10f5f5fd49dd42685f74fe482e6089aaca7ce7d270',
       port: '5432',
     },
   },

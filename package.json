@@ -5,7 +5,7 @@
   "main": "bin/www",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "test": "mocha --require babel-core/register --reporter spec --exit   tests/ --exec babel-node",
+    "test": "mocha --require babel-core/register --reporter spec --exit   tests/**/*.js --exec babel-node",
     "test:watch": "mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
     "eslint": "eslint app/**/*.js --fix --ignore-pattern \"node_modules/\""
   },
