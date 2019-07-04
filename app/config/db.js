@@ -1,13 +1,14 @@
 'use-strict';
 
-import { Pool } from 'pg';
+const Pg = require('pg').Pool;
+const config = require('./config');
 
-const db = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'wayfarer',
-  password: 'iftrueconnect',
-  port: '5432',
+const db = new Pg({
+  user: config.database.user,
+  host: config.database.host,
+  database: config.database.database,
+  password: config.database.password,
+  port: config.database.port,
 });
 
 db.connect().then((data) => {
@@ -17,4 +18,4 @@ db.connect().then((data) => {
 });
 
 
-export default db;
+module.exports = db;

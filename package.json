@@ -39,6 +39,18 @@
     "eslint-plugin-react": "^7.11.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1"
+  },"babel": {
+    "presets": [
+      "node8"
+    ]
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "node"
+    ]
   },
   "keywords": [],
   "author": "",
