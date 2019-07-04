@@ -11,9 +11,7 @@ const db = new Pg({
   port: config.database.port,
 });
 
-db.connect().then((data) => {
-  console.log('Connected', data);
-}).catch((err) => {
+db.connect().then(() => console.log('Connected')).catch((err) => {
   console.log(`Database err: ${err}`);
 });
 
