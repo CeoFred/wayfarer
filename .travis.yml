@@ -5,8 +5,7 @@ cache:
   directories:
     - node_modules
 before_install:
-  - npm install dredd@11.2.9 --global
-  - npm install mocha chai babel-register @babel/core --save-dev
+  - npm install dredd@11.2.9 nodemon mocha chai babel-register @babel/core --global
 before_script:
   - dredd
 env:
