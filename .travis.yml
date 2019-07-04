@@ -2,5 +2,4 @@ language: node_js
 node_js:
   - stable
 env:
-  -NODE_ENV=production
-  -JWT_SIGNATURE=INSXSCOLABSNCKSFIRSTWSKWCCLADSJDRE234524__=654
+  -NODE_ENV=ci
