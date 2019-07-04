@@ -24,15 +24,15 @@ router.post('/signup',
   [
     check('email').exists().withMessage('Email is required'),
     check('password').exists().withMessage('Password is required'),
-    check('first_name').exists().withMessage('First name is required'),
-    check('last_name').exists().withMessage('Last name is required'),
+    check('firstName').exists().withMessage('First name is required'),
+    check('lastName').exists().withMessage('Last name is required'),
     body('email').not().isEmpty().escape()
       .isEmail(),
     sanitizeBody('email').normalizeEmail().trim(),
   ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(403).json(_response.error(errors));
+      return res.status(404).json(_response.error(errors));
     }
     const {
       email,
@@ -55,7 +55,7 @@ router.post('/signup',
             const uniqui = Utils.randomString(200);
             const query = {
               text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin) VALUES($1,$2,$3,$4,$5,$6) RETURNING *',
-              values: [uniqui.trimRight(), firstName, lastName, email, hash, true],
+              values: [uniqui.trimRight(), firstName, lastName, email, hash, false],
             };
             db.query(query)
               .then((respo) => {
@@ -66,7 +66,7 @@ router.post('/signup',
                     is_admin: respo.rows[0].is_admin,
                   },
                 },
-                '2456653RDFBNYH2R31324354YT43',
+                process.env.JWT_SIGNATURE,
                 {
                   expiresIn: '7d',
                   mutatePayload: true,
@@ -79,7 +79,7 @@ router.post('/signup',
                 res.status(201).json(_response.success(data));
               }).catch((e) => {
                 console.log(e);
-                resp.status(500).json(_response.error('Something went wrong'));
+                res.status(500).json(_response.error('Something went wrong'));
               });
           }
         });
@@ -106,9 +106,8 @@ router.post('/signup',
 
     db.query(searchQuery).then((resp) => {
       if (resp.rowCount <= 0) {
-        res.statusCode(403).json(_response.error('Email does not exist'));
+        res.status(403).json(_response.error('Email does not exist'));
       }
-      console.log(resp.rows[0]);
 
       bcrypt.compare(password, resp.rows[0].password, (err, result) => {
         // res == true
@@ -123,7 +122,7 @@ router.post('/signup',
               is_admin: resp.rows[0].is_admin,
             },
           },
-          'p2456653RDFBNYH2R31324354YT43',
+          process.env.JWT_SIGNATURE,
           {
             expiresIn: '7d',
             mutatePayload: true,
