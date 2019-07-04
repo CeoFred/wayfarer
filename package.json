@@ -4,13 +4,11 @@
   "description": "",
   "main": "bin/www",
   "scripts": {
-    "start:dev": "nodemon ./bin/www",
-    "test": "mocha --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node",
+    "start:dev": "corss-env NODE_ENV=development nodemon ./bin/www",
+    "test": "cross-env NODE_ENV=test mocha --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node",
     "test:watch": "mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
     "eslint": "eslint app/**/*.js --fix --ignore-pattern \"node_modules/\"",
-    "travis-test":"npm install --only=dev",
     "test:dev": "mocha --require babel-core/register --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node"
-
   },
   "repository": {
     "type": "git",
@@ -21,28 +19,30 @@
     "babel-preset-node8": "^1.2.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "dotenv": "^8.0.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.0.1",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.1.4",
     "morgan": "^1.9.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.0.4",
+    "cross-env": "^5.2.0",
     "debug": "^4.1.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
-    "mocha": "^6.1.4",
     "nodemon": "^1.19.1"
-  },"babel": {
+  },
+  "babel": {
     "presets": [
       "node8"
     ]

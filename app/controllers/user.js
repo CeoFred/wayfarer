@@ -108,7 +108,6 @@ router.post('/signup',
       if (resp.rowCount <= 0) {
         res.status(403).json(_response.error('Email does not exist'));
       }
-      console.log(resp.rows[0]);
 
       bcrypt.compare(password, resp.rows[0].password, (err, result) => {
         // res == true
