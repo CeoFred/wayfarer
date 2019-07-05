@@ -8,7 +8,7 @@
     "test": "mocha --reporter spec --exit --t=10000 --color=true  test/*.js --exec babel-node",
     "test:watch": "nyc mocha  --require babel-core/register --watch --reporter  spec   test/ --exec babel-node",
     "eslint": "eslint app/**/*.js test/*.js --fix --ignore-pattern \"node_modules/\"",
-    "test:dev": "cross-env NODE_ENV=test mocha --reporter spec --exit --t=10000 --color=true  test/*.js --exec babel-node",
+    "test:dev": "cross-env NODE_ENV=ci mocha --reporter spec --exit --t=10000 --color=true  test/*.js --exec babel-node",
     "coveralls": "cross-env istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "nyc":"nyc mocha && nyc report --reporter=text-lcov | coveralls"
   },
