@@ -40,8 +40,7 @@ describe('User Authentication', () => {
         });
     });
   });
-
-
+  
   describe('/POST User login', () => {
     it('it should login', (done) => {
       chai.request(server.server)
@@ -58,4 +57,5 @@ describe('User Authentication', () => {
         });
     });
   });
-});
+
+}).timeout('10s');
