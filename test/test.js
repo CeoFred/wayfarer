@@ -21,7 +21,7 @@ describe('Server', () => {
 describe('User Authentication', () => {
   describe('/POST User Signup', () => {
     before((done) => {
-      db.query('DELETE FROM users').then((data) => {
+      db.query('DELETE FROM users').then(() => {
         done();
       }).catch((err) => {
         throw err;
@@ -32,7 +32,7 @@ describe('User Authentication', () => {
         .post('/api/v1/user/signup')
         .set('Content-Type', 'Application/json')
         .send({
-          password: 'messilo18_', lastName: 'okb', firstName: 'kb', email: 'handy@gmail.com',
+          password: 'messilo18_', lastName: 'okb', firstName: 'kb', email: 'testmail@gmail.com',
         })
         .end((err, res) => {
           expect(res).to.have.status(201);
@@ -40,13 +40,13 @@ describe('User Authentication', () => {
         });
     });
   });
-  
+
   describe('/POST User login', () => {
     it('it should login', (done) => {
       chai.request(server.server)
         .post('/api/v1/user/login')
         .set('Content-Type', 'Application/json')
-        .send({ password: 'messilo18_', email: 'handy@gmail.com' })
+        .send({ password: 'messilo18_', email: 'testmail@gmail.com' })
         .end((err, res) => {
           expect(res).to.have.status(200);
           // expect(res.data.token).not.to.be('null')
@@ -57,5 +57,4 @@ describe('User Authentication', () => {
         });
     });
   });
-
 }).timeout('10s');
