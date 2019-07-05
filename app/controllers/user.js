@@ -54,8 +54,8 @@ router.post('/signup',
           } else {
             const uniqui = Utils.randomString(200);
             const query = {
-              text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin) VALUES($1,$2,$3,$4,$5,$6) RETURNING *',
-              values: [uniqui.trimRight(), firstName, lastName, email, hash, false],
+              text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
+              values: [uniqui.trimRight(), firstName, lastName, email, hash, true, 'somewhere'],
             };
             db.query(query)
               .then((respo) => {
@@ -78,15 +78,15 @@ router.post('/signup',
                 };
                 res.status(201).json(_response.success(data));
               }).catch((e) => {
-                console.log(e);
                 res.status(500).json(_response.error('Something went wrong'));
+                throw e;
               });
           }
         });
       }
     }).catch((err) => {
-      console.log(err);
       res.json(_response.error(err));
+      throw err;
     });
 
 

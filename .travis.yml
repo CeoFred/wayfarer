@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - stable
 env:
-  -NODE_ENV=ci
+  - NODE_ENV=ci
 services:
   - postgresql
 before_script:
