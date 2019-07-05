@@ -3,8 +3,3 @@ node_js:
   - stable
 env:
   - NODE_ENV=ci
-services:
-  - postgresql
-before_script:
-  - psql -c 'create database wayfarer_test;' -U postgres
-  - psql -c "create user codemon with password 'iftrueconnect';" -U postgres
