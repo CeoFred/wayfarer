@@ -1,16 +1,16 @@
 {
   "name": "wayfarer-main",
   "version": "1.0.0",
-  "description": "",
+  "description": "Public Bus APIs",
   "main": "bin/www",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=development nodemon babel-node ./bin/www",
-    "test": "mocha --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node",
-    "test:watch": "mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
-    "eslint": "eslint app/**/*.js --fix --ignore-pattern \"node_modules/\"",
-    "test:dev": "cross-env NODE_ENV=test mocha --reporter spec --exit --t=10000 --color=true  tests/**/*.js --exec babel-node",
-    "cover": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "npm run cover --report lcovonly"
+    "test": "mocha --reporter spec --exit --t=10000 --color=true  test/*.js --exec babel-node",
+    "test:watch": "nyc mocha  --require babel-core/register --watch --reporter  spec   test/ --exec babel-node",
+    "eslint": "eslint app/**/*.js test/*.js --fix --ignore-pattern \"node_modules/\"",
+    "test:dev": "cross-env NODE_ENV=ci mocha --reporter spec --exit --t=10000 --color=true  test/*.js --exec babel-node",
+    "coveralls": "cross-env istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "nyc":"nyc mocha && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -51,11 +51,6 @@
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1"
   },
-  "babel": {
-    "presets": [
-      "node8"
-    ]
-  },
   "engines": {
     "node": ">=8"
   },
@@ -72,12 +67,9 @@
   },
   "homepage": "https://github.com/CeoFred/wayfarer#readme",
   "nyc": {
+    "all":true,
     "check-coverage": true,
-    "per-file": true,
-    "lines": 50,
-    "statements": 50,
-    "functions": 50,
-    "branches": 50,
+    
     "require": [
       "@babel/register"
     ],
