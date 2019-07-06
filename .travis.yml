@@ -4,6 +4,6 @@ node_js:
 env:
   - NODE_ENV=ci
 before_install:
-  - npm install dredd@11.2.9 --global
-before_script:
-  - dredd
+  - npm run build
+script:
+  - npm run coverage
