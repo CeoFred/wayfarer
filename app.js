@@ -7,10 +7,10 @@ const app = express();
 const debug =require('debug')('server:debug');
 
 // config
-const config = require('./app/config/config');
+const config = require('./build/config/config');
 
 // database config
-const db = require('./app/config/db');
+const db = require('./build/config/db');
 
 
 app.use(logger(config.isProd ? 'combined' : 'dev'));
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
 
 // bootstrap routes
-require('./app/routes')(app);
+require('./build/routes')(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,11 +1,48 @@
 FORMAT: 1A
-HOST: https://wayfarer.herokuapp.com/api/v1
+HOST: https://wayfareralc.herokuapp.com/api/v1
 
 # wayfarer
 
 Wayfarer is a public bus booking API
 ## Users Collection [/auth/users]
 
-### Register A new User [POST /signup]
+### Register A new User [POST /user/signup]
++ Request (application/json)
+
+            {
+                "firstName":"anyfirstname",
+                "lastName":"anylastName",
+                "email":"anyemail@gmail.com",
+                "password":"messilo18_"
+            }
 
 + Response 201 (application/json)
+
+        {
+         "status": "success",
+              "data": {
+        "user_id": "0j7dOfSgDd9F8gW9YFwltRqmV9EUxR5WKXPZJOn3niZDQrRpWf1MjW9moYbrWGjnhiqNMt0h3VYi6GkdhqDPr8cehoplvZAwswz863eP2zqXtgB9K9ErqOSy9N6qfn6gTCUSRbicmBCQmz1j2F7OGWZKmrC095mfYXuBc8GZsJhBezPjHG2RCRLttUCTRhN90x4Vz9Qo",
+        "is_admin": true,
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiam9obnNvbm1lc3NpbG8xOUBnbWFpbC5jb20iLCJ1c2VySWQiOiIwajdkT2ZTZ0RkOUY4Z1c5WUZ3bHRScW1WOUVVeFI1V0tYUFpKT24zbmlaRFFyUnBXZjFNalc5bW9ZYnJXR2puaGlxTk10MGgzVllpNkdrZGhxRFByOGNlaG9wbHZaQXdzd3o4NjNlUDJ6cVh0Z0I5SzlFcnFPU3k5TjZxZm42Z1RDVVNSYmljbUJDUW16MWoyRjdPR1daS21yQzA5NW1mWVh1QmM4R1pzSmhCZXpQakhHMlJDUkx0dFVDVFJoTjkweDRWejlRbyIsImlzX2FkbWluIjp0cnVlfSwiaWF0IjoxNTYyMzY4NTgyLCJleHAiOjE1NjI5NzMzODJ9.8rwc2jhFYexKfqh3TguWxkQVg2QKMLQj6KrkH4e8das"
+            }
+        }
+
+### Login A  User [POST /user/login]
++ Request (application/json)
+
+            {
+                "email":"anyemail@gmail.com",
+                "password":"messilo18_"
+            }
+
++ Response 200 (application/json)
+        
+            {
+                "status": "success",
+                "data": {
+                "user_id": "0j7dOfSgDd9F8gW9YFwltRqmV9EUxR5WKXPZJOn3niZDQrRpWf1MjW9moYbrWGjnhiqNMt0h3VYi6GkdhqDPr8cehoplvZAwswz863eP2zqXtgB9K9ErqOSy9N6qfn6gTCUSRbicmBCQmz1j2F7OGWZKmrC095mfYXuBc8GZsJhBezPjHG2RCRLttUCTRhN90x4Vz9Qo",
+                "is_admin": true,
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjBqN2RPZlNnRGQ5RjhnVzlZRndsdFJxbVY5RVV4UjVXS1hQWkpPbjNuaVpEUXJScFdmMU1qVzltb1licldHam5oaXFOTXQwaDNWWWk2R2tkaHFEUHI4Y2Vob3BsdlpBd3N3ejg2M2VQMnpxWHRnQjlLOUVycU9TeTlONnFmbjZnVENVU1JiaWNtQkNRbXoxajJGN09HV1pLbXJDMDk1bWZZWHVCYzhHWnNKaEJlelBqSEcyUkNSTHR0VUNUUmhOOTB4NFZ6OVFvIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjIzNjg3NzcsImV4cCI6MTU2Mjk3MzU3N30.-fGTvo8CnHoPIbpFRFlrgMZY5GDgvzqsm4Nq47L7IH0"
+                        }
+            }
+

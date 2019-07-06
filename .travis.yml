@@ -3,3 +3,7 @@ node_js:
   - stable
 env:
   - NODE_ENV=ci
+before_install:
+  - npm install dredd@11.2.9 --global
+before_script:
+  - dredd
