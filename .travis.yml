@@ -3,3 +3,5 @@ node_js:
   - stable
 env:
   - NODE_ENV=ci
+script:
+  - npm run coverage
