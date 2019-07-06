@@ -3,8 +3,5 @@ node_js:
   - stable
 env:
   - NODE_ENV=ci
-before_install:
-  - npm install -g babel-cli
-  - npm run build
 script:
   - npm run coverage
