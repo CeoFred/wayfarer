@@ -1,15 +1,17 @@
 color: true
+reporter: apiary
+custom:
+  apiaryApiKey: aaf167ba09a0a349e2474e59c21c1949
+  apiaryApiName: wayfarer3
 dry-run: null
 hookfiles: null
-language: nodejs
+language: python
 require: null
-server: 'npm run start:dev'
+server: 'npm run test'
 server-wait: 3
 init: false
-custom: {}
 names: false
 only: []
-reporter: apiary
 output: []
 header: []
 sorted: false
@@ -29,4 +31,4 @@ hooks-worker-handler-host: 127.0.0.1
 hooks-worker-handler-port: 61321
 config: ./dredd.yml
 blueprint: apiary.apib
-endpoint: 'http://localhost:8001'
+endpoint: 'http://127.0.0.1:8000'
