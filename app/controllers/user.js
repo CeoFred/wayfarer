@@ -39,6 +39,7 @@ router.post('/signup',
       password,
       firstName,
       lastName,
+      isAdmin,
     } = req.body;
 
     // console.log(email)
@@ -55,7 +56,7 @@ router.post('/signup',
             const uniqui = Utils.randomString(200);
             const query = {
               text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-              values: [uniqui.trimRight(), firstName, lastName, email, hash, true, 'somewhere'],
+              values: [uniqui.trimRight(), firstName, lastName, email, hash, isAdmin || false, 'somewhere'],
             };
             db.query(query)
               .then((respo) => {

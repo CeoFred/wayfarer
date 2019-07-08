@@ -37,7 +37,8 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
       email = _req$body.email,
       password = _req$body.password,
       firstName = _req$body.firstName,
-      lastName = _req$body.lastName; // console.log(email)
+      lastName = _req$body.lastName,
+      isAdmin = _req$body.isAdmin; // console.log(email)
 
   var searchQuery = "SELECT * FROM users WHERE email = '".concat(email, "' ");
   db.query(searchQuery).then(function (resp) {
@@ -51,7 +52,7 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
           var uniqui = Utils.randomString(200);
           var query = {
             text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-            values: [uniqui.trimRight(), firstName, lastName, email, hash, true, 'somewhere']
+            values: [uniqui.trimRight(), firstName, lastName, email, hash, isAdmin || false, 'somewhere']
           };
           db.query(query).then(function (respo) {
             var token = jwt.sign({

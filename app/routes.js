@@ -5,8 +5,8 @@ module.exports = function (app) {
   app.use('/api/v1/user', require('./controllers/user'));
   //  trip route
   app.use('/api/v1/trips', require('./controllers/trips'));
-
-  // app.use('/api/v1/bookings', require('./controllers/bookings'));
+  // booking route
+  app.use('/api/v1/bookings', require('./controllers/bookings'));
 
   // app.use('/api/v1/bus', require('./controllers/bus'));
 };
