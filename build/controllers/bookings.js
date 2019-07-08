@@ -21,37 +21,55 @@ var Utils = require('../helpers/utils');
 var authCheck = require('../middlewares/auth_check'); // Book a seat on a trip
 
 
-router.post('/', authCheck, function (req, res) {
+router.post('/:tripId', authCheck, function (req, res) {
   var tripId = req.params.tripId;
   var data = req.decoded.data;
   var user = data.userId;
 
   var busIsFilled = function busIsFilled(bus, booked) {
     var state = null;
-    db.query("SELECT capacity from bus WHERE bus_id ='".concat(bus, "'")).then(function (busData) {
+    return db.query("SELECT capacity from bus WHERE bus_id ='".concat(bus, "'")).then(function (busData) {
       var busExists = busData.rowCount > 0;
 
       if (busExists) {
         var capacity = busData.rows[0].capacity;
 
-        if (booked === capacity) {
+        if (Number(booked) > Number(capacity)) {
           state = true;
         } else {
           state = false;
         }
+      } else {
+        state = false;
       }
+
+      return state;
     })["catch"](function (err) {
       state = false;
-      throw err;
+      console.log(err);
     });
-    return state;
   };
 
   var incrementNumberBooked = function incrementNumberBooked(tripid) {
-    db.query("UPDATE trips SET numberBooked = 'numberBooked + 1' WHERE trip_id = '".concat(tripid, "'")).then(function (res) {
-      console.log(res.rows);
+    db.query("UPDATE trips SET bookings = bookings + 1 WHERE trip_id = '".concat(tripid, "'")).then(function (res) {
+      console.log('Updated');
     })["catch"](function (err) {
       console.log(err);
+    });
+  };
+
+  var userHasPreviousBooking = function userHasPreviousBooking(trip) {
+    return db.query("SELECT * FROM bookings WHERE user_id = '".concat(user, "' AND status = 'Active' AND trip_id = '").concat(trip, "'")).then(function (userBooking) {
+      console.log(userBooking);
+
+      if (userBooking.rowCount > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    })["catch"](function (err) {
+      console.log(err);
+      return false;
     });
   }; // check the bus capacity
   // check if bus is filled with respect to trip booking, add new column for this number_booked
@@ -59,22 +77,33 @@ router.post('/', authCheck, function (req, res) {
 
 
   db.query("SELECT * FROM trips WHERE trip_id = '".concat(tripId, "' AND status = 'Active'")).then(function (resp) {
-    if (res.rowCount <= 0) {
+    if (resp.rowCount <= 0) {
       res.status(404).json(response.error('Trip not found'));
     }
 
-    var busId = resp.rows[0].busId;
-    var numberBooked = resp.rows[0].numberBooked;
-
-    if (busIsFilled(busId, numberBooked)) {
-      res.status(200).json(response.error('Bus is full'));
-    }
-
-    db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status) VALUES($1,$2,$3,$4,$5) RETURNING *', [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active']).then(function (respo) {
-      incrementNumberBooked(tripId);
-      res.status(201).json(response.success(respo.rows[0]));
+    var busId = resp.rows[0].bus_id;
+    var bookings = resp.rows[0].bookings;
+    var isFilled = busIsFilled(busId, bookings);
+    isFilled.then(function (filledRes) {
+      if (filledRes) {
+        res.status(200).json(response.error('Bus is full'));
+      } else {
+        //check if user has booked before and return bookin details
+        var isBooked = userHasPreviousBooking(tripId);
+        isBooked.then(function (bookedRes) {
+          if (bookedRes) {
+            res.status(403).json(response.error('Already booked by user'));
+          }
+        });
+        db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status) VALUES($1,$2,$3,$4,$5) RETURNING *', [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active']).then(function (respo) {
+          incrementNumberBooked(tripId);
+          res.status(201).json(response.success(respo.rows[0]));
+        })["catch"](function (err) {
+          res.status(500).json(response.error('Failed to book trip'));
+          console.log(err);
+        });
+      }
     })["catch"](function (err) {
-      res.status(500).json(response.error('Failed to book trip'));
       console.log(err);
     });
   })["catch"](function (err) {
