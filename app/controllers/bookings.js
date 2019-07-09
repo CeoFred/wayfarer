@@ -21,24 +21,23 @@ router.post('/:tripId', authCheck, (req, res) => {
 
   const busIsFilled = (bus, booked) => {
     let state = null;
-      return db.query(`SELECT capacity from bus WHERE bus_id ='${bus}'`).then((busData) => {
-        const busExists = busData.rowCount > 0;
-        if (busExists) {
-          const capacity = busData.rows[0].capacity;
-          if (Number(booked) > Number(capacity)) {
-            state = true;
-          } else {
-            state = false;
-          }
+    return db.query(`SELECT capacity from bus WHERE bus_id ='${bus}'`).then((busData) => {
+      const busExists = busData.rowCount > 0;
+      if (busExists) {
+        const capacity = busData.rows[0].capacity;
+        if (Number(booked) > Number(capacity)) {
+          state = true;
         } else {
           state = false;
         }
-        return state;
-      }).catch((err) => {
+      } else {
         state = false;
-        console.log(err);
-      });
-    
+      }
+      return state;
+    }).catch((err) => {
+      state = false;
+      console.log(err);
+    });
   };
 
   const incrementNumberBooked = (tripid) => {
@@ -50,18 +49,17 @@ router.post('/:tripId', authCheck, (req, res) => {
   };
 
   const userHasPreviousBooking = (trip) => {
-  return  db.query(`SELECT * FROM bookings WHERE user_id = '${user}' AND status = 'Active' AND trip_id = '${trip}'`).then(userBooking => {
-        console.log(userBooking)
-        if(userBooking.rowCount > 0){
-            return true;
-          }else{
-              return false;
-          }
-      }).catch(err => {
-          console.log(err)
-          return false;
-      })
-  }
+    return db.query(`SELECT * FROM bookings WHERE user_id = '${user}' AND status = 'Active' AND trip_id = '${trip}'`).then((userBooking) => {
+      console.log(userBooking);
+      if (userBooking.rowCount > 0) {
+        return true;
+      }
+      return false;
+    }).catch((err) => {
+      console.log(err);
+      return false;
+    });
+  };
   // check the bus capacity
   // check if bus is filled with respect to trip booking, add new column for this number_booked
   // for each new trip booking increment the number_booked
@@ -77,16 +75,16 @@ router.post('/:tripId', authCheck, (req, res) => {
         if (filledRes) {
           res.status(200).json(response.error('Bus is full'));
         } else {
-            //check if user has booked before and return bookin details
-        const isBooked =  userHasPreviousBooking(tripId);
-        isBooked.then(bookedRes => {
-            if(bookedRes){
-               res.status(403).json(response.error('Already booked by user'))
+          // check if user has booked before and return bookin details
+          const isBooked = userHasPreviousBooking(tripId);
+          isBooked.then((bookedRes) => {
+            if (bookedRes) {
+              res.status(403).json(response.error('Already booked by user'));
             }
-        })   
+          });
 
-          db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status) VALUES($1,$2,$3,$4,$5) RETURNING *',
-            [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active']).then((respo) => {
+          db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status,seat_number) VALUES($1,$2,$3,$4,$5) RETURNING *',
+            [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active', bookings + 1]).then((respo) => {
             incrementNumberBooked(tripId);
             res.status(201).json(response.success(respo.rows[0]));
           }).catch((err) => {
@@ -145,13 +143,13 @@ router.patch('/:bookingId', authCheck, (req, res) => {
 });
 
 router.get('/', authCheck, (req, res) => {
-// get al bookings
+// get all bookings
   const { data } = req.decoded;
   const user = data.userId;
   const admin = data.is_admin;
   console.log(user);
 
-  db.query('SELECT bookings.user_id,trips.fare,trips.origin,trips.destination,trips.bus_id,bookings.booking_id FROM bookings INNER JOIN trips USING (trip_id)')
+  db.query('SELECT bookings.user_id,users.email,users.first_name,users.last_name,bookings.booking_id FROM bookings INNER JOIN users USING (user_id)')
     .then((resp) => {
       if (admin) {
         res.status(200).json(response.success(resp.rows));

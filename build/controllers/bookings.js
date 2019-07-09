@@ -64,9 +64,9 @@ router.post('/:tripId', authCheck, function (req, res) {
 
       if (userBooking.rowCount > 0) {
         return true;
-      } else {
-        return false;
       }
+
+      return false;
     })["catch"](function (err) {
       console.log(err);
       return false;
@@ -88,14 +88,14 @@ router.post('/:tripId', authCheck, function (req, res) {
       if (filledRes) {
         res.status(200).json(response.error('Bus is full'));
       } else {
-        //check if user has booked before and return bookin details
+        // check if user has booked before and return bookin details
         var isBooked = userHasPreviousBooking(tripId);
         isBooked.then(function (bookedRes) {
           if (bookedRes) {
             res.status(403).json(response.error('Already booked by user'));
           }
         });
-        db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status) VALUES($1,$2,$3,$4,$5) RETURNING *', [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active']).then(function (respo) {
+        db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status,seat_number) VALUES($1,$2,$3,$4,$5) RETURNING *', [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active', bookings + 1]).then(function (respo) {
           incrementNumberBooked(tripId);
           res.status(201).json(response.success(respo.rows[0]));
         })["catch"](function (err) {
@@ -145,12 +145,12 @@ router.patch('/:bookingId', authCheck, function (req, res) {
   });
 });
 router.get('/', authCheck, function (req, res) {
-  // get al bookings
+  // get all bookings
   var data = req.decoded.data;
   var user = data.userId;
   var admin = data.is_admin;
   console.log(user);
-  db.query('SELECT bookings.user_id,trips.fare,trips.origin,trips.destination,trips.bus_id,bookings.booking_id FROM bookings INNER JOIN trips USING (trip_id)').then(function (resp) {
+  db.query('SELECT bookings.user_id,users.email,users.first_name,users.last_name,bookings.booking_id FROM bookings INNER JOIN users USING (user_id)').then(function (resp) {
     if (admin) {
       res.status(200).json(response.success(resp.rows));
     } else {

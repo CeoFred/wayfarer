@@ -13,7 +13,7 @@
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "coveralls-coverage": "coveralls < lcov.info",
     "codeclimate-coverage": "export CODECLIMATE_REPO_TOKEN=3e7edd83e8b2cb79c3c7d161110866257359f27d8e82bf5402d00145c529ffa4 && codeclimate-test-reporter < lcov.info",
-    "codeclimate-coverage:dev": "set CODECLIMATE_REPO_TOKEN=3e7edd83e8b2cb79c3c7d161110866257359f27d8e82bf5402d00145c529ffa4 && codeclimate-test-reporter < lcov.info", 
+    "codeclimate-coverage:dev": "set CODECLIMATE_REPO_TOKEN=3e7edd83e8b2cb79c3c7d161110866257359f27d8e82bf5402d00145c529ffa4 && codeclimate-test-reporter < lcov.info",
     "coverage": "nyc npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage",
     "coverage:dev": "nyc npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage:dev",
     "build:dev": "rm -rf ./build && babel -d ./build ./app -s"

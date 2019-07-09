@@ -23,7 +23,9 @@ var _response = require('../helpers/response');
 
 var db = require('../config/db');
 
-var Utils = require('../helpers/utils'); // create a new user
+var Utils = require('../helpers/utils');
+
+var authCheck = require('../middlewares/auth_check'); // create a new user
 
 
 router.post('/signup', [check('email').exists().withMessage('Email is required'), check('password').exists().withMessage('Password is required'), check('firstName').exists().withMessage('First name is required'), check('lastName').exists().withMessage('Last name is required'), body('email').not().isEmpty().escape().isEmail(), sanitizeBody('email').normalizeEmail().trim()], function (req, res) {
@@ -37,8 +39,7 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
       email = _req$body.email,
       password = _req$body.password,
       firstName = _req$body.firstName,
-      lastName = _req$body.lastName,
-      isAdmin = _req$body.isAdmin; // console.log(email)
+      lastName = _req$body.lastName; // console.log(email)
 
   var searchQuery = "SELECT * FROM users WHERE email = '".concat(email, "' ");
   db.query(searchQuery).then(function (resp) {
@@ -52,7 +53,7 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
           var uniqui = Utils.randomString(200);
           var query = {
             text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-            values: [uniqui.trimRight(), firstName, lastName, email, hash, isAdmin || false, 'somewhere']
+            values: [uniqui.trimRight(), firstName, lastName, email, hash, false, 'somewhere']
           };
           db.query(query).then(function (respo) {
             var token = jwt.sign({
@@ -125,6 +126,22 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
       }
     });
   });
+}).post('/admin/:user_id', authCheck, function (req, res) {
+  // make user an admin
+  var userId = req.params.userId;
+  var data = req.decoded.data;
+  var user = data.userId;
+  var admin = data.is_admin;
+
+  if (admin && user === userId) {
+    db.query("SELECT is_admin FROM users WHERE user_id = '".concat(userId, "' AND is_admin='", false, "'")).then(function (resp) {
+      console.log(resp);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  } else {
+    res.status(505).json(_response.error('Your plans failed, we have a stronger algorithm'));
+  }
 });
 module.exports = router;
 //# sourceMappingURL=user.js.map
