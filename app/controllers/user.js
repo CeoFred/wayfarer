@@ -18,6 +18,7 @@ const {
 const _response = require('../helpers/response');
 const db = require('../config/db');
 const Utils = require('../helpers/utils');
+const authCheck = require('../middlewares/auth_check');
 
 // create a new user
 router.post('/signup',
@@ -55,7 +56,7 @@ router.post('/signup',
             const uniqui = Utils.randomString(200);
             const query = {
               text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-              values: [uniqui.trimRight(), firstName, lastName, email, hash, true, 'somewhere'],
+              values: [uniqui.trimRight(), firstName, lastName, email, hash, false, 'somewhere'],
             };
             db.query(query)
               .then((respo) => {
@@ -137,6 +138,34 @@ router.post('/signup',
         }
       });
     });
-  });
+  }).post('/admin/:userId', authCheck, (req, res) => {
+  // make user an admin
+  const toBeAdmin = req.params.userId;
+  const { data } = req.decoded;
+  const admin = data.is_admin;
+
+
+  if (admin) {
+    db.query(`SELECT * FROM users WHERE user_id = '${toBeAdmin}' AND is_admin='${false}'`).then((resp) => {
+      if (resp.rowCount > 0) {
+        db.query(`UPDATE users SET is_admin='${true}' WHERE user_id = '${toBeAdmin}' RETURNING *`).then((newAdminData) => {
+          if (newAdminData.rowCount > 0) {
+            res.status(200).json(_response.success(newAdminData.rows[0]));
+          } else {
+            res.status(500).json(_response.error('Failed to assign role'));
+          }
+        }).catch(() => {
+          res.status(401).json(_response.error('Opps! Something went wrong'));
+        });
+      } else {
+        res.status(403).json(_response.error('Cannot re-assign role to user'));
+      }
+    }).catch(() => {
+      res.status(401).json(_response.error('Opps! Something went wrong'));
+    });
+  } else {
+    res.status(505).json(_response.error('Your plans failed, we have a stronger algorithm'));
+  }
+});
 
 module.exports = router;
