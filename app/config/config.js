@@ -1,7 +1,7 @@
 const env = process.env.NODE_ENV || 'development';
 
 const config = {
-  development1: {
+  development: {
     server: {
       port: process.env.PORT || 8001,
       hostname: process.env.HOSTNAME || 'localhost',
@@ -48,7 +48,7 @@ const config = {
 
     },
   },
-  development: {
+  ci: {
     server: {
       port: process.env.PORT || 8002,
       hostname: process.env.HOSTNAME || 'localhost',
