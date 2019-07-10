@@ -9,6 +9,7 @@ module.exports = function (app) {
 
   app.use('/api/v1/trips', require('./controllers/trips')); // booking route
 
-  app.use('/api/v1/bookings', require('./controllers/bookings')); // app.use('/api/v1/bus', require('./controllers/bus'));
+  app.use('/api/v1/bookings', require('./controllers/bookings'));
+  app.use('/api/v1/bus', require('./controllers/bus'));
 };
 //# sourceMappingURL=routes.js.map

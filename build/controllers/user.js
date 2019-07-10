@@ -126,18 +126,29 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
       }
     });
   });
-}).post('/admin/:user_id', authCheck, function (req, res) {
+}).post('/admin/:userId', authCheck, function (req, res) {
   // make user an admin
-  var userId = req.params.userId;
+  var toBeAdmin = req.params.userId;
   var data = req.decoded.data;
-  var user = data.userId;
   var admin = data.is_admin;
 
-  if (admin && user === userId) {
-    db.query("SELECT is_admin FROM users WHERE user_id = '".concat(userId, "' AND is_admin='", false, "'")).then(function (resp) {
-      console.log(resp);
-    })["catch"](function (err) {
-      console.log(err);
+  if (admin) {
+    db.query("SELECT * FROM users WHERE user_id = '".concat(toBeAdmin, "' AND is_admin='", false, "'")).then(function (resp) {
+      if (resp.rowCount > 0) {
+        db.query("UPDATE users SET is_admin='".concat(true, "' WHERE user_id = '", toBeAdmin, "' RETURNING *")).then(function (newAdminData) {
+          if (newAdminData.rowCount > 0) {
+            res.status(200).json(_response.success(newAdminData.rows[0]));
+          } else {
+            res.status(500).json(_response.error('Failed to assign role'));
+          }
+        })["catch"](function () {
+          res.status(401).json(_response.error('Opps! Something went wrong'));
+        });
+      } else {
+        res.status(403).json(_response.error('Cannot re-assign role to user'));
+      }
+    })["catch"](function () {
+      res.status(401).json(_response.error('Opps! Something went wrong'));
     });
   } else {
     res.status(505).json(_response.error('Your plans failed, we have a stronger algorithm'));

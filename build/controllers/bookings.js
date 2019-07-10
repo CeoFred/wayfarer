@@ -2,15 +2,9 @@
 
 var express = require('express');
 
+var logger = require('logger').createLogger('./app/development.log');
+
 var router = express.Router();
-
-var _require = require('express-validator'),
-    check = _require.check,
-    validationResult = _require.validationResult,
-    body = _require.body;
-
-var _require2 = require('express-validator'),
-    sanitizeBody = _require2.sanitizeBody;
 
 var response = require('../helpers/response');
 
@@ -21,8 +15,8 @@ var Utils = require('../helpers/utils');
 var authCheck = require('../middlewares/auth_check'); // Book a seat on a trip
 
 
-router.post('/:tripId', authCheck, function (req, res) {
-  var tripId = req.params.tripId;
+router.post('/', authCheck, function (req, res) {
+  var tripId = req.body.trip_id;
   var data = req.decoded.data;
   var user = data.userId;
 
@@ -46,15 +40,15 @@ router.post('/:tripId', authCheck, function (req, res) {
       return state;
     })["catch"](function (err) {
       state = false;
-      console.log(err);
+      logger.error(err);
     });
   };
 
   var incrementNumberBooked = function incrementNumberBooked(tripid) {
-    db.query("UPDATE trips SET bookings = bookings + 1 WHERE trip_id = '".concat(tripid, "'")).then(function (res) {
+    db.query("UPDATE trips SET bookings = bookings + 1 WHERE trip_id = '".concat(tripid, "'")).then(function () {
       console.log('Updated');
     })["catch"](function (err) {
-      console.log(err);
+      logger.error(err);
     });
   };
 
@@ -68,7 +62,7 @@ router.post('/:tripId', authCheck, function (req, res) {
 
       return false;
     })["catch"](function (err) {
-      console.log(err);
+      logger.error(err);
       return false;
     });
   }; // check the bus capacity
@@ -100,48 +94,52 @@ router.post('/:tripId', authCheck, function (req, res) {
           res.status(201).json(response.success(respo.rows[0]));
         })["catch"](function (err) {
           res.status(500).json(response.error('Failed to book trip'));
-          console.log(err);
+          logger.error(err);
         });
       }
     })["catch"](function (err) {
-      console.log(err);
+      logger.error(err);
     });
   })["catch"](function (err) {
     res.status(500).json(response.error('Whoops! Something went wrong'));
-    console.log(err);
+    logger.error(err);
   });
 });
-router.patch('/:bookingId', authCheck, function (req, res) {
+router["delete"]('/:bookingId', authCheck, function (req, res) {
   // delete bookking
   var data = req.decoded.data;
   var admin = data.is_admin;
   var user = data.userId;
   var bookingId = req.params.bookingId;
-  db.query("SELECT * FROM bookings WHERE bookingId = '".concat(bookingId, "' AND status =  'Active' ")).then(function (resp) {
+  db.query("SELECT * FROM bookings WHERE booking_id = '".concat(bookingId, "' AND status =  'Active' ")).then(function (resp) {
     if (resp.rowCount < 0) {
       res.status(404).json(response.error('Booking ID not found'));
     }
 
     if (admin) {
-      db.query("UPDATE bookings SET status = 'deleted' WHERE bookingId = '".concat(bookingId, "' RETURNING *")).then(function (deletedRow) {
+      db.query("UPDATE bookings SET status = 'deleted' WHERE booking_id = '".concat(bookingId, "'")).then(function (deletedRow) {
         console.log(deletedRow);
-        res.status(200).json(response.success(deletedRow.rows[0]));
+        res.status(200).json(response.success({
+          message: 'booking was deleted successfully'
+        }));
       })["catch"](function (err) {
-        console.log(err);
+        logger.error(err);
         res.status(500).json(response.error('Failed to cancle booking,check server logs'));
       });
     } else {
-      db.query("UPDATE bookings SET status = 'deleted' WHERE booking_id = '".concat(bookingId, "' AND user_id = '").concat(user, "' RETURNING *")).then(function (deletedRow) {
+      db.query("UPDATE bookings SET status = 'deleted' WHERE booking_id = '".concat(bookingId, "' AND user_id = '").concat(user, "'")).then(function (deletedRow) {
         console.log(deletedRow);
-        res.status(200).json(response.success(deletedRow.rows[0]));
+        res.status(200).json(response.success({
+          message: 'booking was deleted successfully'
+        }));
       })["catch"](function (err) {
-        console.log(err);
+        logger.error(err);
         res.status(500).json(response.error('Failed to cancle booking,check server logs'));
       });
     }
   })["catch"](function (err) {
     res.status(500).json(response.error('Whoops! Something went wrong'));
-    console.log(err);
+    logger.error(err);
   });
 });
 router.get('/', authCheck, function (req, res) {
@@ -165,7 +163,7 @@ router.get('/', authCheck, function (req, res) {
       }));
     }
   })["catch"](function (err) {
-    console.log(err);
+    logger.error(err);
     res.status(500).json(response.error('Whoops! Failed to fetch booking'));
   });
 });

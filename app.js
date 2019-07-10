@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const log = require('logger').createLogger('./app/development.log');
+
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
@@ -34,6 +36,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message; // eslint-disable-line no-param-reassign
   res.locals.error = config.isDev ? err : {}; // eslint-disable-line no-param-reassign
   // render the error page
+  log.error(err.message)
   res.status(err.status || 500).json({'status':'failed','error':err.message});
   // eslint-disable-next-line no-console
   console.log(err);

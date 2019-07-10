@@ -8,5 +8,5 @@ module.exports = function (app) {
   // booking route
   app.use('/api/v1/bookings', require('./controllers/bookings'));
 
-  // app.use('/api/v1/bus', require('./controllers/bus'));
+  app.use('/api/v1/bus', require('./controllers/bus'));
 };

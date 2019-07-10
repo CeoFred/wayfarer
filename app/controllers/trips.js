@@ -20,6 +20,8 @@ router.post('/', authCheck, (req, res) => {
 
   } = req.body;
   const { data } = req.decoded;
+  console.log(data);
+
   if (!data.is_admin) {
     res.status(401).json(response.error('Access Denied'));
   }
@@ -45,7 +47,7 @@ router.post('/', authCheck, (req, res) => {
 
   db.query(query).then((resp) => {
     db.query(`UPDATE bus SET trip_status = '${true}' WHERE bus_id = '${busId}' RETURNING *`).then(() => {
-      res.json(response.success(resp.rows[0]));
+      res.status(201).json(response.success(resp.rows[0]));
     }).catch((err) => {
       logger.error(err);
 
