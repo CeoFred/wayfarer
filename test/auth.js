@@ -102,11 +102,8 @@ describe('User Authentication', () => {
         .end((err, res) => {
           expect(res).to.have.status(201);
           bus = res.body.data.bus_id;
-          logger.info(`bus response is ${res}`);
+          logger.info(`bus id after creation is ${bus}`);
           logger.info(`bus error is ${err}`);
-          if (err) {
-            throw err;
-          }
           done();
         });
     });
