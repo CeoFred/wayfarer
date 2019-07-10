@@ -1,18 +1,120 @@
+error [Wed Jul 10 2019 16:31:58 GMT+0100 (GMT Daylight Time)]  { error: INSERT has more target columns than expressions
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 175,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '67',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\parser\\analyze.c',
+  line: '946',
+  routine: 'transformInsertRow' }
+
+
+
+
+error [Wed Jul 10 2019 16:32:37 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at db.query.then (C:\Users\USER3\Desktop\wayfarer\app\controllers\bookings.js:81:29)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+
+
+
+
+error [Wed Jul 10 2019 16:34:52 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at db.query.then (C:\Users\USER3\Desktop\wayfarer\app\controllers\bookings.js:79:29)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+error [Wed Jul 10 2019 16:35:04 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at db.query.then (C:\Users\USER3\Desktop\wayfarer\app\controllers\bookings.js:79:29)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
 
 
 
 
 
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6InJ0d0FVTWtxb0dlN2Q3QW1INVZkT1V1MXJMRTFVbGFwUkdFd0VjVVB2SFdRY25kR0F4eVV5THBhU3EwM0NQZUFVQm81YzA1MUQ1TTJpWVNCWGhHVVRqNzhZUThRaXZka251TFRBQzJBTnBHVmlVNHc0RlJMYllnWFE5d1V5M2R2RlVzTktTQmFKT1g1QmZhalpkYndESmF4YzNTTmIyQnJoQU9pVXpaTXEzSkY0eFJGTFYxNmtPbDllZzVlSm5BOTd2Q0hLaG1uIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3NjYzNjIsImV4cCI6MTU2MzM3MTE2Mn0._oGVC6tR0am7jKgEtoJGBOF9tFT4Kkjc7PYPo-G8KnU
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  bus id after creation is 097mSiO3UEMrzUXxNidwr06JkSuimdX7FJzzFR5MjrSlRtCULE9VDAQTc41YMHxjxN6B9177SG41vAjv3ZP86mkX57k79WhL7Eaf8TagSN8nwjZNmsDt5UknRyfOOHSKQExRgVemYGprvChiiFbuzv0Tmzb1UYXrTSv3BuTTlwaLVYPCUWJfov2UXPD0JGfJGi92USbj
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  bus error is null
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  bus id is 097mSiO3UEMrzUXxNidwr06JkSuimdX7FJzzFR5MjrSlRtCULE9VDAQTc41YMHxjxN6B9177SG41vAjv3ZP86mkX57k79WhL7Eaf8TagSN8nwjZNmsDt5UknRyfOOHSKQExRgVemYGprvChiiFbuzv0Tmzb1UYXrTSv3BuTTlwaLVYPCUWJfov2UXPD0JGfJGi92USbj
+
+
+
+error [Wed Jul 10 2019 16:40:47 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at db.query.then (C:\Users\USER3\Desktop\wayfarer\app\controllers\bookings.js:81:29)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
 
 
 
 
 
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6ImVkM3pXSGd3OGZ2Yll2Q3NudHBhSkVPRHhtQmpVak5rR2NvRVNTVnF3VUNIWDM4MEdKOXhKSlF5WjhXOGF1OE93a1NoU1BOeWxwQTlOcDIzRzBQR1RITm01ZWhCMHJVOWIwY3Q0enBpTVNGamZNUlMydUROcEZGTTY2TEhSeG5leHRXS05qenB1NWRsd1N2WlVjVWUwMDByQXVadlFLTWJaMmZXMHRON3dYVTJhUEg3VUZPS3d5VnJZNWphU2NaMmcyNHp5TVM4IiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3NjYzODksImV4cCI6MTU2MzM3MTE4OX0.9MCjbxcbHEGLF6YrRLRMNP5Wl8N5venm2bYZLdC4U9o
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  bus id after creation is laQZwDLvlhzDAnQjv2R4ofmfMmREjgBFqnMvE6zfFJ0gPQUsoYfGUCAUvX1mO9CnT10mxlWhhn1zMZO4S9dQABy4QauYqfUph2OJQan9WC4h842HqpSGMYsn4mkU7JHB8tMwPAPr5Z9QTj27WWzd6FRsf7rtpccC3icO6xysZdyU3KKpx6a7jx3Hx7fWcJpOtf0iH8Ee
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  bus error is null
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  bus id is laQZwDLvlhzDAnQjv2R4ofmfMmREjgBFqnMvE6zfFJ0gPQUsoYfGUCAUvX1mO9CnT10mxlWhhn1zMZO4S9dQABy4QauYqfUph2OJQan9WC4h842HqpSGMYsn4mkU7JHB8tMwPAPr5Z9QTj27WWzd6FRsf7rtpccC3icO6xysZdyU3KKpx6a7jx3Hx7fWcJpOtf0iH8Ee
+
+
+
+
+
+
+
+
+
+
+
+
+info [Wed Jul 10 2019 16:47:11 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IkR3VWV6RVdSdTRoMEZhd0tyZ2hIejJyOGVPcXo1b1drQW1NU1drNVVMQ25sQzgxOGhSRXdwaUFZMldwc3N4MEw5MzJVbm1YNHVWcmI0ZWZKOXM0UzRVZGkzNVJONTJOWk9hZ244NGJxMzBXVFhPa0dWZkd2bzJPZ2J3aXlKTmg0RG1yYkFVaFd2NUo0Qk11a043SjZjTVh5NzNVMUtTOHJXYThma2QxdnZ0bjRpZHAwMGNNWlBUNGw5eGhuZDBPbGMwMm83QTZBIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3NzM2MzEsImV4cCI6MTU2MzM3ODQzMX0.WEUXn0nWkUHyesji-ksSdWuvtBYfCqZraHmNCcuWRmU
+info [Wed Jul 10 2019 16:47:11 GMT+0100 (GMT Daylight Time)]  bus id is 0wtEvhHFSr6C8dRhdkU7sX3kjEVq5nyy6dy2NTfUfG03xGSYEPUj3qi3F5qQ6eTLLuG25KZEGVpBUUMd8enQGuwPUsWXvQC7cFyciUliy0L2FJDigZsd2DNWQWvsHNHAsxUhrXbi7XuHojCpxbnjqGb77n5wOO0UK8GoNnEbGPEQi39o2ekDbPSlQ4G2nqWu1H8MqRAN
+
+
+
+
+
+info [Wed Jul 10 2019 16:48:22 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IkNad3pBMW1GNXJIVk9pR0pWRVVCTTJ1QWtGb2dqU0F2RXE1bUpwc1VMcFdRUjBKUGdENlJjM0FzUUVhVXlWaGpjamdYMmI0SzUyb09UeU5zQndOVWVXT1VqRTV0RU9aSG9UYnRMcXJVbENMV0RVcWljQlVKSlFEUFZLVzhaRFVLcmUyQjVCelg3c1RLTU9yajhWTUZrM2FySFlwek5jUWZNbW9rdFVyeXRneVNHM0Fmem90N0R3d2tMT29HNEQyZ2pneDdPdE5EIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3NzM3MDIsImV4cCI6MTU2MzM3ODUwMn0.chJ-rw-rthVLoQvzk5guuWIBEuRvioKIALVzSAsnwWc
+info [Wed Jul 10 2019 16:48:22 GMT+0100 (GMT Daylight Time)]  bus id is 1ZJUBAOSZk7QXjejTa4Tx3Cb7sgSO9emmib4wqvCJeQwUDPucjpSHxjUs8LRtVN2eULdVy7NtLxJzDhBOgHWQUJN9WRgR5FZCTAig620B9sRHwH98j6SumQqAg5peR1fMdwEqJuqmREGoxrq0R8yTwCE7eBAwpwQsfEabUaUiGzfcX4Qt3Nx3ijUXauMvS97ceXXLAe8
+
+
+
+
+
+info [Wed Jul 10 2019 16:48:52 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IlViVEJFWmpUeDNqNFNxWG11RHNKVVh3c3JBMENNeDNsbFVGZG1WOXY1MzkwZ05jWTBuVUFpNDBGUjFzVUZTZ0dheXBDdmUwYjJQSERQS1ZzYmpYdDg1VXVDdHdpcndENlJkelRGSlZKc0psUkZYQ1plcFNFODRaQkRwZFdoYTZnUFozeFBXellyWTR4dG1uNjNsdXNTdmtVSmhqTlB0aktadzBib1Vzdnh0MzJLUkZnV0Fad3pOemp5OGRiaXBFRGE0QmR5VU9zIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3NzM3MzIsImV4cCI6MTU2MzM3ODUzMn0.z_Kt3d5QKLbIZiwb70lcUrEjS4i2RVxluzgrAL7dYo0
+info [Wed Jul 10 2019 16:48:52 GMT+0100 (GMT Daylight Time)]  bus id is kQ1ZrlcUyO8oouoZ8U3ctRfbFf6ErwbkFRTE7JXy0F17P6MwW0M3K3L1tj3wzrMJ1kH7DECU1hrqQj8hPsJFafGRvUEdNMY9D7GEJPw8EPlUq7qxesspQinxygWGC8iwGRVHardCAfEXzkpAhq2JRAZd4RRw3f4iZPAnlQLpNk8r5ceMoPn8W6REHePamdgRPrOj6ct0
+
+
+
+
+
+info [Wed Jul 10 2019 20:02:20 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Ind1R2tIRVdYemRqdnMxNmNvRXpTTGhES2VDS1pVYWZuaEpZcTdzMEpUNXpKVU9NMWJQWnQwcUVtalFYTXlVaWl5bktOWXRFZ2N2SHBjZDUzN3lZRlRHcnFZRkF1MHE3MER0Q2xBdFBrbThpUzVuY1RxNzJyZTZNNEdLYXU2UDZxa1BuRUZiSnBNaVowMnN2TnBNUFBhbkhWcG5BeTE3ODRLNXRmVkxKMGU0RVk4RHRMc2d5QzRzbVBxTzdqMUZPQ3RBcFdKbFVSIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3ODUzNDAsImV4cCI6MTU2MzM5MDE0MH0.PjEmS-O4n0_LOyqdxvo3gRD7K1zEel3iu9ZMXYkDlZA
+info [Wed Jul 10 2019 20:02:20 GMT+0100 (GMT Daylight Time)]  bus id is NxuemsXUjv11d2T50Z06HbvZVE3cCZTiMeNWcFEGwNrqb2CuHpZNSRrkOQ3dZlRQqRkdzKiY4V1rx7Yy6hJxdoTRu5amfkltdkpiP0EqFbjWrm17eg8vhYKO6QALkWpqbo1EkrExxY5bWGfz88rokJ9EBb0N8tCTsJxdMKe0GnUbSezVjztl21Quk0iA3vrxHcRNFYEP

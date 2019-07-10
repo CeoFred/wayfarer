@@ -37,7 +37,6 @@ router.post('/', authCheck, (req, res) => {
 
   const incrementNumberBooked = (tripid) => {
     db.query(`UPDATE trips SET bookings = bookings + 1 WHERE trip_id = '${tripid}'`).then(() => {
-      console.log('Updated');
     }).catch((err) => {
       logger.error(err);
     });
@@ -45,7 +44,6 @@ router.post('/', authCheck, (req, res) => {
 
   const userHasPreviousBooking = (trip) => {
     return db.query(`SELECT * FROM bookings WHERE user_id = '${user}' AND status = 'Active' AND trip_id = '${trip}'`).then((userBooking) => {
-      console.log(userBooking);
       if (userBooking.rowCount > 0) {
         return true;
       }
@@ -55,9 +53,6 @@ router.post('/', authCheck, (req, res) => {
       return false;
     });
   };
-  // check the bus capacity
-  // check if bus is filled with respect to trip booking, add new column for this number_booked
-  // for each new trip booking increment the number_booked
   db.query(`SELECT * FROM trips WHERE trip_id = '${tripId}' AND status = 'Active'`)
     .then((resp) => {
       if (resp.rowCount <= 0) {
@@ -65,6 +60,8 @@ router.post('/', authCheck, (req, res) => {
       }
       const busId = resp.rows[0].bus_id;
       const bookings = resp.rows[0].bookings;
+      const booking = Number(bookings) + 1;
+      console.log(booking);
       const isFilled = busIsFilled(busId, bookings);
       isFilled.then((filledRes) => {
         if (filledRes) {
@@ -78,13 +75,13 @@ router.post('/', authCheck, (req, res) => {
             }
           });
 
-          db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status,seat_number) VALUES($1,$2,$3,$4,$5) RETURNING *',
-            [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active', bookings + 1]).then((respo) => {
+          db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status,seat_number) VALUES($1,$2,$3,$4,$5,$6) RETURNING *',
+            [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active', booking]).then((respo) => {
             incrementNumberBooked(tripId);
             res.status(201).json(response.success(respo.rows[0]));
           }).catch((err) => {
-            res.status(500).json(response.error('Failed to book trip'));
             logger.error(err);
+            res.status(500).json(response.error('Failed to book trip'));
           });
         }
       }).catch((err) => {

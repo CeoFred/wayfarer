@@ -17,6 +17,8 @@ const email = 'testmail@mailserver.com';
 let user = null;
 let token = null;
 let bus = null;
+let trip = null;
+
 describe('Server', () => {
   it('tests that server is running current port', async () => {
     await chai.expect(server.port).to.equal(config.server.port);
@@ -24,7 +26,7 @@ describe('Server', () => {
 });
 
 
-describe('User Authentication', () => {
+describe('Application', () => {
   describe('/POST User Signup', () => {
     before((done) => {
       db.query('DELETE FROM users').then(() => {
@@ -76,6 +78,16 @@ describe('User Authentication', () => {
           done();
         });
     });
+    it('should get bookings', (done) => {
+      chai.request(server.server)
+        .get('/api/v1/bookings')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
   });
 
   describe('/POST Bus Test', () => {
@@ -102,15 +114,12 @@ describe('User Authentication', () => {
         .end((err, res) => {
           expect(res).to.have.status(201);
           bus = res.body.data.bus_id;
-          logger.info(`bus id after creation is ${bus}`);
-          logger.info(`bus error is ${err}`);
           done();
         });
     });
   });
   describe('/POST Trip', () => {
     it('should create a new trip', (done) => {
-      logger.info(`bus id is ${bus}`);
       chai.request(server.server)
         .post('/api/v1/trips/')
         .set('Content-Type', 'application/json')
@@ -125,6 +134,19 @@ describe('User Authentication', () => {
         })
         .end((err, res) => {
           expect(res).to.have.status(201);
+          trip = res.body.data.trip_id;
+          done();
+        });
+    });
+
+    it('should cancel a trip', (done) => {
+      logger.info(`bus id is ${bus}`);
+      chai.request(server.server)
+        .patch(`/api/v1/trips/${trip}`)
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
           done();
         });
     });

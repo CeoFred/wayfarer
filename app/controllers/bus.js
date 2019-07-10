@@ -1,26 +1,15 @@
 const express = require('express');
 
 const router = express.Router();
-
-
 const logger = require('logger').createLogger('./app/development.log');
-
 const response = require('../helpers/response');
-
 const db = require('../config/db');
 const Utils = require('../helpers/utils');
-
 const authCheck = require('../middlewares/auth_check');
-
 
 router.post('/', authCheck, (req, res) => {
   const {
-    model,
-    numberPlate,
-    year,
-    manufacturer,
-    capacity,
-
+    model, numberPlate, year, manufacturer, capacity,
   } = req.body;
   const { data } = req.decoded;
   console.log(data);
@@ -37,6 +26,4 @@ router.post('/', authCheck, (req, res) => {
     logger.info(err);
   });
 });
-
-
 module.exports = router;
