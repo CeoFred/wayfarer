@@ -1,12 +1,7 @@
 const express = require('express');
+const logger = require('logger').createLogger('./app/development.log');
 
 const router = express.Router();
-const {
-  check,
-  validationResult, body
-} = require('express-validator');
-
-const { sanitizeBody } = require('express-validator');
 const response = require('../helpers/response');
 const db = require('../config/db');
 const Utils = require('../helpers/utils');
@@ -14,8 +9,8 @@ const Utils = require('../helpers/utils');
 const authCheck = require('../middlewares/auth_check');
 
 // Book a seat on a trip
-router.post('/:tripId', authCheck, (req, res) => {
-  const tripId = req.params.tripId;
+router.post('/', authCheck, (req, res) => {
+  const tripId = req.body.trip_id;
   const { data } = req.decoded;
   const user = data.userId;
 
@@ -36,7 +31,7 @@ router.post('/:tripId', authCheck, (req, res) => {
       return state;
     }).catch((err) => {
       state = false;
-      console.log(err);
+      logger.error(err);
     });
   };
 
@@ -44,7 +39,7 @@ router.post('/:tripId', authCheck, (req, res) => {
     db.query(`UPDATE trips SET bookings = bookings + 1 WHERE trip_id = '${tripid}'`).then((res) => {
       console.log('Updated');
     }).catch((err) => {
-      console.log(err);
+      logger.error(err);      
     });
   };
 
@@ -56,7 +51,7 @@ router.post('/:tripId', authCheck, (req, res) => {
       }
       return false;
     }).catch((err) => {
-      console.log(err);
+      logger.error(err);
       return false;
     });
   };
@@ -89,15 +84,15 @@ router.post('/:tripId', authCheck, (req, res) => {
             res.status(201).json(response.success(respo.rows[0]));
           }).catch((err) => {
             res.status(500).json(response.error('Failed to book trip'));
-            console.log(err);
+      logger.error(err);            
           });
         }
       }).catch((err) => {
-        console.log(err);
+      logger.error(err);        
       });
     }).catch((err) => {
       res.status(500).json(response.error('Whoops! Something went wrong'));
-      console.log(err);
+      logger.error(err);      
     });
 });
 
@@ -121,7 +116,8 @@ router.patch('/:bookingId', authCheck, (req, res) => {
             console.log(deletedRow);
             res.status(200).json(response.success(deletedRow.rows[0]));
           }).catch((err) => {
-            console.log(err);
+      logger.error(err);
+            
 
             res.status(500).json(response.error('Failed to cancle booking,check server logs'));
           });
@@ -131,14 +127,16 @@ router.patch('/:bookingId', authCheck, (req, res) => {
             console.log(deletedRow);
             res.status(200).json(response.success(deletedRow.rows[0]));
           }).catch((err) => {
-            console.log(err);
+      logger.error(err);
+            
 
             res.status(500).json(response.error('Failed to cancle booking,check server logs'));
           });
       }
     }).catch((err) => {
       res.status(500).json(response.error('Whoops! Something went wrong'));
-      console.log(err);
+      logger.error(err);
+      
     });
 });
 
@@ -162,7 +160,7 @@ router.get('/', authCheck, (req, res) => {
         res.status(200).json(response.success({ userBooking, for: 'user' }));
       }
     }).catch((err) => {
-      console.log(err);
+      logger.error(err);      
       res.status(500).json(response.error('Whoops! Failed to fetch booking'));
     });
 });

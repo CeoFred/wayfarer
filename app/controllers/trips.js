@@ -1,4 +1,5 @@
 const express = require('express');
+const logger = require('logger').createLogger('./app/development.log');
 
 const router = express.Router();
 const response = require('../helpers/response');
@@ -31,7 +32,9 @@ router.post('/', authCheck, (req, res) => {
     } else if (Boolean(busData.rows[0].trip_status) === true){
       res.status(403).json(response.error('Bus has a trip that is active'))
       }
-    }).catch(() => {
+    }).catch((err) => {
+      logger.error(err)
+
         res.status(500).json(response.error('Whoops! Something went wrong'))
     })
 
@@ -43,10 +46,14 @@ router.post('/', authCheck, (req, res) => {
   db.query(query).then((resp) => {
     db.query(`UPDATE bus SET trip_status = '${true}' WHERE bus_id = '${busId}' RETURNING *`).then(() => {
       res.json(response.success(resp.rows[0]));
-    }).catch(() => {
+    }).catch((err) => {
+      logger.error(err)
+
     res.status(500).json(response.error('Something went wrong'));
     })
-  }).catch(() => {
+  }).catch((err) => {
+    logger.error(err)
+
     res.status(500).json(response.error('Something went wrong'));
   });
 
@@ -54,7 +61,8 @@ router.post('/', authCheck, (req, res) => {
   // get all trips available
   db.query("SELECT * FROM trips WHERE status = 'Active' ").then((resp) => {
     res.status(200).json(response.success(resp.rows));
-  }).catch(() => {
+  }).catch((err) => {
+    logger.error(err)
 
     res.status(500).json(response.error('Failed to fetch trips'));
   });
