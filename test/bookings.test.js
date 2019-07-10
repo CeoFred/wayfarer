@@ -1,4 +1,3 @@
-// Require the dev-dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 // const server = require('../bin/www');
@@ -8,3 +7,9 @@ const chaiHttp = require('chai-http');
 // const config = require('../app/config/config');
 
 chai.use(chaiHttp);
+
+describe('Booking Test', () => {
+  it('Should book a trip', () => {
+
+  });
+});

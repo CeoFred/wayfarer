@@ -33,7 +33,7 @@ module.exports = function (req, res, next) {
 
 
   try {
-    var decoded = jwt.verify(rtoken, 'p2456653RDFBNYH2R31324354YT43');
+    var decoded = jwt.verify(rtoken, process.env.JWT_SIGNATURE);
     req.usertoken = jwt.decode(rtoken);
     req.decoded = decoded;
   } catch (err) {

@@ -23,7 +23,9 @@ var _response = require('../helpers/response');
 
 var db = require('../config/db');
 
-var Utils = require('../helpers/utils'); // create a new user
+var Utils = require('../helpers/utils');
+
+var authCheck = require('../middlewares/auth_check'); // create a new user
 
 
 router.post('/signup', [check('email').exists().withMessage('Email is required'), check('password').exists().withMessage('Password is required'), check('firstName').exists().withMessage('First name is required'), check('lastName').exists().withMessage('Last name is required'), body('email').not().isEmpty().escape().isEmail(), sanitizeBody('email').normalizeEmail().trim()], function (req, res) {
@@ -51,7 +53,7 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
           var uniqui = Utils.randomString(200);
           var query = {
             text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-            values: [uniqui.trimRight(), firstName, lastName, email, hash, true, 'somewhere']
+            values: [uniqui.trimRight(), firstName, lastName, email, hash, false, 'somewhere']
           };
           db.query(query).then(function (respo) {
             var token = jwt.sign({
@@ -124,6 +126,33 @@ router.post('/signup', [check('email').exists().withMessage('Email is required')
       }
     });
   });
+}).post('/admin/:userId', authCheck, function (req, res) {
+  // make user an admin
+  var toBeAdmin = req.params.userId;
+  var data = req.decoded.data;
+  var admin = data.is_admin;
+
+  if (admin) {
+    db.query("SELECT * FROM users WHERE user_id = '".concat(toBeAdmin, "' AND is_admin='", false, "'")).then(function (resp) {
+      if (resp.rowCount > 0) {
+        db.query("UPDATE users SET is_admin='".concat(true, "' WHERE user_id = '", toBeAdmin, "' RETURNING *")).then(function (newAdminData) {
+          if (newAdminData.rowCount > 0) {
+            res.status(200).json(_response.success(newAdminData.rows[0]));
+          } else {
+            res.status(500).json(_response.error('Failed to assign role'));
+          }
+        })["catch"](function () {
+          res.status(401).json(_response.error('Opps! Something went wrong'));
+        });
+      } else {
+        res.status(403).json(_response.error('Cannot re-assign role to user'));
+      }
+    })["catch"](function () {
+      res.status(401).json(_response.error('Opps! Something went wrong'));
+    });
+  } else {
+    res.status(505).json(_response.error('Your plans failed, we have a stronger algorithm'));
+  }
 });
 module.exports = router;
 //# sourceMappingURL=user.js.map

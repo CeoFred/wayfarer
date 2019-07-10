@@ -7,10 +7,11 @@ module.exports = {
   "treatUndefinedAsUnspecified": true,
   "arrow-body-style": 0,
   "comma-dangle": 0,
+  "max-len":0,  
   },
   "env": {
   "commonjs": true,
   "node": true,
-  "mocha": true
+  "mocha": true,
   },
   };
