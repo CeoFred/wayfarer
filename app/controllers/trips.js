@@ -9,7 +9,7 @@ const Utils = require('../helpers/utils');
 const authCheck = require('../middlewares/auth_check');
 
 router.post('/', authCheck, (req, res) => {
-// new trip
+  // new trip
   const {
     busId,
     origin,
@@ -33,30 +33,30 @@ router.post('/', authCheck, (req, res) => {
       res.status(404).json(response.error('Bus not found'));
     } else if (Boolean(busData.rows[0].trip_status) === true) {
       res.status(403).json(response.error('Bus has a trip that is active'));
+    } else {
+      const query = {
+        text: 'INSERT INTO trips(user_id,bus_id,origin,destination,trip_date,fare,departure_time,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
+        values: [data.userId, busId, origin, destination, tripDate, fare, departureTime, uniqui.trimRight(), 'Active'],
+      };
+
+      db.query(query).then((resp) => {
+        db.query(`UPDATE bus SET trip_status = '${true}' WHERE bus_id = '${busId}' RETURNING *`).then(() => {
+          res.status(201).json(response.success(resp.rows[0]));
+        }).catch((err) => {
+          logger.error(err);
+
+          res.status(500).json(response.error('Something went wrong'));
+        });
+      }).catch((err) => {
+        logger.error(err);
+
+        res.status(500).json(response.error('Something went wrong'));
+      });
     }
   }).catch((err) => {
     logger.error(err);
 
     res.status(500).json(response.error('Whoops! Something went wrong'));
-  });
-
-  const query = {
-    text: 'INSERT INTO trips(user_id,bus_id,origin,destination,trip_date,fare,departure_time,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
-    values: [data.userId, busId, origin, destination, tripDate, fare, departureTime, uniqui.trimRight(), 'Active'],
-  };
-
-  db.query(query).then((resp) => {
-    db.query(`UPDATE bus SET trip_status = '${true}' WHERE bus_id = '${busId}' RETURNING *`).then(() => {
-      res.status(201).json(response.success(resp.rows[0]));
-    }).catch((err) => {
-      logger.error(err);
-
-      res.status(500).json(response.error('Something went wrong'));
-    });
-  }).catch((err) => {
-    logger.error(err);
-
-    res.status(500).json(response.error('Something went wrong'));
   });
 }).get('/', (req, res) => {
   // get all trips available
