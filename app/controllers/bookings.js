@@ -37,7 +37,6 @@ router.post('/', authCheck, (req, res) => {
 
   const incrementNumberBooked = (tripid) => {
     db.query(`UPDATE trips SET bookings = bookings + 1 WHERE trip_id = '${tripid}'`).then(() => {
-      console.log('Updated');
     }).catch((err) => {
       logger.error(err);
     });
@@ -45,7 +44,6 @@ router.post('/', authCheck, (req, res) => {
 
   const userHasPreviousBooking = (trip) => {
     return db.query(`SELECT * FROM bookings WHERE user_id = '${user}' AND status = 'Active' AND trip_id = '${trip}'`).then((userBooking) => {
-      console.log(userBooking);
       if (userBooking.rowCount > 0) {
         return true;
       }
@@ -55,9 +53,6 @@ router.post('/', authCheck, (req, res) => {
       return false;
     });
   };
-  // check the bus capacity
-  // check if bus is filled with respect to trip booking, add new column for this number_booked
-  // for each new trip booking increment the number_booked
   db.query(`SELECT * FROM trips WHERE trip_id = '${tripId}' AND status = 'Active'`)
     .then((resp) => {
       if (resp.rowCount <= 0) {
@@ -65,6 +60,8 @@ router.post('/', authCheck, (req, res) => {
       }
       const busId = resp.rows[0].bus_id;
       const bookings = resp.rows[0].bookings;
+      const booking = Number(bookings) + 1;
+      console.log(booking);
       const isFilled = busIsFilled(busId, bookings);
       isFilled.then((filledRes) => {
         if (filledRes) {
@@ -78,26 +75,31 @@ router.post('/', authCheck, (req, res) => {
             }
           });
 
-          db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status,seat_number) VALUES($1,$2,$3,$4,$5) RETURNING *',
-            [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active', bookings + 1]).then((respo) => {
+          db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status,seat_number) VALUES($1,$2,$3,$4,$5,$6) RETURNING *',
+            [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active', booking]).then((respo) => {
             incrementNumberBooked(tripId);
             res.status(201).json(response.success(respo.rows[0]));
           }).catch((err) => {
-            res.status(500).json(response.error('Failed to book trip'));
+            return err;
+          }).catch((err) => {
             logger.error(err);
+            res.status(401).json(response.error('Failed to book trip'));
           });
         }
       }).catch((err) => {
         logger.error(err);
+        res.status(401).json(response.error('Whoops! Something went wrong while checing bus capacity'));
       });
     }).catch((err) => {
-      res.status(500).json(response.error('Whoops! Something went wrong'));
+      return err;
+    }).catch((err) => {
       logger.error(err);
+      res.status(401).json(response.error('Whoops! Something went wrong'));
     });
 });
 
 router.delete('/:bookingId', authCheck, (req, res) => {
-// delete bookking
+// cancel bookking
   const { data } = req.decoded;
 
   const admin = data.is_admin;
@@ -108,13 +110,13 @@ router.delete('/:bookingId', authCheck, (req, res) => {
   db.query(`SELECT * FROM bookings WHERE booking_id = '${bookingId}' AND status =  'Active' `)
     .then((resp) => {
       if (resp.rowCount < 0) {
+        logger.info('Booking Id Notfound');
         res.status(404).json(response.error('Booking ID not found'));
       }
       if (admin) {
-        db.query(`UPDATE bookings SET status = 'deleted' WHERE booking_id = '${bookingId}'`)
+        db.query(`UPDATE bookings SET status = 'deleted' WHERE booking_id = '${bookingId}' RETURNING *`)
           .then((deletedRow) => {
-            console.log(deletedRow);
-            res.status(200).json(response.success({ message: 'booking was deleted successfully' }));
+            res.status(200).json(response.success({ message: 'booking was deleted successfully', data: deletedRow }));
           }).catch((err) => {
             logger.error(err);
 
@@ -122,14 +124,11 @@ router.delete('/:bookingId', authCheck, (req, res) => {
             res.status(500).json(response.error('Failed to cancle booking,check server logs'));
           });
       } else {
-        db.query(`UPDATE bookings SET status = 'deleted' WHERE booking_id = '${bookingId}' AND user_id = '${user}'`)
+        db.query(`UPDATE bookings SET status = 'deleted' WHERE booking_id = '${bookingId}' AND user_id = '${user}' RETURNING *`)
           .then((deletedRow) => {
-            console.log(deletedRow);
-            res.status(200).json(response.success({ message: 'booking was deleted successfully' }));
+            res.status(200).json(response.success({ message: 'booking was deleted successfully', data: deletedRow }));
           }).catch((err) => {
             logger.error(err);
-
-
             res.status(500).json(response.error('Failed to cancle booking,check server logs'));
           });
       }
@@ -144,18 +143,14 @@ router.get('/', authCheck, (req, res) => {
   const { data } = req.decoded;
   const user = data.userId;
   const admin = data.is_admin;
-  console.log(user);
-
   db.query('SELECT bookings.user_id,users.email,users.first_name,users.last_name,bookings.booking_id FROM bookings INNER JOIN users USING (user_id)')
     .then((resp) => {
       if (admin) {
         res.status(200).json(response.success(resp.rows));
       } else {
         const userBooking = resp.rows.filter((bookings) => {
-          console.log(bookings);
           return bookings.user_id === user;
         });
-        console.log(userBooking);
         res.status(200).json(response.success({ userBooking, for: 'user' }));
       }
     }).catch((err) => {

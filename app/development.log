@@ -3,16 +3,133 @@
 
 
 
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6InJ0d0FVTWtxb0dlN2Q3QW1INVZkT1V1MXJMRTFVbGFwUkdFd0VjVVB2SFdRY25kR0F4eVV5THBhU3EwM0NQZUFVQm81YzA1MUQ1TTJpWVNCWGhHVVRqNzhZUThRaXZka251TFRBQzJBTnBHVmlVNHc0RlJMYllnWFE5d1V5M2R2RlVzTktTQmFKT1g1QmZhalpkYndESmF4YzNTTmIyQnJoQU9pVXpaTXEzSkY0eFJGTFYxNmtPbDllZzVlSm5BOTd2Q0hLaG1uIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3NjYzNjIsImV4cCI6MTU2MzM3MTE2Mn0._oGVC6tR0am7jKgEtoJGBOF9tFT4Kkjc7PYPo-G8KnU
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  bus id after creation is 097mSiO3UEMrzUXxNidwr06JkSuimdX7FJzzFR5MjrSlRtCULE9VDAQTc41YMHxjxN6B9177SG41vAjv3ZP86mkX57k79WhL7Eaf8TagSN8nwjZNmsDt5UknRyfOOHSKQExRgVemYGprvChiiFbuzv0Tmzb1UYXrTSv3BuTTlwaLVYPCUWJfov2UXPD0JGfJGi92USbj
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  bus error is null
-info [Wed Jul 10 2019 14:46:02 GMT+0100 (GMT Daylight Time)]  bus id is 097mSiO3UEMrzUXxNidwr06JkSuimdX7FJzzFR5MjrSlRtCULE9VDAQTc41YMHxjxN6B9177SG41vAjv3ZP86mkX57k79WhL7Eaf8TagSN8nwjZNmsDt5UknRyfOOHSKQExRgVemYGprvChiiFbuzv0Tmzb1UYXrTSv3BuTTlwaLVYPCUWJfov2UXPD0JGfJGi92USbj
+info [Thu Jul 11 2019 11:04:36 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IldxRWNrN2ZMYlVESjBEbGVpd1lBVUxod1lvZ1JLdWZ0NlUybVBEMTlzWk42NERTa0R2aXZTbUdPazNLMTZoR3VPek9lRHE0WVdxZ1R6TENSYnZiSGVlckI0azZ5NHFYSEJObVRFQ1JNaGJtYWM4SDdOWkh3a25lZk40aXVaU1h6amE2OGdmUkZIMW9pd1hUQ3NwV00xVGNzb0ViazU1bXlraXBOeUppZlhZSlZXT0FwVGdQVk1YTUxMNkdQeFprT0xIOUNuVENKIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI4Mzk0NzYsImV4cCI6MTU2MzQ0NDI3Nn0.dFtCHGgdWF9QFv72q0nUC7BcTvWXjcWX7L0yoQTQABg
+error [Thu Jul 11 2019 11:04:36 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at db.query.then (C:\Users\USER3\Desktop\wayfarer\app\controllers\bookings.js:81:29)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+info [Thu Jul 11 2019 11:04:36 GMT+0100 (GMT Daylight Time)]  bus id is t2qXfxgsgSDYuQakg0bewFkPyPtBhrJnvFEMDS5MSJHMQxiHV3C5ft3QJQLff5N2E5OQ3LkdRslJw8l3xJcOC4X0Eojiy9XqseBrNUKqmNMCpRA1Zo8qTPfNVPE8C0JKs6eFbl12mWJMdnOa1cRj6ymwgtNTCvat0a7LNkqhX72TvRaUCzFUzkqpfzf2tSHxl7Mldv1y
 
 
 
 
 
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6ImVkM3pXSGd3OGZ2Yll2Q3NudHBhSkVPRHhtQmpVak5rR2NvRVNTVnF3VUNIWDM4MEdKOXhKSlF5WjhXOGF1OE93a1NoU1BOeWxwQTlOcDIzRzBQR1RITm01ZWhCMHJVOWIwY3Q0enBpTVNGamZNUlMydUROcEZGTTY2TEhSeG5leHRXS05qenB1NWRsd1N2WlVjVWUwMDByQXVadlFLTWJaMmZXMHRON3dYVTJhUEg3VUZPS3d5VnJZNWphU2NaMmcyNHp5TVM4IiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI3NjYzODksImV4cCI6MTU2MzM3MTE4OX0.9MCjbxcbHEGLF6YrRLRMNP5Wl8N5venm2bYZLdC4U9o
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  bus id after creation is laQZwDLvlhzDAnQjv2R4ofmfMmREjgBFqnMvE6zfFJ0gPQUsoYfGUCAUvX1mO9CnT10mxlWhhn1zMZO4S9dQABy4QauYqfUph2OJQan9WC4h842HqpSGMYsn4mkU7JHB8tMwPAPr5Z9QTj27WWzd6FRsf7rtpccC3icO6xysZdyU3KKpx6a7jx3Hx7fWcJpOtf0iH8Ee
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  bus error is null
-info [Wed Jul 10 2019 14:46:29 GMT+0100 (GMT Daylight Time)]  bus id is laQZwDLvlhzDAnQjv2R4ofmfMmREjgBFqnMvE6zfFJ0gPQUsoYfGUCAUvX1mO9CnT10mxlWhhn1zMZO4S9dQABy4QauYqfUph2OJQan9WC4h842HqpSGMYsn4mkU7JHB8tMwPAPr5Z9QTj27WWzd6FRsf7rtpccC3icO6xysZdyU3KKpx6a7jx3Hx7fWcJpOtf0iH8Ee
+info [Thu Jul 11 2019 11:05:34 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6InRIYTBGZ25GM1lNS20zVTYwdlo0WnN5VzJqeVI1S2dURzZKR01pTTNiWWZtSzI2aWhxVHVxWkFxN2JNZXZkNWUwOW9Qd2V1MGlUZHpzQWl6Ym5SaVZvVkhBZVhSYll5Y0ZQWGFQOGNTOG8waW5Gb1o0Nk1wRWZzeGdPN1g2WW0ydjBHS0pUOHRScEFQU0daZ25TbVVXalN1UGM4MXFIYXFCZEQ0aFl2ZGVHWTZzY1l6dVh6d2dMamo1NnZ0ekJMWjhxTDRhRmlqIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI4Mzk1MzQsImV4cCI6MTU2MzQ0NDMzNH0.xu_Gzcx3qf1vGB074f4gq9zrrdJhBZsOZ_f0Llrmn3o
+info [Thu Jul 11 2019 11:05:34 GMT+0100 (GMT Daylight Time)]  bus id is 6cyisUVa0P9cQORrNYGAqEuKYsxJ2SvwkHrOH8AqdPi1PeQev2DUbf9j1FQtMcThvUMSvYQQACW1HVtfUzrWRoeUWaWQ9rgiJdWdRbcF6bWgrkozGgUL3cxa3k5UctQGegJWC93AUPNEsUDDhL0OptvgGb6LytO2EeXqgdnCHkW6uR6Ar5sq44YxloL9JEQc85yYGhhw
+
+
+
+
+
+info [Thu Jul 11 2019 11:06:23 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IkgxQm1rbWpsWVJIaGVoTFJFdXJ2TG5tYWNlQ2FOeHNOcjJtTmxNUjdwVWNTVHZKcGpnc0ZjV3pkaThrWnkxVlVKbUtYcWxFZFZuc0FFNnpFeXAwcmlBclVRSHBqZnJOdVhhZkFNa0JLZUhFVXB4OXdRQkF0YUFXb0NjRTJHZndubnhDaFUxbGJsbFQ1SFpUdG5CeE9Vb2tMYk5ZZTJSOUxzVFlUOVhrTEUwbXVzUVVQbTAwVVJxNXlsTGdLdFVWb3hpZlRtRlc0IiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI4Mzk1ODMsImV4cCI6MTU2MzQ0NDM4M30.e1kG3aUdtitLT7JOspv-zs-bjc4rTV1t9xJdh6eo40o
+info [Thu Jul 11 2019 11:06:23 GMT+0100 (GMT Daylight Time)]  bus id is trBPnvxXr0tEDiONpeAXLqh3QmxsigatUiWH9noN0v5RGmPxN9uOvdhpVMYT6ZicgJ6McKZPUVpvDnaDmMxBhqf5SBUpdHB8DTBNpKNTNWqG73XYvmoo0Dtj4dHVGn1WT6ThtdjZFwecBrp05Ds3PA3c3oC85sTsBuBzYcb7dhlDDJHGs9ETp4yAXcdTjXqtHyQfWtpG
+
+
+
+
+
+info [Thu Jul 11 2019 11:10:51 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjNhUFFCbGlrVXpVNGVuZmc3WGllSjdibXRXaGM1QWNCZHdxTkFvVmFNbGN0NFVaUGhKZzJ4cHdvWHA4U2ZEUTZOazdjSGxlUFlNYkJ2Z2lsMWYwRjZBVkxuU0Rsb1Y1aThaWUQ2a1l5MFlyYnVBdjBtVVBSMVNhdkVFVTJBQ2RGVG96cGxFdHNvQno5OW10RXM4UlhlcWdEWmVuRm9XVWFNVU9OZUxaWHdzc0FzeW1uNUczazRvWWt0alB3a2hPUkpjcm94dVVWIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI4Mzk4NTEsImV4cCI6MTU2MzQ0NDY1MX0.u98xpMzzQ29v0M1SjkezsOdQmdvb2lMJi4g0ZzANwf4
+info [Thu Jul 11 2019 11:10:51 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 410,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (15, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, F9X0TPfFXm5YtmhpNqZoupZ6g6QUhn9jeVJHW2AVeU4znbhJ2bFDHjdQZOHXGUqu..., 6TL345C6VXnL90WWqdbKrbvG0U4c3UKRA3UMUZKxsmRTv8M0Vdtf3mjxP0j9ZN1V..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+info [Thu Jul 11 2019 11:10:51 GMT+0100 (GMT Daylight Time)]  bus id is umbsVHMlRNZfUxGARkotyctcWpQb0HKZ23zZLo5kJl0SwxpfK0XKecC4nvJ3MDq9BBQ3ThuAKhbM9xNGZvWQeS4WXEYZv8KSea0dCOEeuFuOPBnEPqlrRhmVUstvkK9yQjwrthknYYsAEdtqMojdWhTjZc7cPeFam11eNH7CesAWjHA1VKU6Gcb8fACmravef56zg5lD
+
+
+
+
+
+info [Thu Jul 11 2019 11:14:49 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjkzRUo4b2Zmakdnd0Q0bzNlMEZjQUowUW1zd2E5VkR5Z0p1ckRQWDhCTE9zOTN6cXZBUHNGZGlIU2lvZUZ1ZGxhMVNmQWY0RUdmOHBxaGF2V2FGZEdIbW8zamZxQ2dPcFk2a3ZNUzdXbTIxb3p4c1VjbExpd3Z1M1lIVEthQkFvMlc0NUJMWHJsZWRlR2JWTGhleFNRakV5RG1ZV0NQUG1NRnZUdms1aG14N1RFd2c0Vm5BNzJiR1FPQ3NOcGxzcGtQWURlR0E4IiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI4NDAwODksImV4cCI6MTU2MzQ0NDg4OX0.FB0SmN2eFrNpmsEcXBtjZ1Mjr-E_JjMlraqYHV9Es8k
+info [Thu Jul 11 2019 11:14:50 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 410,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (17, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, cbnH7fZGX2cU1E6OPa5vfjfuJQ7GJ7n0iUMULCGqgi3gZYQdycN3ceYPddZkyLuf..., 7NtSkm6pReaEGLCW4eRS8nLzQxVEprX8U6ZcT0OobrREzxLr1TisrPfDNhV46n5Y..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+info [Thu Jul 11 2019 11:14:50 GMT+0100 (GMT Daylight Time)]  bus id is M2axz9wPWFvFytUSPubNEz3SThjGQDo9VvN2Swx1m2loAUURjuw9HuFBLzZepZSRB5GbcZOpcm1U2Jxk4S1GoSSUAejK4iwWrnlt6bpGrqpGWuGESZeqe29BiRjU1Q1qd6gmKwl1odPVtXUj3mQlPFj9c4GWocUp8gy7TDDsaxrn7x5EbnMpAQXnGQSUfUwf8PSUmEQm
+
+
+
+
+
+info [Thu Jul 11 2019 11:19:22 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjFBcG42NkxFdDJONGRNV3FHR0xBaW1XVWNVTDRWRmdidXhVYVVMSFVzMHhvT3cyRnZNZkFHSEZMV1JXTjY4WVliQmJXNXhrZ1IwNmhQQUJraW5ZdUcyZ1o3Vm1BVHkyeUVCQmM5UlZSWnZZcDJVVjBnZUpVaHdreXAza2t4Smw4d3Y2aTNwVEFEcExPb1czUlN1VWVtU0xwMlRWemEwWnhQY2tHbFZVODNlbTVPYmZuakpZUjM5YjYyNG9KQWM0eUw3Ym9Nd3BlIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI4NDAzNjIsImV4cCI6MTU2MzQ0NTE2Mn0.dsjF8Un4k9TcA6_rO3bL6b4hVeBYGM9cHByb-fMva84
+info [Thu Jul 11 2019 11:19:22 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 410,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (43, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, sB7Gq2Z25atw8o0rApXiVlwucEB0elvx7FwLcGOSoJJJ3kGRcBvhYQJmacFp7qN4..., 7tRuVhKEMLMFjtsVPUvgya3tX0V2yiPB6c0XBMzMwzD3a16icdGix9uNXrj5ecpz..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+info [Thu Jul 11 2019 11:19:23 GMT+0100 (GMT Daylight Time)]  bus id is 9UngpDq4D8Oj6VTzRDTEUApwB7zmQkyzHaVNY5qBit0iW6ZGc4bQ0cxHS5VFr2pz63UaUSSDScRU3tO5Jd66aOFudkaEdGHN0OeokzFfgWplSwk0ngPlZUjscSMBFsp8JjLGTLrQKnsEJg71gv240kDdf67RR9rbfk8ArPCNhvsQ142SKkoBZNxdeTqP3R8FhhXG2ryZ

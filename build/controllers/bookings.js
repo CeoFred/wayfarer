@@ -65,10 +65,7 @@ router.post('/', authCheck, function (req, res) {
       logger.error(err);
       return false;
     });
-  }; // check the bus capacity
-  // check if bus is filled with respect to trip booking, add new column for this number_booked
-  // for each new trip booking increment the number_booked
-
+  };
 
   db.query("SELECT * FROM trips WHERE trip_id = '".concat(tripId, "' AND status = 'Active'")).then(function (resp) {
     if (resp.rowCount <= 0) {
@@ -93,8 +90,9 @@ router.post('/', authCheck, function (req, res) {
           incrementNumberBooked(tripId);
           res.status(201).json(response.success(respo.rows[0]));
         })["catch"](function (err) {
-          res.status(500).json(response.error('Failed to book trip'));
           logger.error(err);
+          console.log(err);
+          res.status(500).json(response.error('Failed to book trip'));
         });
       }
     })["catch"](function (err) {
