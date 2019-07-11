@@ -14,10 +14,11 @@ const password = 'password';
 const lastName = 'Lastname';
 const firstName = 'Firstname';
 const email = 'testmail@mailserver.com';
-let user = null;
-let token = null;
-let bus = null;
-let trip = null;
+let user;
+let token;
+let bus;
+let trip;
+let booking;
 
 describe('Server', () => {
   it('tests that server is running current port', async () => {
@@ -30,7 +31,15 @@ describe('Application', () => {
   describe('/POST User Signup', () => {
     before((done) => {
       db.query('DELETE FROM users').then(() => {
-        done();
+        db.query('DELETE FROM bookings').then(() => {
+          db.query('DELETE FROM trips').then(() => {
+            done();
+          }).catch((err) => {
+            throw err;
+          });
+        }).catch((err) => {
+          throw err;
+        });
       }).catch((err) => {
         throw err;
       });
@@ -117,6 +126,23 @@ describe('Application', () => {
           done();
         });
     });
+    it('it should throw error on creating a new bus', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/bus/')
+        .set('Content-Type', 'Application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          model: 'DMEDDEFRVT',
+          numberPlate: 'SDRTEER',
+          year: null,
+          manufacturer: 'INNOSON',
+          capacity: 150,
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(500);
+          done();
+        });
+    });
   });
   describe('/POST Trip', () => {
     it('should create a new trip', (done) => {
@@ -135,6 +161,68 @@ describe('Application', () => {
         .end((err, res) => {
           expect(res).to.have.status(201);
           trip = res.body.data.trip_id;
+          done();
+        });
+    });
+
+    it('should create a booking', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/bookings')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .send({ trip_id: trip })
+        .end((err, res) => {
+          expect(res).to.have.status(201);
+          booking = res.body.data.booking_id;
+          done();
+        });
+    });
+
+    it('should throw user already booked', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/bookings')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .send({ trip_id: trip })
+        .end((err, res) => {
+          expect(res).to.have.status(403);
+          const message = res.body.error;
+          expect(message).to.equal('Already booked by user');
+          done();
+        });
+    });
+
+
+    it('should cancel a booking', (done) => {
+      chai.request(server.server)
+        .delete(`/api/v1/bookings/${booking}`)
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+
+    it('should return all booking', (done) => {
+      chai.request(server.server)
+        .get('/api/v1/bookings/')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+
+    it('should return trip not found', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/bookings')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .send({ trip_id: 2323 })
+        .end((err, res) => {
+          expect(res).to.have.status(404);
           done();
         });
     });

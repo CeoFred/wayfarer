@@ -24,6 +24,7 @@ router.post('/', authCheck, (req, res) => {
     res.status(201).json(response.success(respo.rows[0]));
   }).catch((err) => {
     logger.info(err);
+    res.status(500).json(response.error('Opps! somthing went wrong'));
   });
 });
 module.exports = router;
