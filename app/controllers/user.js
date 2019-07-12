@@ -7,7 +7,6 @@ const logger = require('logger').createLogger('./app/development.log');
 
 
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const {
   check,
   validationResult, body,
@@ -62,18 +61,12 @@ router.post('/signup',
             };
             db.query(query)
               .then((respo) => {
-                const token = jwt.sign({
-                  data: {
-                    email: respo.rows[0].email,
-                    userId: respo.rows[0].user_id,
-                    is_admin: respo.rows[0].is_admin,
-                  },
-                },
-                process.env.JWT_SIGNATURE,
-                {
-                  expiresIn: '7d',
-                  mutatePayload: true,
-                });
+                const jwtdata = {
+                  email: respo.rows[0].email,
+                  userId: respo.rows[0].user_id,
+                  is_admin: respo.rows[0].is_admin,
+                };
+                const token = Utils.signToken(jwtdata);
                 const data = {
                   user_id: respo.rows[0].user_id,
                   is_admin: respo.rows[0].is_admin,
@@ -117,18 +110,12 @@ router.post('/signup',
         res.status(401).json(_response.error('Failed with code x(2e2x)'));
       }
       if (result) {
-        const token = jwt.sign({
-          data: {
-            email: resp.rows[0].email,
-            userId: resp.rows[0].user_id,
-            is_admin: resp.rows[0].is_admin,
-          },
-        },
-        process.env.JWT_SIGNATURE,
-        {
-          expiresIn: '7d',
-          mutatePayload: true,
-        });
+        const jwtdata = {
+          email: resp.rows[0].email,
+          userId: resp.rows[0].user_id,
+          is_admin: resp.rows[0].is_admin,
+        };
+        const token = Utils.signToken(jwtdata);
         req.headers.authorization = `Bearer ${token}`;
         const data = {
           user_id: resp.rows[0].user_id,

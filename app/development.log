@@ -560,3 +560,150 @@ info [Fri Jul 12 2019 12:15:49 GMT+0100 (GMT Daylight Time)]  { error: null valu
   line: '2042',
   routine: 'ExecConstraints' }
 info [Fri Jul 12 2019 12:15:50 GMT+0100 (GMT Daylight Time)]  bus id is SVMqPuhPtrTxlN3YzjkcqnTE1ZVhrttUlPzoMqkOZlcrmpDJFuxkFjPt43QteXcXoyp980J02hLMqOx4fKsccY6n2hTwy0mtDURLp6G45E86a80Q4PafnoazOP6DUThuekTRqN1aGflQ9blQUws79Tg7Lijhe37DfblLpLvaNayozDM0YZUtJtYUuRGjDJUf95ijXkcy
+
+
+
+
+
+
+
+info [Fri Jul 12 2019 12:25:28 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:29 GMT+0100 (GMT Daylight Time)]  32GFuqtbxeGGWRkJztqRtROSHij6Jjtm5vx6aJVLoHAW6J2uZb0qEp5pyyPqBiVoxwlMzBrkGdefQkLvsw7wzBkpf2ntwV8D52MXCAgArVejlOTEeGym7D9LCUgFd6pYTZfkiKpq2jh5GBYdV1cdOiscwpVJCEBbBTQgboG4BLLLRu97nBQCtsz50NoXDZUsbKZNBT0n
+info [Fri Jul 12 2019 12:25:29 GMT+0100 (GMT Daylight Time)]  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjMyR0Z1cXRieGVHR1dSa0p6dHFSdFJPU0hpajZKanRtNXZ4NmFKVkxvSEFXNkoydVpiMHFFcDVweXlQcUJpVm94d2xNekJya0dkZWZRa0x2c3c3d3pCa3BmMm50d1Y4RDUyTVhDQWdBclZlamxPVEVlR3ltN0Q5TENVZ0ZkNnBZVFpma2lLcHEyamg1R0JZZFYxY2RPaXNjd3BWSkNFQmJCVFFnYm9HNEJMTExSdTk3bkJRQ3RzejUwTm9YRFpVc2JLWk5CVDBuIiwiaXNfYWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYyOTMwNzI5LCJleHAiOjE1NjM1MzU1Mjl9.OhQqxm-bbrrEniBKFciPFURBBaUEEj7DPvp-VIe_KXU
+info [Fri Jul 12 2019 12:25:29 GMT+0100 (GMT Daylight Time)]  false
+info [Fri Jul 12 2019 12:25:29 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:29 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:29 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:29 GMT+0100 (GMT Daylight Time)]  true
+info [Fri Jul 12 2019 12:25:30 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6InMzUUc2WnE5bVk5ZUdGNW5PdGdIV1BlM1hVQ0tUVzc0Q1NnYjVxNjRBRzRHWjdPWWJLRUVtV21GYXZMRkozcEZReTVmTlNRenRHWWh2V0IzQ3FrMHJydG1Rak85WE9zVWVSalZ6Nm9LYUNoSzdNdUdBRWJpaU54clRGWVZ0N0E4M0tRVVJuZ1o1ZUR0c0NTQWltRjBXdlE0UGEyM2xHQTJnZmlDbzNiVkI0V3l4QjgxZlZveDRVeEJXUXVNZmI1T21hTDU1c3E2IiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI5MzA3MjksImV4cCI6MTU2MzUzNTUyOX0.Hq0EnhvSMcgWls5CDHHkw3akJRJ3Z1MshddoN7Xps8s
+info [Fri Jul 12 2019 12:25:30 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 411,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (107, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, gzHp32rKETnTyk7KAxU1Hv9M9z636039UCYxt2sKTPqgJkz9B64090nmkpLKR17B..., jziMTTE2lpOGHDPCgt5D6fyumwbTnaCzubkeKSBg694zmDj6zi7MyM1UQy5xqzbU..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+info [Fri Jul 12 2019 12:25:30 GMT+0100 (GMT Daylight Time)]  bus id is EbQ7iKsEQZW7QA0qfBwpH30TjCaGnX0EMJhrm0lcQD1ngiiY8fA1jD59Si8PDVut5nxCPAyL7aC2RtwjXsQyXfeii6r6On7T3yngb33VOm8OzvU11JKxUNhQfUmqLgLRTBOrPeFsBESsFH5MMrufw7mbjsL58urHV6Ol57QAjuzUc2fY4t9Hh2K9zxTjKcoJNj4eaUKK
+
+
+
+
+
+
+
+info [Fri Jul 12 2019 12:25:46 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:46 GMT+0100 (GMT Daylight Time)]  LyXdUiDtcTroKkcJqeFJEUKk6RlURywMSW3PmCbwXz8Enu26bk7OoSqqqYUm4kAERVUAEaDmtycf0iJ4xxChJktSaLu7Rfz9iw4zc7L22Mrg8dMHRlywQdm5s9UNgEzRcCtUOuhrkDUTECehOyEOw2nYy6WqHvAGPjWypxX6QpUzCMcZS3pWm4UyERH5nyokMOwr4nXh
+info [Fri Jul 12 2019 12:25:46 GMT+0100 (GMT Daylight Time)]  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Ikx5WGRVaUR0Y1Ryb0trY0pxZUZKRVVLazZSbFVSeXdNU1czUG1DYndYejhFbnUyNmJrN09vU3FxcVlVbTRrQUVSVlVBRWFEbXR5Y2YwaUo0eHhDaEprdFNhTHU3UmZ6OWl3NHpjN0wyMk1yZzhkTUhSbHl3UWRtNXM5VU5nRXpSY0N0VU91aHJrRFVURUNlaE95RU93Mm5ZeTZXcUh2QUdQald5cHhYNlFwVXpDTWNaUzNwV200VXlFUkg1bnlva01Pd3I0blhoIiwiaXNfYWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYyOTMwNzQ2LCJleHAiOjE1NjM1MzU1NDZ9.bDzShyTJk4GJc5C7GODjydCUo2AKKaLSb4oWKebGP-M
+info [Fri Jul 12 2019 12:25:46 GMT+0100 (GMT Daylight Time)]  false
+info [Fri Jul 12 2019 12:25:46 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:47 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:47 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:25:47 GMT+0100 (GMT Daylight Time)]  true
+info [Fri Jul 12 2019 12:25:47 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6ImM2UDRvN0h1cEZDQ2dsVXVYN3ZlMjJUMUc3dXdCV0xETmRXVXZtdEdjQnBsRWR4Y0M5Zm5tNUhUbFFuQVMwOUdOTVJ0Y0Q4RUpXQUNMMGNkZzA3VUdTdkpnTUdiOUJlMVZURWpxaGJ3WkNWaVplVE5iaTVTTzFNVnN3UTRIVmZFWXFKMVFPdlNXZXNrell3ZHRGT0VwVnhCWTBSUWtXV0VMYWpKbXZ0RmxaS2RXeTZZYmRjbWozWFh0Y2hDNDlHbkdUbjY2SlRFIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI5MzA3NDcsImV4cCI6MTU2MzUzNTU0N30.Qlp00PjpHDk-fVkmXPoo7PpLKzVLgUXHhomAXuqlK2M
+info [Fri Jul 12 2019 12:25:47 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 410,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (55, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, t4jUsJ9W7OwEUVbGW4sDXjpfqZeD1HQdLn9oUyvvCtKh6xocTT5DWJibGtA9uUas..., iaKRVf20rGcgBAdSU3AQK4OkPEFFeUPu5bdrNgroqcZW6cZnEOeUdllRdObVfZqP..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+info [Fri Jul 12 2019 12:25:48 GMT+0100 (GMT Daylight Time)]  bus id is jZ9d176ZyMb8EoVohjxRBXVxQUxNwnbsNWb0WGPE9dUVgL5f2ox8WZftt36fuLewldMzXSpjSyNbrLtEPLkskJWlunl2lEb3OpmJp233Ut1cViWsmHR2pimX1WU1AyFd3K9R4Fjd0YrCi8czC3NAeaD1mwMeYmlWXiRL6ihmJhyNU6ReOB3rqU1752Fj30fRwQoaUyFL
+
+
+
+
+
+
+
+info [Fri Jul 12 2019 12:43:08 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:43:08 GMT+0100 (GMT Daylight Time)]  PRXyHUedn9pTnaoM3erW2dvq7hbru3rCZge97rLZQqVt9Dn2wwO57p3UkVGcHATuUZUYvuBjUqbqQhM86oBT2UKVrnPWxQ9JxdMo4OJF7Ys9kPavdCAxMQAQq9RiukRENh7MHmpRSJhVKrV5jvBHufkEtxKFHuEVyPUADTtCrGQyqFvH5YMsh8vCfac4qUy8dOwvGwEG
+info [Fri Jul 12 2019 12:43:09 GMT+0100 (GMT Daylight Time)]  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IlBSWHlIVWVkbjlwVG5hb00zZXJXMmR2cTdoYnJ1M3JDWmdlOTdyTFpRcVZ0OURuMnd3TzU3cDNVa1ZHY0hBVHVVWlVZdnVCalVxYnFRaE04Nm9CVDJVS1ZyblBXeFE5SnhkTW80T0pGN1lzOWtQYXZkQ0F4TVFBUXE5Uml1a1JFTmg3TUhtcFJTSmhWS3JWNWp2Qkh1ZmtFdHhLRkh1RVZ5UFVBRFR0Q3JHUXlxRnZINVlNc2g4dkNmYWM0cVV5OGRPd3ZHd0VHIiwiaXNfYWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYyOTMxNzg5LCJleHAiOjE1NjM1MzY1ODl9.rgPnw2akhkg5koGHj8tODbh0HIzqHvQmPuDMDOS_qfY
+info [Fri Jul 12 2019 12:43:09 GMT+0100 (GMT Daylight Time)]  false
+info [Fri Jul 12 2019 12:43:09 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:43:09 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:43:09 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Fri Jul 12 2019 12:43:09 GMT+0100 (GMT Daylight Time)]  true
+info [Fri Jul 12 2019 12:43:09 GMT+0100 (GMT Daylight Time)]  token is legit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjY3TUhubjZhN0NrUkhneVJnTVllQzUyWGpwbGh3VWJ3QzhRRFZDU09MRXQ5ZmVzTVIxVktVc0hlVmdkYTN5UkJsZ1hGY2t0V29TbVFQMW5qMjZtdkYzTm9rVDNqS2JsRXZCUHV4aGRNWlNvZ0dNZHZMUjBaT0Z4c0pVVEpOZDlTbHpja2xvaW1SMjMxU2YyUUVVUkU2MXlWY2lIVUc4NGZndUpoMVRBTHhtREY3bE9pbkhWOXdFR1ZoOEFucXpXS2JoYzYxOWFrIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI5MzE3ODksImV4cCI6MTU2MzUzNjU4OX0.Rmn77WsWr-jozt3U-U_a5fEIk1Lnn1sWygaPnNXBCL0
+info [Fri Jul 12 2019 12:43:10 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 411,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (109, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, uX5XQ8xnDo60ayOmPfwvmmyrMqQDcrJwlqZnsgvOVcUKywXnleEYLvrezagOpntQ..., VkVwB3G2lAe8hRv1u2765uOyMzMgUGVwH4c2UB8Rm4pfFdaQS27UYchpFvQkn4fL..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+info [Fri Jul 12 2019 12:43:10 GMT+0100 (GMT Daylight Time)]  bus id is YQb2NUPt4GrnUxQOUSX3cSL7cQDuZw1JinfY7mxctREL0SsLVTO4mgMkSPpnxNhGgKAEGUR7tBbtlLW4KnGD3qLdCEZK9g0bgJfC6KhECF9o1ka8xJMNPMqw8BucFZfeTLSxA6BlRsuL810vUybh0BYVHFCozTaNNdBnWkSiePtW9XN3RovAYlSSh4o1d7h3bgrfD0CU
