@@ -76,14 +76,14 @@ router.post('/', authCheck, (req, res) => {
   }
 
   db.query(`SELECT * FROM trips WHERE status = 'Active' AND trip_id = '${tripId}' `).then((resp) => {
-    if (resp.rowCount < 0) {
+    if (resp.rowCount <= 0) {
       res.status(404).json(response.error('Trip Not found'));
     } else {
       db.query(`UPDATE trips SET status = 'cancelled' WHERE trip_id = '${tripId}' AND status = 'Active'`).then((busData) => {
         res.status(200).json(response.success({ message: 'Trip cancelled successfully', busData }));
       }).catch((err) => {
         res.status(500).json(response.error({ message: 'Trip failed to cancel' }));
-        logger.error(err);
+        logger.error({ err, message: 'while canceling trip' });
       });
     }
   }).catch((err) => {

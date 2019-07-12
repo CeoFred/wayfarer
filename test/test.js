@@ -14,11 +14,13 @@ const password = 'password';
 const lastName = 'Lastname';
 const firstName = 'Firstname';
 const email = 'testmail@mailserver.com';
+
 let user;
 let token;
 let bus;
 let trip;
 let booking;
+
 
 describe('Server', () => {
   it('tests that server is running current port', async () => {
@@ -57,6 +59,89 @@ describe('Application', () => {
           done();
         });
     });
+
+    it('should not register the user again', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/user/signup')
+        .set('Content-Type', 'Application/json')
+        .send({
+          password, lastName, firstName, email,
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(403);
+          const message = res.body.error;
+          expect(message).to.equal('Email already exists');
+          done();
+        });
+    });
+    it('should fail when one parameter is missing', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/user/signup')
+        .set('Content-Type', 'Application/json')
+        .send({
+          password, lastName, firstName,
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          const message = res.body.error;
+          expect(message).to.be.an('object');
+          done();
+        });
+    });
+    it('should make password encryption to fail', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/user/signup')
+        .set('Content-Type', 'Application/json')
+        .send({
+          password: null, lastName, firstName, email: 'new@gmail.com'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(500);
+          done();
+        });
+    });
+    it('should fail due to wrong email format', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/user/login')
+        .set('Content-Type', 'Application/json')
+        .send({
+          password: null, email: 'new+@.com'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(403);
+          const message = res.body.error;
+          expect(message).to.be.an('object');
+          done();
+        });
+    });
+    it('should fail due to wrong password', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/user/login')
+        .set('Content-Type', 'Application/json')
+        .send({
+          password: null, email
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(401);
+          const message = res.body.error;
+          expect(message).to.equal('Failed with code x(2e2x)');
+          done();
+        });
+    });
+    it('should fail because email does not exist', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/user/login')
+        .set('Content-Type', 'Application/json')
+        .send({
+          password, email: 'doesnotexist@gmail.com'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(403);
+          const message = res.body.error;
+          expect(message).to.equal('Email does not exist');
+          done();
+        });
+    });
   });
 
   describe('/POST Admin Assign Role', () => {
@@ -87,6 +172,7 @@ describe('Application', () => {
           done();
         });
     });
+
     it('should get bookings', (done) => {
       chai.request(server.server)
         .get('/api/v1/bookings')
@@ -161,6 +247,38 @@ describe('Application', () => {
         .end((err, res) => {
           expect(res).to.have.status(201);
           trip = res.body.data.trip_id;
+          done();
+        });
+    });
+    it('should not find the bus', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/trips/')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          busId: '345d3d4',
+          origin: 'lagos',
+          destination: 'owerri',
+          fare: 50000.00,
+          tripDate: 'July 4,2019',
+          departureTime: '12:00 PM',
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          const message = res.body.error;
+          expect(message).to.equal('Bus not found');
+          done();
+        });
+    });
+    it('should not find the trip', (done) => {
+      chai.request(server.server)
+        .patch('/api/v1/trips/3456')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          const message = res.body.error;
+          expect(message).to.equal('Trip Not found');
           done();
         });
     });
