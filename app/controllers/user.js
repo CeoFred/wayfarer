@@ -3,6 +3,7 @@
 const express = require('express');
 
 const router = express.Router();
+const logger = require('logger').createLogger('./app/development.log');
 
 
 const bcrypt = require('bcrypt');
@@ -35,6 +36,7 @@ router.post('/signup',
     if (!errors.isEmpty()) {
       return res.status(404).json(_response.error(errors));
     }
+    logger.info({ errors, msg: 'User auth validation' });
     const {
       email,
       password,
@@ -79,72 +81,71 @@ router.post('/signup',
                 };
                 res.status(201).json(_response.success(data));
               }).catch((e) => {
+                logger.error(e);
                 res.status(500).json(_response.error('Something went wrong'));
-                throw e;
               });
           }
         });
       }
     }).catch((err) => {
       res.json(_response.error(err));
-      throw err;
     });
 
 
     // res.send(response.error('Something went wrong'))
-  }).post('/login',
-  check('email').isEmail().withMessage('A valid email is required to signin'),
-  (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.send(_response.error(errors));
+  }).post('/login', body('email').not().isEmpty().escape()
+  .isEmail(),
+(req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(403).send(_response.error(errors));
+  }
+  const {
+    email,
+    password,
+  } = req.body;
+  const searchQuery = `SELECT password,user_id,is_admin FROM users WHERE email = '${email}' LIMIT 1`;
+
+  db.query(searchQuery).then((resp) => {
+    if (resp.rowCount <= 0) {
+      res.status(403).json(_response.error('Email does not exist'));
     }
-    const {
-      email,
-      password,
-    } = req.body;
-    const searchQuery = `SELECT password,user_id,is_admin FROM users WHERE email = '${email}' LIMIT 1`;
 
-    db.query(searchQuery).then((resp) => {
-      if (resp.rowCount <= 0) {
-        res.status(403).json(_response.error('Email does not exist'));
+    bcrypt.compare(password, resp.rows[0].password, (err, result) => {
+      // res == true
+      if (err) {
+        res.status(401).json(_response.error('Failed with code x(2e2x)'));
       }
-
-      bcrypt.compare(password, resp.rows[0].password, (err, result) => {
-        // res == true
-        if (err) {
-          return res.status(401).json(_response.error('Failed with code x(2e2x)'));
-        }
-        if (result) {
-          const token = jwt.sign({
-            data: {
-              email: resp.rows[0].email,
-              userId: resp.rows[0].user_id,
-              is_admin: resp.rows[0].is_admin,
-            },
-          },
-          process.env.JWT_SIGNATURE,
-          {
-            expiresIn: '7d',
-            mutatePayload: true,
-          });
-          req.headers.authorization = `Bearer ${token}`;
-          const data = {
-            user_id: resp.rows[0].user_id,
+      if (result) {
+        const token = jwt.sign({
+          data: {
+            email: resp.rows[0].email,
+            userId: resp.rows[0].user_id,
             is_admin: resp.rows[0].is_admin,
-            token,
-          };
-          return res.status(200).json(_response.success(data));
-        }
-      });
+          },
+        },
+        process.env.JWT_SIGNATURE,
+        {
+          expiresIn: '7d',
+          mutatePayload: true,
+        });
+        req.headers.authorization = `Bearer ${token}`;
+        const data = {
+          user_id: resp.rows[0].user_id,
+          is_admin: resp.rows[0].is_admin,
+          token,
+        };
+        res.status(200).json(_response.success(data));
+      }
     });
-  }).post('/admin/:userId', authCheck, (req, res) => {
+  });
+}).post('/admin/:userId', authCheck, (req, res) => {
   // make user an admin
   const toBeAdmin = req.params.userId;
   const { data } = req.decoded;
   const admin = data.is_admin;
 
-
+  logger.info(admin);
   if (admin) {
     db.query(`SELECT * FROM users WHERE user_id = '${toBeAdmin}' AND is_admin='${false}'`).then((resp) => {
       if (resp.rowCount > 0) {
