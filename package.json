@@ -4,8 +4,8 @@
   "description": "Public Bus APIs",
   "main": "bin/www",
   "scripts": {
-    "start": "node  ./bin/www",
-    "start:dev": "cross-env NODE_ENV=development && npm run build:dev && nodemon babel-node ./bin/www",
+    "start": "npm run build:dev && node --exec babel-node  ./bin/www",
+    "start:dev": "cross-env NODE_ENV=development && npm run build:dev && nodemon --exec babel-node ./bin/www",
     "test": "mocha --reporter spec --exit --t=10000 --color=true  test/*.js --exec babel-node",
     "test:watch": "nyc mocha  --require babel-core/register --reporter  spec --watch  test/ --exec babel-node",
     "eslint": "eslint app/**/*.js test/*.js --fix --ignore-pattern \"node_modules/\"",
@@ -16,7 +16,7 @@
     "codeclimate-coverage:dev": "set CODECLIMATE_REPO_TOKEN=3e7edd83e8b2cb79c3c7d161110866257359f27d8e82bf5402d00145c529ffa4 && codeclimate-test-reporter < lcov.info",
     "coverage": "nyc npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage",
     "coverage:dev": "nyc npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage:dev",
-    "build:dev": "rm -rf ./build && babel -d ./build ./app -s"
+    "build:dev": "babel app --out-dir build --source-maps inline"
   },
   "repository": {
     "type": "git",
