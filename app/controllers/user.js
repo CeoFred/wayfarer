@@ -3,7 +3,7 @@
 const express = require('express');
 
 const router = express.Router();
-const logger = require('logger').createLogger('./app/development.log');
+const logger = require('logger').createLogger('./development.log');
 
 
 const bcrypt = require('bcrypt');
@@ -86,7 +86,7 @@ router.post('/signup',
 
 
     // res.send(response.error('Something went wrong'))
-  }).post('/login', body('email').not().isEmpty().escape()
+  }).post('/signin', body('email').not().isEmpty().escape()
   .isEmail(),
 (req, res) => {
   const errors = validationResult(req);

@@ -1,0 +1,101 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+info [Sat Jul 13 2019 15:21:22 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sat Jul 13 2019 15:21:23 GMT+0100 (GMT Daylight Time)]  false
+
+
+
+
+
+info [Sat Jul 13 2019 15:22:07 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sat Jul 13 2019 15:22:07 GMT+0100 (GMT Daylight Time)]  false
+
+
+
+
+
+info [Sat Jul 13 2019 15:23:11 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sat Jul 13 2019 15:23:12 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sat Jul 13 2019 15:23:12 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sat Jul 13 2019 15:23:12 GMT+0100 (GMT Daylight Time)]  true
+info [Sat Jul 13 2019 15:23:12 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 411,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (113, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, AsAfkv8kxfEdg4Qn6o4uEahdxyi1PNanBcE3kuq5oiAGQWcoCceFhdFNAtNO5dgy..., 9wg8SfH08xKFoUqMWRQKZotj3dGp9htijjeZuv0dv5Op3waTdl5z3PEbvwedsgjQ..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }

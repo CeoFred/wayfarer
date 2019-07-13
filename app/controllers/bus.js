@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const logger = require('logger').createLogger('./app/development.log');
+const logger = require('logger').createLogger('./development.log');
 const response = require('../helpers/response');
 const db = require('../config/db');
 const Utils = require('../helpers/utils');

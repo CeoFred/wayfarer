@@ -34,7 +34,7 @@ describe('Fail test', () => {
   });
   it('it should Register a second user', (done) => {
     chai.request(server.server)
-      .post('/api/v1/user/signup')
+      .post('/api/v1/auth/signup')
       .set('Content-Type', 'Application/json')
       .send({
         password: password2, lastName: lastName2, firstName: firstName2, email: email2,
@@ -49,7 +49,7 @@ describe('Fail test', () => {
 
   it('it should login a second user', (done) => {
     chai.request(server.server)
-      .post('/api/v1/user/login')
+      .post('/api/v1/auth/signin')
       .set('Content-Type', 'Application/json')
       .send({ password: password2, email: email2 })
       .end((err, res) => {
@@ -75,7 +75,7 @@ describe('Fail test', () => {
   });
   it('it should fail to assign role to user', (done) => {
     chai.request(server.server)
-      .post(`/api/v1/user/admin/${user2}`)
+      .post(`/api/v1/auth/admin/${user2}`)
       .set('Content-Type', 'Application/json')
       .set('Authorization', `Bearer ${token2}`)
       .end((err, res) => {

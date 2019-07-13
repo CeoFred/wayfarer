@@ -2,7 +2,7 @@
 /* eslint-disable global-require, func-names */
 module.exports = function (app) {
   // user route
-  app.use('/api/v1/user', require('./controllers/user'));
+  app.use('/api/v1/auth', require('./controllers/user'));
   //  trip route
   app.use('/api/v1/trips', require('./controllers/trips'));
   // booking route
