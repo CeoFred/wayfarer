@@ -42,43 +42,53 @@ router.post('/signup',
       firstName,
       lastName,
     } = req.body;
-
-    // console.log(email)
+    let isAdmin = true;
     const searchQuery = `SELECT * FROM users WHERE email = '${email}' `;
 
     db.query(searchQuery).then((resp) => {
       if (resp.rowCount > 0) {
         res.status(403).json(_response.error('Email already exists'));
       } else {
-        bcrypt.hash(password, 10, (err, hash) => {
-          if (err) {
-            res.status(500).json(_response.error(err));
-          } else {
-            const uniqui = Utils.randomString(200);
-            const query = {
-              text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-              values: [uniqui.trimRight(), firstName, lastName, email, hash, false, 'somewhere'],
-            };
-            db.query(query)
-              .then((respo) => {
-                const jwtdata = {
-                  email: respo.rows[0].email,
-                  userId: respo.rows[0].user_id,
-                  is_admin: respo.rows[0].is_admin,
-                };
-                const token = Utils.signToken(jwtdata);
-                const data = {
-                  user_id: respo.rows[0].user_id,
-                  is_admin: respo.rows[0].is_admin,
-                  token,
-                };
-                res.status(201).json(_response.success(data));
-              }).catch((e) => {
-                logger.error(e);
-                res.status(500).json(_response.error('Something went wrong'));
-              });
+        // find users
+        db.query('SELECT * FROM users').then((users) => {
+          if (users.rowCount > 0) {
+            isAdmin = false;
           }
+          bcrypt.hash(password, 10, (err, hash) => {
+            if (err) {
+              res.status(500).json(_response.error(err));
+            } else {
+              const uniqui = Utils.randomString(200);
+              const query = {
+                text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
+                values: [uniqui.trimRight(), firstName, lastName, email, hash, isAdmin, 'somewhere'],
+              };
+              db.query(query)
+                .then((respo) => {
+                  const jwtdata = {
+                    email: respo.rows[0].email,
+                    userId: respo.rows[0].user_id,
+                    is_admin: respo.rows[0].is_admin,
+                  };
+                  const token = Utils.signToken(jwtdata);
+                  const data = {
+                    user_id: respo.rows[0].user_id,
+                    is_admin: respo.rows[0].is_admin,
+                    token,
+                  };
+                  res.status(201).json(_response.success(data));
+                }).catch((e) => {
+                  logger.error(e);
+                  res.status(500).json(_response.error('Something went wrong'));
+                });
+            }
+          });
+          logger.info(isAdmin);
+        }).catch((err) => {
+          logger.error(err);
+          res.status(505).json(_response.error('Could not fetch users'));
         });
+        // end find users
       }
     }).catch((err) => {
       res.json(_response.error(err));
@@ -97,7 +107,7 @@ router.post('/signup',
     email,
     password,
   } = req.body;
-  const searchQuery = `SELECT password,user_id,is_admin FROM users WHERE email = '${email}' LIMIT 1`;
+  const searchQuery = `SELECT * FROM users WHERE email = '${email}' LIMIT 1`;
 
   db.query(searchQuery).then((resp) => {
     if (resp.rowCount <= 0) {

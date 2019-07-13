@@ -1,6 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const logger = require('logger').createLogger('./app/development.log');
+// const logger = require('logger').createLogger('./app/development.log');
 
 const server = require('../bin/www');
 
@@ -12,9 +12,10 @@ const password2 = 'password';
 const lastName2 = 'Lastname';
 const firstName2 = 'Firstname';
 const email2 = 'secontest@mailserver.com';
+const adminEmail = 'admin@mailserver.com';
+
 let user2;
 let token2;
-
 
 describe('Fail test', () => {
   before((done) => {
@@ -32,7 +33,21 @@ describe('Fail test', () => {
       throw err;
     });
   });
-  it('it should Register a second user', (done) => {
+  it('it should Register an admin', (done) => {
+    chai.request(server.server)
+      .post('/api/v1/auth/signup')
+      .set('Content-Type', 'Application/json')
+      .send({
+        password: password2, lastName: lastName2, firstName: firstName2, email: adminEmail,
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        user2 = res.body.data.user_id;
+        done();
+      });
+  });
+
+  it('it should Register a user', (done) => {
     chai.request(server.server)
       .post('/api/v1/auth/signup')
       .set('Content-Type', 'Application/json')
@@ -41,13 +56,11 @@ describe('Fail test', () => {
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
-        user2 = res.body.data.user_id;
-        logger.info(user2);
         done();
       });
   });
 
-  it('it should login a second user', (done) => {
+  it('it should login a user', (done) => {
     chai.request(server.server)
       .post('/api/v1/auth/signin')
       .set('Content-Type', 'Application/json')
@@ -57,7 +70,7 @@ describe('Fail test', () => {
         expect(res.body.data.token, 'No token provided but why?').to.be.a('string');
         expect(res.body.data.user_id, 'User ID was not a string,why?').to.be.a('string');
         token2 = res.body.data.token;
-        logger.info(token2);
+        user2 = res.body.data.user_id;
         done();
       });
   });
