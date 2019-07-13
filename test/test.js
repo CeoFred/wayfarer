@@ -1,7 +1,7 @@
 // Require the dev-dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const logger = require('logger').createLogger('./app/development.log');
+// const logger = require('logger').createLogger('./app/development.log');
 
 const server = require('../bin/www');
 
@@ -14,13 +14,14 @@ const password = 'password';
 const lastName = 'Lastname';
 const firstName = 'Firstname';
 const email = 'testmail@mailserver.com';
+const adminEmail = 'adminmail@mailserver.com';
 
 let user;
 let token;
 let bus;
 let trip;
 let booking;
-
+let adminToken;
 
 describe('Server', () => {
   it('tests that server is running current port', async () => {
@@ -46,9 +47,22 @@ describe('Application', () => {
         throw err;
       });
     });
-    it('it should Register a new user', (done) => {
+    it('it should Register an admin', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/signup')
+        .post('/api/v1/auth/signup')
+        .set('Content-Type', 'Application/json')
+        .send({
+          password, lastName, firstName, email: adminEmail,
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(201);
+          adminToken = res.body.data.token;
+          done();
+        });
+    });
+    it('it should Register a user', (done) => {
+      chai.request(server.server)
+        .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
           password, lastName, firstName, email,
@@ -56,13 +70,15 @@ describe('Application', () => {
         .end((err, res) => {
           expect(res).to.have.status(201);
           user = res.body.data.user_id;
+          token = res.body.data.token;
           done();
         });
     });
 
+
     it('should not register the user again', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/signup')
+        .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
           password, lastName, firstName, email,
@@ -76,7 +92,7 @@ describe('Application', () => {
     });
     it('should fail when one parameter is missing', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/signup')
+        .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
           password, lastName, firstName,
@@ -90,7 +106,7 @@ describe('Application', () => {
     });
     it('should make password encryption to fail', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/signup')
+        .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
           password: null, lastName, firstName, email: 'new@gmail.com'
@@ -102,7 +118,7 @@ describe('Application', () => {
     });
     it('should fail due to wrong email format', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/login')
+        .post('/api/v1/auth/signin')
         .set('Content-Type', 'Application/json')
         .send({
           password: null, email: 'new+@.com'
@@ -116,7 +132,7 @@ describe('Application', () => {
     });
     it('should fail due to wrong password', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/login')
+        .post('/api/v1/auth/signin')
         .set('Content-Type', 'Application/json')
         .send({
           password: null, email
@@ -130,7 +146,7 @@ describe('Application', () => {
     });
     it('should fail because email does not exist', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/login')
+        .post('/api/v1/auth/signin')
         .set('Content-Type', 'Application/json')
         .send({
           password, email: 'doesnotexist@gmail.com'
@@ -147,8 +163,8 @@ describe('Application', () => {
   describe('/POST Admin Assign Role', () => {
     it('it should make a random user an admin', (done) => {
       chai.request(server.server)
-        .post(`/api/v1/user/admin/${user}`)
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6ImFlOHdZVmZPV3kwT1lOZ094TFJabllFNFhoaXVTRzlRZWl6b3FkMFF0dzBZOU1CWWFtajZ2bjh1YTV6SDg5NUhwNmpMUGVpTm5IWVpIOVJiMDhVTFVyWFFUaGJNTGdkT1lOVDAwVWU4VERSZzZFZjRnOFVKWThxY1BQU05kenpFMm1Vdnh4aUthZzNhTDJaamRkQlk5clB5d3Z2QTlTZGtka2FaTHZoendTNEd0S3ZOdXVnclAxVTQyN0FHRHM5RDhiRHFPWW5VIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjI2NTkzNzEsImV4cCI6MTU2MzI2NDE3MX0.E-nTh9Nxi0SEBbsoR_6OmNWoW7KkEoHHdyaH5no6Ve0')
+        .post(`/api/v1/auth/admin/${user}`)
+        .set('Authorization', `Bearer ${adminToken}`)
         .end((adminErr, adminRes) => {
           expect(adminRes).to.have.status(200);
           expect(adminRes.body.data.is_admin, 'Admin rights not granted').to.be.a('boolean');
@@ -161,7 +177,7 @@ describe('Application', () => {
   describe('/POST User login', () => {
     it('it should login', (done) => {
       chai.request(server.server)
-        .post('/api/v1/user/login')
+        .post('/api/v1/auth/signin')
         .set('Content-Type', 'Application/json')
         .send({ password, email })
         .end((err, res) => {
@@ -194,7 +210,6 @@ describe('Application', () => {
       });
     });
     it('it should create a new bus', (done) => {
-      logger.info(`token is legit ${token}`);
       chai.request(server.server)
         .post('/api/v1/bus/')
         .set('Content-Type', 'Application/json')
@@ -346,7 +361,6 @@ describe('Application', () => {
     });
 
     it('should cancel a trip', (done) => {
-      logger.info(`bus id is ${bus}`);
       chai.request(server.server)
         .patch(`/api/v1/trips/${trip}`)
         .set('Content-Type', 'application/json')

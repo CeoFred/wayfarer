@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 module.exports = {
   randomString(length) {
     const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHUJKLMNOPQRSTUVWXYZ';
@@ -7,4 +9,13 @@ module.exports = {
     }
     return result.trim();
   },
+  signToken(data) {
+    const token = jwt.sign({ data },
+      process.env.JWT_SIGNATURE,
+      {
+        expiresIn: '7d',
+        mutatePayload: true,
+      });
+    return token;
+  }
 };

@@ -5,11 +5,11 @@
 /* eslint-disable global-require, func-names */
 module.exports = function (app) {
   // user route
-  app.use('/api/v1/user', require('./controllers/user')); //  trip route
+  app.use('/api/v1/auth', require('./controllers/user')); //  trip route
 
   app.use('/api/v1/trips', require('./controllers/trips')); // booking route
 
   app.use('/api/v1/bookings', require('./controllers/bookings'));
   app.use('/api/v1/bus', require('./controllers/bus'));
 };
-//# sourceMappingURL=routes.js.map
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2FwcC9yb3V0ZXMuanMiXSwibmFtZXMiOlsibW9kdWxlIiwiZXhwb3J0cyIsImFwcCIsInVzZSIsInJlcXVpcmUiXSwibWFwcGluZ3MiOiI7O0FBQUE7O0FBQ0E7QUFDQUEsTUFBTSxDQUFDQyxPQUFQLEdBQWlCLFVBQVVDLEdBQVYsRUFBZTtBQUM5QjtBQUNBQSxFQUFBQSxHQUFHLENBQUNDLEdBQUosQ0FBUSxjQUFSLEVBQXdCQyxPQUFPLENBQUMsb0JBQUQsQ0FBL0IsRUFGOEIsQ0FHOUI7O0FBQ0FGLEVBQUFBLEdBQUcsQ0FBQ0MsR0FBSixDQUFRLGVBQVIsRUFBeUJDLE9BQU8sQ0FBQyxxQkFBRCxDQUFoQyxFQUo4QixDQUs5Qjs7QUFDQUYsRUFBQUEsR0FBRyxDQUFDQyxHQUFKLENBQVEsa0JBQVIsRUFBNEJDLE9BQU8sQ0FBQyx3QkFBRCxDQUFuQztBQUVBRixFQUFBQSxHQUFHLENBQUNDLEdBQUosQ0FBUSxhQUFSLEVBQXVCQyxPQUFPLENBQUMsbUJBQUQsQ0FBOUI7QUFDRCxDQVREIiwic291cmNlc0NvbnRlbnQiOlsiLyogZXNsaW50LWRpc2FibGUgbGluZWJyZWFrLXN0eWxlICovXHJcbi8qIGVzbGludC1kaXNhYmxlIGdsb2JhbC1yZXF1aXJlLCBmdW5jLW5hbWVzICovXHJcbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24gKGFwcCkge1xyXG4gIC8vIHVzZXIgcm91dGVcclxuICBhcHAudXNlKCcvYXBpL3YxL2F1dGgnLCByZXF1aXJlKCcuL2NvbnRyb2xsZXJzL3VzZXInKSk7XHJcbiAgLy8gIHRyaXAgcm91dGVcclxuICBhcHAudXNlKCcvYXBpL3YxL3RyaXBzJywgcmVxdWlyZSgnLi9jb250cm9sbGVycy90cmlwcycpKTtcclxuICAvLyBib29raW5nIHJvdXRlXHJcbiAgYXBwLnVzZSgnL2FwaS92MS9ib29raW5ncycsIHJlcXVpcmUoJy4vY29udHJvbGxlcnMvYm9va2luZ3MnKSk7XHJcblxyXG4gIGFwcC51c2UoJy9hcGkvdjEvYnVzJywgcmVxdWlyZSgnLi9jb250cm9sbGVycy9idXMnKSk7XHJcbn07XHJcbiJdfQ==
