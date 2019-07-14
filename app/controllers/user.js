@@ -77,6 +77,7 @@ router.post('/signup',
                     id: respo.rows[0].user_id,
                     token,
                   };
+                  console.log(`Created ${data}`);
                   res.status(201).json(_response.success(data));
                 }).catch((e) => {
                   logger.error(e);
@@ -112,6 +113,7 @@ router.post('/signup',
 
   db.query(searchQuery).then((resp) => {
     if (resp.rowCount <= 0) {
+      console.log(`Email does not exist,check ${email}`);
       res.status(402).json(_response.error('Email does not exist'));
     }
     // logger.info(`User ${resp.rows}`);

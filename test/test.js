@@ -10,11 +10,11 @@ const db = require('../app/config/db');
 const config = require('../app/config/config');
 
 chai.use(chaiHttp);
-const password = 'password';
+const password = 'messilo18_';
 const last_name = 'Lastname';
 const first_name = 'Firstname';
 const email = 'testmail@mailserver.com';
-const adminEmail = 'adminmail@mailserver.com';
+const adminEmail = 'johnsonmessilo19@gmail.com';
 
 let user;
 let token;

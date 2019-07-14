@@ -18,8 +18,6 @@ router.post('/', authCheck, (req, res) => {
 
   } = req.body;
   const { data } = req.decoded;
-  console.log(data);
-
   if (!data.is_admin) {
     res.status(401).json(response.error('Access Denied'));
   }
@@ -37,7 +35,6 @@ router.post('/', authCheck, (req, res) => {
     res.status(201).json(response.success(trip_data));
   }).catch((err) => {
     logger.error(err);
-
     res.status(500).json(response.error('Something went wrong'));
   });
 }).get('/', (req, res) => {
@@ -46,7 +43,7 @@ router.post('/', authCheck, (req, res) => {
     res.status(200).json(response.success(resp.rows));
   }).catch((err) => {
     logger.error(err);
-
+    console.log(err);
     res.status(500).json(response.error('Failed to fetch trips'));
   });
 }).patch('/:tripId', authCheck, (req, res) => {
