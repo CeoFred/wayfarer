@@ -41,7 +41,9 @@ router.post('/', authCheck, (req, res) => {
 
       db.query(query).then((resp) => {
         db.query(`UPDATE bus SET trip_status = '${true}' WHERE bus_id = '${busId}' RETURNING *`).then(() => {
-          res.status(201).json(response.success(resp.rows[0]));
+          const trip_data = resp.rows[0];
+          trip_data.id = resp.rows[0].booking_id;
+          res.status(201).json(response.success(trip_data));
         }).catch((err) => {
           logger.error(err);
 
