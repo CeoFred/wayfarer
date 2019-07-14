@@ -109,7 +109,7 @@ router.post('/signup',
     email,
     password,
   } = req.body;
-  const searchQuery = `SELECT * FROM users WHERE email = '${email}'`;
+  const searchQuery = `SELECT * FROM users WHERE email = '${email.toLowerCase()}'`;
 
   db.query(searchQuery).then((resp) => {
     if (resp.rowCount <= 0) {
@@ -117,7 +117,7 @@ router.post('/signup',
       res.status(402).json(_response.error('Email does not exist'));
     }
     // logger.info(`User ${resp.rows}`);
-    bcrypt.compare(password, resp.rows[0].password).then(() => {
+    bcrypt.compare(password.toLowerCase(), resp.rows[0].password).then(() => {
       const jwtdata = {
         email: resp.rows[0].email,
         user_id: resp.rows[0].user_id,

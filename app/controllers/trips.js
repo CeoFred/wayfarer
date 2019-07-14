@@ -34,7 +34,7 @@ router.post('/', authCheck, (req, res) => {
     trip_data.id = resp.rows[0].booking_id;
     res.status(201).json(response.success(trip_data));
   }).catch((err) => {
-    logger.error(err);
+    console.log(JSON.stringify(err));
     res.status(500).json(response.error('Something went wrong'));
   });
 }).get('/', (req, res) => {
@@ -43,7 +43,7 @@ router.post('/', authCheck, (req, res) => {
     res.status(200).json(response.success(resp.rows));
   }).catch((err) => {
     logger.error(err);
-    console.log(err);
+    console.log(JSON.stringify(err));
     res.status(500).json(response.error('Failed to fetch trips'));
   });
 }).patch('/:tripId', authCheck, (req, res) => {
