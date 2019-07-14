@@ -35,7 +35,7 @@ router.post('/signup',
     if (!errors.isEmpty()) {
       return res.status(404).json(_response.error(errors));
     }
-    logger.info({ errors, msg: 'User auth validation' });
+    // logger.info({ errors, msg: 'User auth validation' });
     const {
       email,
       password,
@@ -67,7 +67,7 @@ router.post('/signup',
                 .then((respo) => {
                   const jwtdata = {
                     email: respo.rows[0].email,
-                    userId: respo.rows[0].user_id,
+                    user_id: respo.rows[0].user_id,
                     is_admin: respo.rows[0].is_admin,
                   };
                   const token = Utils.signToken(jwtdata);
@@ -84,7 +84,7 @@ router.post('/signup',
                 });
             }
           });
-          logger.info(isAdmin);
+          // logger.info(isAdmin);
         }).catch((err) => {
           logger.error(err);
           res.status(505).json(_response.error('Could not fetch users'));
@@ -114,12 +114,11 @@ router.post('/signup',
     if (resp.rowCount <= 0) {
       res.status(403).json(_response.error('Email does not exist'));
     }
-    logger.info(`User ${resp.rows}`);
-    bcrypt.compare(password, resp.rows[0].password).then((result) => {
-      logger.info(result);
+    // logger.info(`User ${resp.rows}`);
+    bcrypt.compare(password, resp.rows[0].password).then(() => {
       const jwtdata = {
         email: resp.rows[0].email,
-        userId: resp.rows[0].user_id,
+        user_id: resp.rows[0].user_id,
         is_admin: resp.rows[0].is_admin,
       };
       const token = Utils.signToken(jwtdata);
@@ -136,13 +135,13 @@ router.post('/signup',
       res.status(500).json(_response.error('Failed to compare passwords'));
     });
   });
-}).post('/admin/:userId', authCheck, (req, res) => {
+}).post('/admin/:user_id', authCheck, (req, res) => {
   // make user an admin
-  const toBeAdmin = req.params.userId;
+  const toBeAdmin = req.params.user_id;
   const { data } = req.decoded;
   const admin = data.is_admin;
 
-  logger.info(admin);
+  // logger.info(admin);
   if (admin) {
     db.query(`SELECT * FROM users WHERE user_id = '${toBeAdmin}' AND is_admin='${false}'`).then((resp) => {
       if (resp.rowCount > 0) {

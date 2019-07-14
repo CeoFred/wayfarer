@@ -12,7 +12,7 @@ const authCheck = require('../middlewares/auth_check');
 router.post('/', authCheck, (req, res) => {
   const tripId = req.body.trip_id;
   const { data } = req.decoded;
-  const user = data.userId;
+  const user = data.user_id;
 
   const busIsFilled = (bus, booked) => {
     let state = null;
@@ -105,7 +105,7 @@ router.delete('/:bookingId', authCheck, (req, res) => {
   const { data } = req.decoded;
 
   const admin = data.is_admin;
-  const user = data.userId;
+  const user = data.user_id;
 
   const bookingId = req.params.bookingId;
 
@@ -143,7 +143,7 @@ router.delete('/:bookingId', authCheck, (req, res) => {
 router.get('/', authCheck, (req, res) => {
 // get all bookings
   const { data } = req.decoded;
-  const user = data.userId;
+  const user = data.user_id;
   const admin = data.is_admin;
   db.query('SELECT bookings.user_id,users.email,users.first_name,users.last_name,bookings.booking_id FROM bookings INNER JOIN users USING (user_id)')
     .then((resp) => {
