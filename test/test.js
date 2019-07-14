@@ -11,8 +11,8 @@ const config = require('../app/config/config');
 
 chai.use(chaiHttp);
 const password = 'password';
-const lastName = 'Lastname';
-const firstName = 'Firstname';
+const last_name = 'Lastname';
+const first_name = 'Firstname';
 const email = 'testmail@mailserver.com';
 const adminEmail = 'adminmail@mailserver.com';
 
@@ -52,7 +52,7 @@ describe('Application', () => {
         .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
-          password, lastName, firstName, email: adminEmail,
+          password, last_name, first_name, email: adminEmail,
         })
         .end((err, res) => {
           expect(res).to.have.status(201);
@@ -65,7 +65,7 @@ describe('Application', () => {
         .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
-          password, lastName, firstName, email,
+          password, last_name, first_name, email,
         })
         .end((err, res) => {
           expect(res).to.have.status(201);
@@ -81,7 +81,7 @@ describe('Application', () => {
         .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
-          password, lastName, firstName, email,
+          password, last_name, first_name, email,
         })
         .end((err, res) => {
           expect(res).to.have.status(403);
@@ -95,7 +95,7 @@ describe('Application', () => {
         .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
-          password, lastName, firstName,
+          password, last_name, first_name,
         })
         .end((err, res) => {
           expect(res).to.have.status(404);
@@ -109,7 +109,7 @@ describe('Application', () => {
         .post('/api/v1/auth/signup')
         .set('Content-Type', 'Application/json')
         .send({
-          password: null, lastName, firstName, email: 'new@gmail.com'
+          password: null, last_name, first_name, email: 'new@gmail.com'
         })
         .end((err, res) => {
           expect(res).to.have.status(500);
@@ -138,9 +138,9 @@ describe('Application', () => {
           password: null, email
         })
         .end((err, res) => {
-          expect(res).to.have.status(401);
+          expect(res).to.have.status(500);
           const message = res.body.error;
-          expect(message).to.equal('Failed with code x(2e2x)');
+          expect(message).to.equal('Failed to compare passwords');
           done();
         });
     });
@@ -383,4 +383,4 @@ describe('Application', () => {
         });
     });
   });
-}).timeout('10s');
+}).timeout('17s');

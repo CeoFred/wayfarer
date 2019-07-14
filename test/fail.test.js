@@ -38,7 +38,7 @@ describe('Fail test', () => {
       .post('/api/v1/auth/signup')
       .set('Content-Type', 'Application/json')
       .send({
-        password: password2, lastName: lastName2, firstName: firstName2, email: adminEmail,
+        password: password2, last_name: lastName2, first_name: firstName2, email: adminEmail,
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -52,7 +52,7 @@ describe('Fail test', () => {
       .post('/api/v1/auth/signup')
       .set('Content-Type', 'Application/json')
       .send({
-        password: password2, lastName: lastName2, firstName: firstName2, email: email2,
+        password: password2, last_name: lastName2, first_name: firstName2, email: email2,
       })
       .end((err, res) => {
         expect(res).to.have.status(201);

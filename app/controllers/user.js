@@ -25,8 +25,8 @@ router.post('/signup',
   [
     check('email').exists().withMessage('Email is required'),
     check('password').exists().withMessage('Password is required'),
-    check('firstName').exists().withMessage('First name is required'),
-    check('lastName').exists().withMessage('Last name is required'),
+    check('first_name').exists().withMessage('First name is required'),
+    check('last_name').exists().withMessage('Last name is required'),
     body('email').not().isEmpty().escape()
       .isEmail(),
     sanitizeBody('email').normalizeEmail().trim(),
@@ -39,8 +39,8 @@ router.post('/signup',
     const {
       email,
       password,
-      firstName,
-      lastName,
+      first_name,
+      last_name,
     } = req.body;
     let isAdmin = true;
     const searchQuery = `SELECT * FROM users WHERE email = '${email}' `;
@@ -61,7 +61,7 @@ router.post('/signup',
               const uniqui = Utils.randomString(200);
               const query = {
                 text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-                values: [uniqui.trimRight(), firstName, lastName, email, hash, isAdmin, 'somewhere'],
+                values: [uniqui.trimRight(), first_name, last_name, email, hash, isAdmin, 'somewhere'],
               };
               db.query(query)
                 .then((respo) => {
@@ -74,6 +74,7 @@ router.post('/signup',
                   const data = {
                     user_id: respo.rows[0].user_id,
                     is_admin: respo.rows[0].is_admin,
+                    id: respo.rows[0].user_id,
                     token,
                   };
                   res.status(201).json(_response.success(data));
@@ -107,33 +108,32 @@ router.post('/signup',
     email,
     password,
   } = req.body;
-  const searchQuery = `SELECT * FROM users WHERE email = '${email}' LIMIT 1`;
+  const searchQuery = `SELECT * FROM users WHERE email = '${email}'`;
 
   db.query(searchQuery).then((resp) => {
     if (resp.rowCount <= 0) {
       res.status(403).json(_response.error('Email does not exist'));
     }
-
-    bcrypt.compare(password, resp.rows[0].password, (err, result) => {
-      // res == true
-      if (err) {
-        res.status(401).json(_response.error('Failed with code x(2e2x)'));
-      }
-      if (result) {
-        const jwtdata = {
-          email: resp.rows[0].email,
-          userId: resp.rows[0].user_id,
-          is_admin: resp.rows[0].is_admin,
-        };
-        const token = Utils.signToken(jwtdata);
-        req.headers.authorization = `Bearer ${token}`;
-        const data = {
-          user_id: resp.rows[0].user_id,
-          is_admin: resp.rows[0].is_admin,
-          token,
-        };
-        res.status(200).json(_response.success(data));
-      }
+    logger.info(`User ${resp.rows}`);
+    bcrypt.compare(password, resp.rows[0].password).then((result) => {
+      logger.info(result);
+      const jwtdata = {
+        email: resp.rows[0].email,
+        userId: resp.rows[0].user_id,
+        is_admin: resp.rows[0].is_admin,
+      };
+      const token = Utils.signToken(jwtdata);
+      req.headers.authorization = `Bearer ${token}`;
+      const data = {
+        user_id: resp.rows[0].user_id,
+        is_admin: resp.rows[0].is_admin,
+        id: resp.rows[0].user_id,
+        token,
+      };
+      res.status(200).json(_response.success(data));
+    }).catch((err) => {
+      logger.error(`Bycrypt error ${err}`);
+      res.status(500).json(_response.error('Failed to compare passwords'));
     });
   });
 }).post('/admin/:userId', authCheck, (req, res) => {

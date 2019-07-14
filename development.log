@@ -3,45 +3,47 @@
 
 
 
-
-
-
-
-
-info [Sat Jul 13 2019 16:54:00 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+info [Sun Jul 14 2019 21:46:15 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
   msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:00 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 16:54:00 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+info [Sun Jul 14 2019 21:46:17 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:46:18 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
   msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:00 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+info [Sun Jul 14 2019 21:46:19 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  User [object Object]
+info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:46:21 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
   msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+info [Sun Jul 14 2019 21:46:22 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:46:23 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
   msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+info [Sun Jul 14 2019 21:46:23 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:46:24 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
   msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+info [Sun Jul 14 2019 21:46:24 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
   msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:01 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 16:54:02 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+info [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  User [object Object]
+error [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
+info [Sun Jul 14 2019 21:46:26 GMT+0100 (GMT Daylight Time)]  User 
+info [Sun Jul 14 2019 21:46:26 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:46:27 GMT+0100 (GMT Daylight Time)]  User [object Object]
+info [Sun Jul 14 2019 21:46:27 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:46:29 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
     at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
+    at TLSSocket.emit (events.js:211:7)
     at addChunk (_stream_readable.js:263:12)
     at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
+    at TLSSocket.Readable.push (_stream_readable.js:208:10)
+    at TLSWrap.onread (net.js:601:20)
   name: 'error',
-  length: 411,
+  length: 349,
   severity: 'ERROR',
   code: '23502',
-  detail: 'Failing row contains (143, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, 0X6EtXU1Qt5DqujgCcheUDQQAwKgXH6jDGFCEAum0F606JjDjrxiP8BomDTdFUXa..., CmiAnTR0gUAiGSGn63Lh5xU1uqbEAFEGPSYgKDx52kYJCwhdUvjEe8eB9y69MAuy..., f).',
+  detail: 'Failing row contains (149, MysOvnYKTGZkrEHsr9lfJthWSNpOY7Cbt5qge53Y6tvq7byBoDUp8Qf9VoBn4CqR..., Cp4vvOF0HMRgcowyE2OffuYLa4mY2FsAdGoQaWZ5dnqp10jrUU7HrDplCc9t7yuQ..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
   hint: undefined,
   position: undefined,
   internalPosition: undefined,
@@ -52,48 +54,83 @@ info [Sat Jul 13 2019 16:54:02 GMT+0100 (GMT Daylight Time)]  { error: null valu
   column: 'year',
   dataType: undefined,
   constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  file: 'execMain.c',
   line: '2042',
   routine: 'ExecConstraints' }
-
-
-
-
-
-info [Sat Jul 13 2019 16:54:27 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:27 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 16:54:27 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:27 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:27 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:27 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:27 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+error [Sun Jul 14 2019 21:46:56 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
     at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
+    at TLSSocket.emit (events.js:211:7)
     at addChunk (_stream_readable.js:263:12)
     at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
+    at TLSSocket.Readable.push (_stream_readable.js:208:10)
+    at TLSWrap.onread (net.js:601:20)
   name: 'error',
-  length: 410,
+  length: 108,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '29',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3294',
+  routine: 'errorMissingColumn' }
+
+
+
+
+
+info [Sun Jul 14 2019 21:48:49 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sun Jul 14 2019 21:48:52 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:48:53 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sun Jul 14 2019 21:48:53 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  User [object Object]
+info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:48:56 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sun Jul 14 2019 21:48:56 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:48:57 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sun Jul 14 2019 21:48:58 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:48:59 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sun Jul 14 2019 21:48:59 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
+  msg: 'User auth validation' }
+info [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  false
+info [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  User [object Object]
+error [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
+info [Sun Jul 14 2019 21:49:01 GMT+0100 (GMT Daylight Time)]  User 
+info [Sun Jul 14 2019 21:49:01 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:49:03 GMT+0100 (GMT Daylight Time)]  User [object Object]
+info [Sun Jul 14 2019 21:49:04 GMT+0100 (GMT Daylight Time)]  true
+info [Sun Jul 14 2019 21:49:05 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at TLSSocket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at TLSSocket.Readable.push (_stream_readable.js:208:10)
+    at TLSWrap.onread (net.js:601:20)
+  name: 'error',
+  length: 349,
   severity: 'ERROR',
   code: '23502',
-  detail: 'Failing row contains (59, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, nAjZirgNKhJ0eVLFtZT0YzkT0rqkVGfi1YerJNtpxCp7NNta2zkwYN85UUbgOcMj..., 30KtyusMrKiecArQqED7R1xZ4vqDe96JegwB4Z2HRmMG6MhTqacw19jpY2KFwqf7..., f).',
+  detail: 'Failing row contains (151, fUE8ShPAHgttUaQWEyQrzDxHBlHUv0SvdMQJbVrgbpzRnqppAjC670wkeUjUhqee..., yNFs5LWyY2ZtB4rg2JscHEufHRJUvXg5YorvvNUJb44u7Nci4gLNTzfe6R2hj0lD..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
   hint: undefined,
   position: undefined,
   internalPosition: undefined,
@@ -104,328 +141,34 @@ info [Sat Jul 13 2019 16:54:28 GMT+0100 (GMT Daylight Time)]  { error: null valu
   column: 'year',
   dataType: undefined,
   constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  file: 'execMain.c',
   line: '2042',
   routine: 'ExecConstraints' }
-
-
-
-
-
-info [Sat Jul 13 2019 17:03:05 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:05 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 17:03:06 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:06 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:06 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:06 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:06 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 17:03:07 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:07 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:07 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:07 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:07 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:07 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 17:03:07 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+error [Sun Jul 14 2019 21:49:14 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
     at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
+    at TLSSocket.emit (events.js:211:7)
     at addChunk (_stream_readable.js:263:12)
     at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
+    at TLSSocket.Readable.push (_stream_readable.js:208:10)
+    at TLSWrap.onread (net.js:601:20)
   name: 'error',
-  length: 411,
+  length: 108,
   severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (145, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, TpZhuLjFhaGKRCcMZoxF1lKOOXnzSGfwoTRMVUUPMhSGy55a9TTgtJ0057ulK3yZ..., 3zRiztYyqEvQi4UDVgsPz7q16Nme4LnUcmUeQ9pQPP2BCmb8TJoxdF7gJT4mT4gf..., f).',
+  code: '42703',
+  detail: undefined,
   hint: undefined,
-  position: undefined,
+  position: '29',
   internalPosition: undefined,
   internalQuery: undefined,
   where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
+  schema: undefined,
+  table: undefined,
+  column: undefined,
   dataType: undefined,
   constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-
-
-
-
-
-info [Sat Jul 13 2019 17:03:26 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:26 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 17:03:26 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:26 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 17:03:27 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 17:03:28 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
-  name: 'error',
-  length: 410,
-  severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (61, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, SJLUpKAuvZDmBLaoikpuomlAR612tCSss4KiWsdr9f9upLs27v8BrQoUWq0YKocN..., E9Bue5DgJAyuHhEYOas4QzARHUwzYvTOGkjiupK5yBzpULn9HEZma1qQNuUJ8WT6..., f).',
-  hint: undefined,
-  position: undefined,
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
-  dataType: undefined,
-  constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-
-
-
-
-
-
-
-
-
-
-info [Sat Jul 13 2019 21:56:31 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:31 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 21:56:31 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:31 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:32 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:33 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 21:56:33 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
-  name: 'error',
-  length: 411,
-  severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (147, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, krRlJXgrlGMWhU2TgkZf0BVynUU7KDWz6ztUwzLESyxl5gohWfFmxGTmM9noR08U..., gk3DFs8xxTq3UjD75bavS7Y68NynxEafz62EzvZFgitcDmNg07cz5evDmR2lPZK7..., f).',
-  hint: undefined,
-  position: undefined,
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
-  dataType: undefined,
-  constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-
-
-
-
-
-info [Sat Jul 13 2019 21:56:56 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:56 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 21:56:57 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:57 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:57 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:57 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:57 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 21:56:57 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:57 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:58 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:58 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 21:56:58 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 21:56:58 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 21:56:58 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
-  name: 'error',
-  length: 410,
-  severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (63, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, nzYNmgQsG6XdQbBs0NB18SBC8tMFNnQSGGanaAdZxMelFf8H2Yq2bugG1oCnTVHt..., UMmlNWmXScr2Y20BlsxZLrVKKDoCOcX1UeRnWzla1H8Yhqp23prJU2QYmpEmi8LW..., f).',
-  hint: undefined,
-  position: undefined,
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
-  dataType: undefined,
-  constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-
-
-
-
-
-info [Sat Jul 13 2019 22:00:12 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:12 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 22:00:12 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:12 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:13 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 22:00:14 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
-  name: 'error',
-  length: 411,
-  severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (149, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, asYKHNfUipF9aB33YUVfAtpfpbt5ylO5Lpg3EfKm4RAH5K9W0hhVMKfJtoJiSBQM..., hKE1eHTU6cyRQaQNyZv8qnFLNSbdY3Zv38dZlELxLhTmB0kHCZ3HsCxowLksHqOc..., f).',
-  hint: undefined,
-  position: undefined,
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
-  dataType: undefined,
-  constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-
-
-
-
-
-info [Sat Jul 13 2019 22:00:37 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:37 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 22:00:37 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:37 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  false
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  true
-info [Sat Jul 13 2019 22:00:38 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at Socket.Readable.push (_stream_readable.js:208:10)
-    at TCP.onread (net.js:601:20)
-  name: 'error',
-  length: 410,
-  severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (65, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, kEhqff7Uo9BQUU26b2z16JpJYz4x92Y34zwzCFnjHXSrCKSXqAvdtGiZscKmU1bj..., 6S9bU7bC2voykyPWaxQv8SiEW4CUGUj4TZgLV2wQ90KqEFVYSgJoW9ObuNbYYXjY..., f).',
-  hint: undefined,
-  position: undefined,
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
-  dataType: undefined,
-  constraint: undefined,
-  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-
-
-
-
-
+  file: 'parse_relation.c',
+  line: '3294',
+  routine: 'errorMissingColumn' }
