@@ -3,33 +3,76 @@
 
 
 
-info [Sun Jul 14 2019 21:46:15 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:17 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:18 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:19 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:21 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:22 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:23 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:23 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:24 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:24 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  User [object Object]
-error [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-info [Sun Jul 14 2019 21:46:26 GMT+0100 (GMT Daylight Time)]  User 
-info [Sun Jul 14 2019 21:46:26 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:27 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:46:27 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:29 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+error [Sun Jul 14 2019 22:27:35 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
+info [Sun Jul 14 2019 22:27:35 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 411,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (179, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, Nl4Ht080tQY6nfrrAwzZ4B9OtdV6hRUqlO2LzBuSEx1HbnSCwhFqGUghV3zkMCXY..., M0xT5vovdDeG5KzBarUd4mxqaukXcn4U9VTpK92MVnCBHOwXtTVewd1rPDU9wUls..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+
+
+
+
+
+error [Sun Jul 14 2019 22:29:52 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
+info [Sun Jul 14 2019 22:29:52 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at Socket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:601:20)
+  name: 'error',
+  length: 411,
+  severity: 'ERROR',
+  code: '23502',
+  detail: 'Failing row contains (181, SDRTEER, INNOSON, null, DMEDDEFRVT, 150, mWGXX8qlxHObKYsWHx87q1TPeDpm8SCfetWa2gZHJuF28n0G1OZZPYjE22iM6LvU..., iEOHObrSW22pGDCljo1pVcKxRmb9XQV9lh23PuwqWLclaFJGbVZ6F6ts6Y2GGMiX..., f).',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'bus',
+  column: 'year',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c',
+  line: '2042',
+  routine: 'ExecConstraints' }
+
+
+
+
+
+error [Sun Jul 14 2019 22:30:27 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
+info [Sun Jul 14 2019 22:30:31 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
     at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
@@ -43,7 +86,7 @@ info [Sun Jul 14 2019 21:46:29 GMT+0100 (GMT Daylight Time)]  { error: null valu
   length: 349,
   severity: 'ERROR',
   code: '23502',
-  detail: 'Failing row contains (149, MysOvnYKTGZkrEHsr9lfJthWSNpOY7Cbt5qge53Y6tvq7byBoDUp8Qf9VoBn4CqR..., Cp4vvOF0HMRgcowyE2OffuYLa4mY2FsAdGoQaWZ5dnqp10jrUU7HrDplCc9t7yuQ..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
+  detail: 'Failing row contains (163, kDDnehKxuAwteZ6di4ErBbXwjwyfhZA9qYUBwR0zESzUBqtnqG2OYewc9a8GxObs..., TJabPzPU2EsiwYMm7hRJnYOMJRtJnlGFrWMoFBcR3ppnb7cDU57m7qn4mS2fju1E..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
   hint: undefined,
   position: undefined,
   internalPosition: undefined,
@@ -57,7 +100,7 @@ info [Sun Jul 14 2019 21:46:29 GMT+0100 (GMT Daylight Time)]  { error: null valu
   file: 'execMain.c',
   line: '2042',
   routine: 'ExecConstraints' }
-error [Sun Jul 14 2019 21:46:56 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
+error [Sun Jul 14 2019 22:30:59 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
     at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
@@ -90,33 +133,8 @@ error [Sun Jul 14 2019 21:46:56 GMT+0100 (GMT Daylight Time)]  { error: column "
 
 
 
-info [Sun Jul 14 2019 21:48:49 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:52 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:48:53 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:53 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:48:56 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:56 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:48:57 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:58 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:48:59 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:59 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  User [object Object]
-error [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-info [Sun Jul 14 2019 21:49:01 GMT+0100 (GMT Daylight Time)]  User 
-info [Sun Jul 14 2019 21:49:01 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:49:03 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:49:04 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:49:05 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+error [Sun Jul 14 2019 22:34:28 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
+info [Sun Jul 14 2019 22:34:31 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
     at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
@@ -130,7 +148,7 @@ info [Sun Jul 14 2019 21:49:05 GMT+0100 (GMT Daylight Time)]  { error: null valu
   length: 349,
   severity: 'ERROR',
   code: '23502',
-  detail: 'Failing row contains (151, fUE8ShPAHgttUaQWEyQrzDxHBlHUv0SvdMQJbVrgbpzRnqppAjC670wkeUjUhqee..., yNFs5LWyY2ZtB4rg2JscHEufHRJUvXg5YorvvNUJb44u7Nci4gLNTzfe6R2hj0lD..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
+  detail: 'Failing row contains (165, umqLFpr7jEZrwOir7SlqPM6GWukdL807nHh0vX9AKs9SMVhKaGq5pokQD91Lsz8Y..., zSwhH9qker9h0iaGyYCwBKmmQ36jgofJhf4O9VOs1pdzBt3RRdCHxA8QnHU1XY6C..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
   hint: undefined,
   position: undefined,
   internalPosition: undefined,
@@ -144,7 +162,7 @@ info [Sun Jul 14 2019 21:49:05 GMT+0100 (GMT Daylight Time)]  { error: null valu
   file: 'execMain.c',
   line: '2042',
   routine: 'ExecConstraints' }
-error [Sun Jul 14 2019 21:49:14 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
+error [Sun Jul 14 2019 22:34:40 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
     at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)

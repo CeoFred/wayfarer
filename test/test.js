@@ -1,7 +1,7 @@
 // Require the dev-dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-// const logger = require('logger').createLogger('./app/development.log');
+const logger = require('logger').createLogger('./app/development.log');
 
 const server = require('../bin/www');
 
@@ -224,6 +224,7 @@ describe('Application', () => {
         .end((err, res) => {
           expect(res).to.have.status(201);
           bus = res.body.data.bus_id;
+          logger.info(`Bus ID is ${bus}`);
           done();
         });
     });
@@ -252,16 +253,17 @@ describe('Application', () => {
         .set('Content-Type', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .send({
-          busId: bus,
+          bus_id: bus,
           origin: 'lagos',
           destination: 'owerri',
           fare: 50000.00,
-          tripDate: 'July 4,2019',
+          trip_date: 'July 4,2019',
           departureTime: '12:00 PM',
         })
         .end((err, res) => {
           expect(res).to.have.status(201);
           trip = res.body.data.trip_id;
+          logger.info(`Trip ID Is ${trip}`);
           done();
         });
     });
@@ -271,11 +273,11 @@ describe('Application', () => {
         .set('Content-Type', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .send({
-          busId: '345d3d4',
+          bus_id: '345d3d4',
           origin: 'lagos',
           destination: 'owerri',
           fare: 50000.00,
-          tripDate: 'July 4,2019',
+          trip_date: 'July 4,2019',
           departureTime: '12:00 PM',
         })
         .end((err, res) => {
