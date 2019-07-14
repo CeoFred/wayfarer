@@ -54,7 +54,7 @@ router.post('/signup',
           if (users.rowCount > 0) {
             isAdmin = false;
           }
-          bcrypt.hash(password, 10, (err, hash) => {
+          bcrypt.hash(password ? password.toLowerCase() : null, 10, (err, hash) => {
             if (err) {
               res.status(500).json(_response.error(err));
             } else {
@@ -77,6 +77,7 @@ router.post('/signup',
                     id: respo.rows[0].user_id,
                     token,
                   };
+                  console.log(`Created ${JSON.stringify(data)}`);
                   res.status(201).json(_response.success(data));
                 }).catch((e) => {
                   logger.error(e);
@@ -108,14 +109,15 @@ router.post('/signup',
     email,
     password,
   } = req.body;
-  const searchQuery = `SELECT * FROM users WHERE email = '${email}'`;
+  const searchQuery = `SELECT * FROM users WHERE email = '${email.toLowerCase()}'`;
 
   db.query(searchQuery).then((resp) => {
     if (resp.rowCount <= 0) {
-      res.status(403).json(_response.error('Email does not exist'));
+      console.log(`Email does not exist,check ${email}`);
+      res.status(402).json(_response.error('Email does not exist'));
     }
     // logger.info(`User ${resp.rows}`);
-    bcrypt.compare(password, resp.rows[0].password).then(() => {
+    bcrypt.compare(password ? password.toLowerCase() : null, resp.rows[0].password).then(() => {
       const jwtdata = {
         email: resp.rows[0].email,
         user_id: resp.rows[0].user_id,
