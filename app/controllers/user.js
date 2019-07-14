@@ -25,8 +25,8 @@ router.post('/signup',
   [
     check('email').exists().withMessage('Email is required'),
     check('password').exists().withMessage('Password is required'),
-    check('firstName').exists().withMessage('First name is required'),
-    check('lastName').exists().withMessage('Last name is required'),
+    check('first_name').exists().withMessage('First name is required'),
+    check('last_name').exists().withMessage('Last name is required'),
     body('email').not().isEmpty().escape()
       .isEmail(),
     sanitizeBody('email').normalizeEmail().trim(),
@@ -39,8 +39,8 @@ router.post('/signup',
     const {
       email,
       password,
-      firstName,
-      lastName,
+      first_name,
+      last_name,
     } = req.body;
     let isAdmin = true;
     const searchQuery = `SELECT * FROM users WHERE email = '${email}' `;
@@ -61,7 +61,7 @@ router.post('/signup',
               const uniqui = Utils.randomString(200);
               const query = {
                 text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-                values: [uniqui.trimRight(), firstName, lastName, email, hash, isAdmin, 'somewhere'],
+                values: [uniqui.trimRight(), first_name, last_name, email, hash, isAdmin, 'somewhere'],
               };
               db.query(query)
                 .then((respo) => {
