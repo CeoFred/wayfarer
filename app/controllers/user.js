@@ -54,7 +54,7 @@ router.post('/signup',
           if (users.rowCount > 0) {
             isAdmin = false;
           }
-          bcrypt.hash(password, 10, (err, hash) => {
+          bcrypt.hash(password ? password.toLowerCase() : null, 10, (err, hash) => {
             if (err) {
               res.status(500).json(_response.error(err));
             } else {
@@ -117,7 +117,7 @@ router.post('/signup',
       res.status(402).json(_response.error('Email does not exist'));
     }
     // logger.info(`User ${resp.rows}`);
-    bcrypt.compare(password.toLowerCase(), resp.rows[0].password).then(() => {
+    bcrypt.compare(password ? password.toLowerCase() : null, resp.rows[0].password).then(() => {
       const jwtdata = {
         email: resp.rows[0].email,
         user_id: resp.rows[0].user_id,
