@@ -138,9 +138,9 @@ describe('Application', () => {
           password: null, email
         })
         .end((err, res) => {
-          expect(res).to.have.status(401);
+          expect(res).to.have.status(500);
           const message = res.body.error;
-          expect(message).to.equal('Failed with code x(2e2x)');
+          expect(message).to.equal('Failed to compare passwords');
           done();
         });
     });
@@ -383,4 +383,4 @@ describe('Application', () => {
         });
     });
   });
-}).timeout('10s');
+}).timeout('17s');

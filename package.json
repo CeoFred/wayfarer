@@ -9,13 +9,14 @@
     "test": "mocha --reporter spec --exit --t=10000 --color=true  test/*.js --exec babel-node",
     "test:watch": "nyc mocha  --require babel-core/register --reporter  spec --watch  test/ --exec babel-node",
     "eslint": "eslint app/**/*.js test/*.js --fix --ignore-pattern \"node_modules/\"",
-    "test:dev": "cross-env NODE_ENV=test mocha --reporter spec --exit --t=10000 --color=true test/*.js --exec babel-node",
+    "test:dev": "cross-env NODE_ENV=test mocha --reporter spec --exit --t=17000 --color=true test/*.js --exec babel-node",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "coveralls-coverage": "coveralls < lcov.info --ignore 'app.js'",
+    "test:ci": "cross-env NODE_ENV=ci mocha --reporter spec --exit --t=17000 --color=true test/*.js --exec babel-node",
     "codeclimate-coverage": "export CODECLIMATE_REPO_TOKEN=3e7edd83e8b2cb79c3c7d161110866257359f27d8e82bf5402d00145c529ffa4 && codeclimate-test-reporter < lcov.info",
     "codeclimate-coverage:dev": "set CODECLIMATE_REPO_TOKEN=3e7edd83e8b2cb79c3c7d161110866257359f27d8e82bf5402d00145c529ffa4 && codeclimate-test-reporter < lcov.info",
     "coverage": "nyc npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage",
-    "coverage:dev": "nyc npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage:dev",
+    "coverage:dev": "nyc npm run test:dev && npm run test:ci && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage:dev",
     "build:dev": "babel app --out-dir build --source-maps inline"
   },
   "repository": {

@@ -78,7 +78,9 @@ router.post('/', authCheck, (req, res) => {
           db.query('INSERT INTO bookings(booking_id,trip_id,user_id,created_on,status,seat_number) VALUES($1,$2,$3,$4,$5,$6) RETURNING *',
             [Utils.randomString(200), resp.rows[0].trip_id, user, new Date(), 'Active', booking]).then((respo) => {
             incrementNumberBooked(tripId);
-            res.status(201).json(response.success(respo.rows[0]));
+            const book_ing = respo.rows[0];
+            book_ing.id = respo.rows[0].booking_id;
+            res.status(201).json(response.success(book_ing));
           }).catch((err) => {
             return err;
           }).catch((err) => {
