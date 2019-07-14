@@ -11,12 +11,10 @@ const authCheck = require('../middlewares/auth_check');
 router.post('/', authCheck, (req, res) => {
   // new trip
   const {
-    bus_id,
     origin,
     destination,
     fare,
     trip_date,
-    departureTime,
 
   } = req.body;
   const { data } = req.decoded;
@@ -28,37 +26,19 @@ router.post('/', authCheck, (req, res) => {
 
   const uniqui = Utils.randomString(200);
 
-  db.query(`SELECT * FROM bus WHERE bus_id = '${bus_id}'`).then((busData) => {
-    if (busData.rowCount <= 0) {
-      res.status(404).json(response.error('Bus not found'));
-    } else if (Boolean(busData.rows[0].trip_status) === true) {
-      res.status(403).json(response.error('Bus has a trip that is active'));
-    } else {
-      const query = {
-        text: 'INSERT INTO trips(user_id,bus_id,origin,destination,trip_date,fare,departure_time,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
-        values: [data.user_id, bus_id, origin, destination, trip_date, fare, departureTime, uniqui.trimRight(), 'Active'],
-      };
+  const query = {
+    text: 'INSERT INTO trips(user_id,origin,destination,trip_date,fare,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
+    values: [data.user_id, origin, destination, trip_date, fare, uniqui.trimRight(), 'Active'],
+  };
 
-      db.query(query).then((resp) => {
-        db.query(`UPDATE bus SET trip_status = '${true}' WHERE bus_id = '${bus_id}' RETURNING *`).then(() => {
-          const trip_data = resp.rows[0];
-          trip_data.id = resp.rows[0].booking_id;
-          res.status(201).json(response.success(trip_data));
-        }).catch((err) => {
-          logger.error(err);
-
-          res.status(500).json(response.error('Something went wrong'));
-        });
-      }).catch((err) => {
-        logger.error(err);
-
-        res.status(500).json(response.error('Something went wrong'));
-      });
-    }
+  db.query(query).then((resp) => {
+    const trip_data = resp.rows[0];
+    trip_data.id = resp.rows[0].booking_id;
+    res.status(201).json(response.success(trip_data));
   }).catch((err) => {
     logger.error(err);
 
-    res.status(500).json(response.error('Whoops! Something went wrong'));
+    res.status(500).json(response.error('Something went wrong'));
   });
 }).get('/', (req, res) => {
   // get all trips available

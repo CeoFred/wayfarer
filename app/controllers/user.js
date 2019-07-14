@@ -112,7 +112,7 @@ router.post('/signup',
 
   db.query(searchQuery).then((resp) => {
     if (resp.rowCount <= 0) {
-      res.status(403).json(_response.error('Email does not exist'));
+      res.status(402).json(_response.error('Email does not exist'));
     }
     // logger.info(`User ${resp.rows}`);
     bcrypt.compare(password, resp.rows[0].password).then(() => {

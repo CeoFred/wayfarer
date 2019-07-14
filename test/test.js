@@ -18,7 +18,6 @@ const adminEmail = 'adminmail@mailserver.com';
 
 let user;
 let token;
-let bus;
 let trip;
 let booking;
 let adminToken;
@@ -152,7 +151,7 @@ describe('Application', () => {
           password, email: 'doesnotexist@gmail.com'
         })
         .end((err, res) => {
-          expect(res).to.have.status(403);
+          expect(res).to.have.status(402);
           const message = res.body.error;
           expect(message).to.equal('Email does not exist');
           done();
@@ -200,52 +199,6 @@ describe('Application', () => {
         });
     });
   });
-
-  describe('/POST Bus Test', () => {
-    before((done) => {
-      db.query('DELETE FROM bus').then(() => {
-        done();
-      }).catch((err) => {
-        throw err;
-      });
-    });
-    it('it should create a new bus', (done) => {
-      chai.request(server.server)
-        .post('/api/v1/bus/')
-        .set('Content-Type', 'Application/json')
-        .set('Authorization', `Bearer ${token}`)
-        .send({
-          model: 'DMEDDEFRVT',
-          numberPlate: 'SDRTEER',
-          year: 2019,
-          manufacturer: 'INNOSON',
-          capacity: 150,
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(201);
-          bus = res.body.data.bus_id;
-          logger.info(`Bus ID is ${bus}`);
-          done();
-        });
-    });
-    it('it should throw error on creating a new bus', (done) => {
-      chai.request(server.server)
-        .post('/api/v1/bus/')
-        .set('Content-Type', 'Application/json')
-        .set('Authorization', `Bearer ${token}`)
-        .send({
-          model: 'DMEDDEFRVT',
-          numberPlate: 'SDRTEER',
-          year: null,
-          manufacturer: 'INNOSON',
-          capacity: 150,
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(500);
-          done();
-        });
-    });
-  });
   describe('/POST Trip', () => {
     it('should create a new trip', (done) => {
       chai.request(server.server)
@@ -253,37 +206,15 @@ describe('Application', () => {
         .set('Content-Type', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .send({
-          bus_id: bus,
           origin: 'lagos',
           destination: 'owerri',
           fare: 50000.00,
           trip_date: 'July 4,2019',
-          departureTime: '12:00 PM',
         })
         .end((err, res) => {
           expect(res).to.have.status(201);
           trip = res.body.data.trip_id;
           logger.info(`Trip ID Is ${trip}`);
-          done();
-        });
-    });
-    it('should not find the bus', (done) => {
-      chai.request(server.server)
-        .post('/api/v1/trips/')
-        .set('Content-Type', 'application/json')
-        .set('Authorization', `Bearer ${token}`)
-        .send({
-          bus_id: '345d3d4',
-          origin: 'lagos',
-          destination: 'owerri',
-          fare: 50000.00,
-          trip_date: 'July 4,2019',
-          departureTime: '12:00 PM',
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(404);
-          const message = res.body.error;
-          expect(message).to.equal('Bus not found');
           done();
         });
     });
