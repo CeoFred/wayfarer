@@ -77,7 +77,7 @@ router.post('/signup',
                     id: respo.rows[0].user_id,
                     token,
                   };
-                  console.log(`Created ${data}`);
+                  console.log(`Created ${JSON.stringify(data)}`);
                   res.status(201).json(_response.success(data));
                 }).catch((e) => {
                   logger.error(e);
