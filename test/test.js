@@ -209,7 +209,7 @@ describe('Application', () => {
           origin: 'lagos',
           destination: 'owerri',
           fare: 50000.00,
-          trip_date: 'July 4,2019',
+          trip_date: '2019-03-23',
         })
         .end((err, res) => {
           expect(res).to.have.status(201);

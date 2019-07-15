@@ -33,7 +33,7 @@ router.post('/signup',
   ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(404).json(_response.error(errors));
+      res.status(404).json(_response.error(errors));
     }
     // logger.info({ errors, msg: 'User auth validation' });
     const {
