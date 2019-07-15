@@ -137,9 +137,9 @@ describe('Application', () => {
           password: null, email
         })
         .end((err, res) => {
-          expect(res).to.have.status(500);
+          expect(res).to.have.status(403);
           const message = res.body.error;
-          expect(message).to.equal('Failed to compare passwords');
+          expect(message).to.be.an('object');
           done();
         });
     });

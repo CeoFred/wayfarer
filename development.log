@@ -3,465 +3,42 @@
 
 
 
-error [Sun Jul 14 2019 23:11:37 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:13:04 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-
-
-
-
-
-error [Sun Jul 14 2019 23:21:18 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Sun Jul 14 2019 23:21:45 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-error [Sun Jul 14 2019 23:22:42 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Sun Jul 14 2019 23:22:49 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-error [Sun Jul 14 2019 23:23:53 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:24:17 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:24:40 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Sun Jul 14 2019 23:24:48 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-error [Sun Jul 14 2019 23:33:23 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Sun Jul 14 2019 23:33:31 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-error [Sun Jul 14 2019 23:47:02 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:48:24 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:48:51 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:49:14 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Sun Jul 14 2019 23:49:38 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-error [Sun Jul 14 2019 23:51:38 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Sun Jul 14 2019 23:51:45 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-error [Sun Jul 14 2019 23:52:29 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:52:52 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Sun Jul 14 2019 23:53:14 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Sun Jul 14 2019 23:53:19 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-
-
-
-
-
-error [Mon Jul 15 2019 00:08:52 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Mon Jul 15 2019 00:09:16 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-
-
-
-
-
-error [Mon Jul 15 2019 00:09:41 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Mon Jul 15 2019 00:09:47 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-error [Mon Jul 15 2019 00:09:49 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 108,
-  severity: 'ERROR',
-  code: '42703',
-  detail: undefined,
-  hint: undefined,
-  position: '29',
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: undefined,
-  table: undefined,
-  column: undefined,
-  dataType: undefined,
-  constraint: undefined,
-  file: 'parse_relation.c',
-  line: '3294',
-  routine: 'errorMissingColumn' }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-error [Mon Jul 15 2019 01:30:00 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Mon Jul 15 2019 01:30:00 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+error [Mon Jul 15 2019 11:59:46 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+error [Mon Jul 15 2019 11:59:46 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+error [Mon Jul 15 2019 11:59:47 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+error [Mon Jul 15 2019 11:59:47 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+error [Mon Jul 15 2019 11:59:47 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+error [Mon Jul 15 2019 11:59:48 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
     at validateHeader (_http_outgoing.js:491:11)
     at ServerResponse.setHeader (_http_outgoing.js:498:3)
     at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
     at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
     at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:79:31
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\trips.js:81:23
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+error [Mon Jul 15 2019 11:59:48 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\trips.js:81:23
     at <anonymous>
     at process._tickCallback (internal/process/next_tick.js:189:7)
 
@@ -469,13 +46,40 @@ error [Mon Jul 15 2019 01:30:00 GMT+0100 (GMT Daylight Time)]  Error: Can't set 
 
 
 
-error [Mon Jul 15 2019 01:33:48 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-error [Mon Jul 15 2019 01:33:48 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+error [Mon Jul 15 2019 12:01:03 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
     at validateHeader (_http_outgoing.js:491:11)
     at ServerResponse.setHeader (_http_outgoing.js:498:3)
     at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
     at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
     at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:79:31
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:80:31
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+
+
+
+
+
+error [Mon Jul 15 2019 12:02:07 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:80:31
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)
+
+
+
+
+
+error [Mon Jul 15 2019 12:02:59 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:80:31
     at <anonymous>
     at process._tickCallback (internal/process/next_tick.js:189:7)

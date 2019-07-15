@@ -69,6 +69,8 @@ router.post('/signup',
                     email: respo.rows[0].email,
                     user_id: respo.rows[0].user_id,
                     is_admin: respo.rows[0].is_admin,
+                    id: respo.rows[0].user_id,
+
                   };
                   const token = Utils.signToken(jwtdata);
                   const data = {
@@ -98,8 +100,11 @@ router.post('/signup',
 
 
     // res.send(response.error('Something went wrong'))
-  }).post('/signin', body('email').not().isEmpty().escape()
+  }).post('/signin', [body('email').not().isEmpty().escape()
   .isEmail(),
+body('password').not().isEmpty(),
+check('email').exists().withMessage('Email is required'),
+check('password').exists().withMessage('Password is required')],
 (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -122,6 +127,7 @@ router.post('/signup',
         email: resp.rows[0].email,
         user_id: resp.rows[0].user_id,
         is_admin: resp.rows[0].is_admin,
+        id: resp.rows[0].user_id,
       };
       const token = Utils.signToken(jwtdata);
       req.headers.authorization = `Bearer ${token}`;
