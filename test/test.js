@@ -70,8 +70,9 @@ describe('Application', () => {
           expect(res).to.have.status(201);
           user = res.body.data.user_id;
           token = res.body.data.token;
-          done();
+          // done();
         });
+      done();
     });
 
 
