@@ -70,8 +70,9 @@ describe('Application', () => {
           expect(res).to.have.status(201);
           user = res.body.data.user_id;
           token = res.body.data.token;
-          done();
+          // done();
         });
+      done();
     });
 
 
@@ -137,9 +138,9 @@ describe('Application', () => {
           password: null, email
         })
         .end((err, res) => {
-          expect(res).to.have.status(500);
+          expect(res).to.have.status(403);
           const message = res.body.error;
-          expect(message).to.equal('Failed to compare passwords');
+          expect(message).to.be.an('object');
           done();
         });
     });
@@ -209,7 +210,7 @@ describe('Application', () => {
           origin: 'lagos',
           destination: 'owerri',
           fare: 50000.00,
-          trip_date: 'July 4,2019',
+          trip_date: '2019-03-23',
         })
         .end((err, res) => {
           expect(res).to.have.status(201);

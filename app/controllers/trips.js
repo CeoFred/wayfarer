@@ -2,14 +2,33 @@ const express = require('express');
 const logger = require('logger').createLogger('./development.log');
 
 const router = express.Router();
+const {
+  check,
+  validationResult, body,
+} = require('express-validator');
 const response = require('../helpers/response');
 const db = require('../config/db');
 const Utils = require('../helpers/utils');
 
 const authCheck = require('../middlewares/auth_check');
 
-router.post('/', authCheck, (req, res) => {
+router.post('/', authCheck, [
+  check('origin').exists().withMessage('origin is required'),
+  body('origin').not().isEmpty().escape(),
+
+  check('destination').exists().withMessage('destination is required'),
+  body('destination').not().isEmpty().escape(),
+  check('fare').exists().withMessage('fare is required'),
+  body('fare').not().isEmpty().escape(),
+
+  check('trip_date').exists().withMessage('trip Date is required'),
+  body('trip_date').not().isEmpty().escape(),
+], (req, res) => {
   // new trip
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(403).json(response.error(errors));
+  }
   const {
     origin,
     destination,
@@ -18,6 +37,7 @@ router.post('/', authCheck, (req, res) => {
 
   } = req.body;
   const { data } = req.decoded;
+  console.log(data);
   if (!data.is_admin) {
     res.status(401).json(response.error('Access Denied'));
   }
@@ -26,15 +46,15 @@ router.post('/', authCheck, (req, res) => {
 
   const query = {
     text: 'INSERT INTO trips(user_id,origin,destination,trip_date,fare,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-    values: [data.user_id, origin, destination, trip_date, fare, uniqui.trimRight(), 'Active'],
+    values: [data.user_id, origin, destination, trip_date, fare, uniqui, 'Active'],
   };
 
   db.query(query).then((resp) => {
-    const trip_data = resp.rows[0];
-    trip_data.id = resp.rows[0].booking_id;
+    let trip_data = null;
+    trip_data = { ...resp.rows[0], id: resp.rows[0].trip_id };
     res.status(201).json(response.success(trip_data));
   }).catch((err) => {
-    console.log(JSON.stringify(err));
+    console.log(err);
     res.status(500).json(response.error('Something went wrong'));
   });
 }).get('/', (req, res) => {

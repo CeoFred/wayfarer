@@ -1,12 +1,12 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
-const express = require('express');
+import express from 'express';
+import logger from 'logger';
+import bcrypt from 'bcryptjs';
+
+const log = logger.createLogger('./development.log');
 
 const router = express.Router();
-const logger = require('logger').createLogger('./development.log');
-
-
-const bcrypt = require('bcrypt');
 const {
   check,
   validationResult, body,
@@ -20,6 +20,7 @@ const db = require('../config/db');
 const Utils = require('../helpers/utils');
 const authCheck = require('../middlewares/auth_check');
 
+const salt = bcrypt.genSaltSync(10);
 // create a new user
 router.post('/signup',
   [
@@ -33,7 +34,7 @@ router.post('/signup',
   ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(404).json(_response.error(errors));
+      res.status(404).json(_response.error(errors));
     }
     // logger.info({ errors, msg: 'User auth validation' });
     const {
@@ -54,40 +55,46 @@ router.post('/signup',
           if (users.rowCount > 0) {
             isAdmin = false;
           }
-          bcrypt.hash(password ? password.toLowerCase() : null, 10, (err, hash) => {
-            if (err) {
-              res.status(500).json(_response.error(err));
-            } else {
-              const uniqui = Utils.randomString(200);
-              const query = {
-                text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-                values: [uniqui.trimRight(), first_name, last_name, email, hash, isAdmin, 'somewhere'],
-              };
-              db.query(query)
-                .then((respo) => {
-                  const jwtdata = {
-                    email: respo.rows[0].email,
-                    user_id: respo.rows[0].user_id,
-                    is_admin: respo.rows[0].is_admin,
-                  };
-                  const token = Utils.signToken(jwtdata);
-                  const data = {
-                    user_id: respo.rows[0].user_id,
-                    is_admin: respo.rows[0].is_admin,
-                    id: respo.rows[0].user_id,
-                    token,
-                  };
-                  console.log(`Created ${JSON.stringify(data)}`);
-                  res.status(201).json(_response.success(data));
-                }).catch((e) => {
-                  logger.error(e);
-                  res.status(500).json(_response.error('Something went wrong'));
-                });
-            }
+
+
+          bcrypt.hash(password, salt).then((hash) => {
+            const uniqui = Utils.randomString(200);
+            const query = {
+              text: 'INSERT INTO users(user_id,first_name,last_name,email,password,is_admin,address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
+              values: [uniqui.trimRight(), first_name, last_name, email, hash, isAdmin, 'somewhere'],
+            };
+            db.query(query)
+              .then((respo) => {
+                const jwtdata = {
+                  email: respo.rows[0].email,
+                  user_id: respo.rows[0].user_id,
+                  is_admin: respo.rows[0].is_admin,
+                  id: respo.rows[0].user_id,
+
+                };
+                const token = Utils.signToken(jwtdata);
+                const data = {
+                  user_id: respo.rows[0].user_id,
+                  is_admin: respo.rows[0].is_admin,
+                  id: respo.rows[0].user_id,
+                  token,
+                };
+                console.log(`Created ${JSON.stringify(data)}`);
+                res.status(201).json(_response.success(data));
+              }).catch((e) => {
+                return e;
+              }).catch((e) => {
+                log.error(e);
+                res.status(500).json(_response.error('Something went wrong'));
+              });
+          }).catch((err) => {
+            return res.status(500).json(_response.error(err));
           });
-          // logger.info(isAdmin);
+
+
+          // log.info(isAdmin);
         }).catch((err) => {
-          logger.error(err);
+          log.error(err);
           res.status(505).json(_response.error('Could not fetch users'));
         });
         // end find users
@@ -98,8 +105,11 @@ router.post('/signup',
 
 
     // res.send(response.error('Something went wrong'))
-  }).post('/signin', body('email').not().isEmpty().escape()
+  }).post('/signin', [body('email').not().isEmpty().escape()
   .isEmail(),
+body('password').not().isEmpty(),
+check('email').exists().withMessage('Email is required'),
+check('password').exists().withMessage('Password is required')],
 (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -114,14 +124,18 @@ router.post('/signup',
   db.query(searchQuery).then((resp) => {
     if (resp.rowCount <= 0) {
       console.log(`Email does not exist,check ${email}`);
-      res.status(402).json(_response.error('Email does not exist'));
+      return res.status(402).json(_response.error('Email does not exist'));
     }
-    // logger.info(`User ${resp.rows}`);
-    bcrypt.compare(password ? password.toLowerCase() : null, resp.rows[0].password).then(() => {
+
+    bcrypt.compare(password ? password.toLowerCase() : null, resp.rows[0].password).then((respo) => {
+      if (respo !== true) {
+        return res.status(403).json(_response.error('Passwords do not match'));
+      }
       const jwtdata = {
         email: resp.rows[0].email,
         user_id: resp.rows[0].user_id,
         is_admin: resp.rows[0].is_admin,
+        id: resp.rows[0].user_id,
       };
       const token = Utils.signToken(jwtdata);
       req.headers.authorization = `Bearer ${token}`;
@@ -133,8 +147,8 @@ router.post('/signup',
       };
       res.status(200).json(_response.success(data));
     }).catch((err) => {
-      logger.error(`Bycrypt error ${err}`);
-      res.status(500).json(_response.error('Failed to compare passwords'));
+      log.error(`Bycrypt error ${err}`);
+      return res.status(500).json(_response.error('Failed to compare passwords'));
     });
   });
 }).post('/admin/:user_id', authCheck, (req, res) => {
@@ -143,7 +157,7 @@ router.post('/signup',
   const { data } = req.decoded;
   const admin = data.is_admin;
 
-  // logger.info(admin);
+  // log.info(admin);
   if (admin) {
     db.query(`SELECT * FROM users WHERE user_id = '${toBeAdmin}' AND is_admin='${false}'`).then((resp) => {
       if (resp.rowCount > 0) {
