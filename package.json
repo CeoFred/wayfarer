@@ -24,7 +24,7 @@
     "url": "git+https://github.com/CeoFred/wayfarer.git"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "debug": "^4.1.1",
     "dotenv": "^8.0.0",
@@ -35,30 +35,31 @@
     "morgan": "^1.9.1",
     "pg": "^7.11.0"
   },
-  "nyc":{
-    "exclude":[
-      "app/config/config.js","app.js"
+  "nyc": {
+    "exclude": [
+      "app/config/config.js",
+      "app.js"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit":"npm run eslint ",
+      "pre-commit": "npm run eslint ",
       "pre-push": "npm run test:dev && npm run coverage:dev"
     }
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.0",
+    "@babel/core": "^7.5.4",
     "@babel/node": "^7.5.0",
     "@babel/plugin-transform-runtime": "^7.4.3",
-    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.4.0",
-    "@babel/runtime": "^7.4.3",
+    "@babel/runtime": "^7.5.4",
     "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "codeclimate-test-reporter": "^0.5.1",
-    "coveralls": "^3.0.4",
+    "coveralls": "^3.0.5",
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -74,7 +75,8 @@
     "uuid": "^3.3.2"
   },
   "engines": {
-    "node": ">=8"
+    "node": "10.16.0",
+    "npm":"6.9.0"
   },
   "eslintConfig": {
     "plugins": [

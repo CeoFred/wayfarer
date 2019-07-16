@@ -3,83 +3,44 @@
 
 
 
-error [Mon Jul 15 2019 11:59:46 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
-error [Mon Jul 15 2019 11:59:46 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
-error [Mon Jul 15 2019 11:59:47 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
-error [Mon Jul 15 2019 11:59:47 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
-error [Mon Jul 15 2019 11:59:47 GMT+0100 (GMT Daylight Time)]  TypeError: Cannot read property 'user_id' of undefined
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:70:34
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
-error [Mon Jul 15 2019 11:59:48 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
-    at validateHeader (_http_outgoing.js:491:11)
-    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+error [Tue Jul 16 2019 10:03:49 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
     at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
     at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
     at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\trips.js:81:23
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
-error [Mon Jul 15 2019 11:59:48 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
-    at validateHeader (_http_outgoing.js:491:11)
-    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:83:29
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+
+
+
+
+
+error [Tue Jul 16 2019 10:05:16 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
     at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
     at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
     at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\trips.js:81:23
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:83:29
+    at process._tickCallback (internal/process/next_tick.js:68:7)
 
 
 
 
 
-error [Mon Jul 15 2019 12:01:03 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
-    at validateHeader (_http_outgoing.js:491:11)
-    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+error [Tue Jul 16 2019 10:05:43 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
     at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
     at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
     at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:80:31
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:83:29
+    at process._tickCallback (internal/process/next_tick.js:68:7)
 
 
 
 
 
-error [Mon Jul 15 2019 12:02:07 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
-    at validateHeader (_http_outgoing.js:491:11)
-    at ServerResponse.setHeader (_http_outgoing.js:498:3)
-    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
-    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
-    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:80:31
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
 
 
 
 
 
-error [Mon Jul 15 2019 12:02:59 GMT+0100 (GMT Daylight Time)]  Error: Can't set headers after they are sent.
-    at validateHeader (_http_outgoing.js:491:11)
-    at ServerResponse.setHeader (_http_outgoing.js:498:3)
-    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
-    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
-    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
-    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:80:31
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:189:7)
