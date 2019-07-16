@@ -2,63 +2,60 @@ const express = require('express');
 const logger = require('logger').createLogger('./development.log');
 
 const router = express.Router();
+const {
+  check,
+  validationResult, body,
+} = require('express-validator');
 const response = require('../helpers/response');
 const db = require('../config/db');
 const Utils = require('../helpers/utils');
 
 const authCheck = require('../middlewares/auth_check');
 
-router.post('/', authCheck, (req, res) => {
+router.post('/', authCheck, [
+  check('origin').exists().withMessage('origin is required'),
+  body('origin').not().isEmpty().escape(),
+
+  check('destination').exists().withMessage('destination is required'),
+  body('destination').not().isEmpty().escape(),
+  check('fare').exists().withMessage('fare is required'),
+  body('fare').not().isEmpty().escape(),
+
+  check('trip_date').exists().withMessage('trip Date is required'),
+  body('trip_date').not().isEmpty().escape(),
+], (req, res) => {
   // new trip
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(403).json(response.error(errors));
+  }
   const {
-    busId,
     origin,
     destination,
     fare,
-    tripDate,
-    departureTime,
+    trip_date,
 
   } = req.body;
   const { data } = req.decoded;
   console.log(data);
-
   if (!data.is_admin) {
     res.status(401).json(response.error('Access Denied'));
   }
 
   const uniqui = Utils.randomString(200);
 
-  db.query(`SELECT * FROM bus WHERE bus_id = '${busId}'`).then((busData) => {
-    if (busData.rowCount <= 0) {
-      res.status(404).json(response.error('Bus not found'));
-    } else if (Boolean(busData.rows[0].trip_status) === true) {
-      res.status(403).json(response.error('Bus has a trip that is active'));
-    } else {
-      const query = {
-        text: 'INSERT INTO trips(user_id,bus_id,origin,destination,trip_date,fare,departure_time,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
-        values: [data.userId, busId, origin, destination, tripDate, fare, departureTime, uniqui.trimRight(), 'Active'],
-      };
+  const query = {
+    text: 'INSERT INTO trips(user_id,origin,destination,trip_date,fare,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
+    values: [data.user_id, origin, destination, trip_date, fare, uniqui, 'Active'],
+  };
 
-      db.query(query).then((resp) => {
-        db.query(`UPDATE bus SET trip_status = '${true}' WHERE bus_id = '${busId}' RETURNING *`).then(() => {
-          const trip_data = resp.rows[0];
-          trip_data.id = resp.rows[0].booking_id;
-          res.status(201).json(response.success(trip_data));
-        }).catch((err) => {
-          logger.error(err);
-
-          res.status(500).json(response.error('Something went wrong'));
-        });
-      }).catch((err) => {
-        logger.error(err);
-
-        res.status(500).json(response.error('Something went wrong'));
-      });
-    }
+  db.query(query).then((resp) => {
+    let trip_data = null;
+    trip_data = { ...resp.rows[0], id: resp.rows[0].trip_id };
+    res.status(201).json(response.success(trip_data));
   }).catch((err) => {
-    logger.error(err);
-
-    res.status(500).json(response.error('Whoops! Something went wrong'));
+    console.log(err);
+    res.status(500).json(response.error('Something went wrong'));
   });
 }).get('/', (req, res) => {
   // get all trips available
@@ -66,7 +63,7 @@ router.post('/', authCheck, (req, res) => {
     res.status(200).json(response.success(resp.rows));
   }).catch((err) => {
     logger.error(err);
-
+    console.log(JSON.stringify(err));
     res.status(500).json(response.error('Failed to fetch trips'));
   });
 }).patch('/:tripId', authCheck, (req, res) => {

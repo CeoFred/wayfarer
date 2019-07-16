@@ -20,6 +20,9 @@ module.exports = (req, res, next) => {
 
     req.usertoken = jwt.decode(rtoken);
     req.decoded = decoded;
+    req.body.token = decoded.data.token;
+    req.body.is_admin = decoded.data.is_admin;
+    req.body.user_id = decoded.data.user_id;
   } catch (err) {
     return res.status(401).json(_response.error('Token Authentication Failed'));
   }

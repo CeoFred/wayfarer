@@ -3,70 +3,117 @@
 
 
 
-info [Sun Jul 14 2019 21:46:15 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:17 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:18 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:19 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:20 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:21 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:22 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:23 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:23 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:24 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:24 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  User [object Object]
-error [Sun Jul 14 2019 21:46:25 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-info [Sun Jul 14 2019 21:46:26 GMT+0100 (GMT Daylight Time)]  User 
-info [Sun Jul 14 2019 21:46:26 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:27 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:46:27 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:46:29 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+error [Tue Jul 16 2019 10:03:49 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:83:29
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+
+
+
+
+
+error [Tue Jul 16 2019 10:05:16 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:83:29
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+
+
+
+
+
+error [Tue Jul 16 2019 10:05:43 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\user.js:83:29
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+error [Tue Jul 16 2019 10:16:04 GMT+0100 (British Summer Time)]  { Error: getaddrinfo ENOTFOUND raja.db.elephantsql.com raja.db.elephantsql.com:5432
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
+  errno: 'ENOTFOUND',
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'raja.db.elephantsql.com',
+  host: 'raja.db.elephantsql.com',
+  port: 5432 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+error [Tue Jul 16 2019 10:18:52 GMT+0100 (British Summer Time)]  { Error: getaddrinfo ENOTFOUND raja.db.elephantsql.com raja.db.elephantsql.com:5432
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
+  errno: 'ENOTFOUND',
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'raja.db.elephantsql.com',
+  host: 'raja.db.elephantsql.com',
+  port: 5432 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+error [Tue Jul 16 2019 10:22:40 GMT+0100 (British Summer Time)]  { error: column "bookings" does not exist
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
     at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
-  name: 'error',
-  length: 349,
-  severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (149, MysOvnYKTGZkrEHsr9lfJthWSNpOY7Cbt5qge53Y6tvq7byBoDUp8Qf9VoBn4CqR..., Cp4vvOF0HMRgcowyE2OffuYLa4mY2FsAdGoQaWZ5dnqp10jrUU7HrDplCc9t7yuQ..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
-  hint: undefined,
-  position: undefined,
-  internalPosition: undefined,
-  internalQuery: undefined,
-  where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
-  dataType: undefined,
-  constraint: undefined,
-  file: 'execMain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-error [Sun Jul 14 2019 21:46:56 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
-    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
-    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
-    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
+    at TLSSocket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at TLSSocket.Readable.push (_stream_readable.js:224:10)
+    at TLSWrap.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
   name: 'error',
   length: 108,
   severity: 'ERROR',
@@ -90,70 +137,94 @@ error [Sun Jul 14 2019 21:46:56 GMT+0100 (GMT Daylight Time)]  { error: column "
 
 
 
-info [Sun Jul 14 2019 21:48:49 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:52 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:48:53 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:53 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:48:54 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:48:56 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:56 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:48:57 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:58 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:48:59 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:48:59 GMT+0100 (GMT Daylight Time)]  { errors: Result { formatter: [Function: formatter], errors: [] },
-  msg: 'User auth validation' }
-info [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  false
-info [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  User [object Object]
-error [Sun Jul 14 2019 21:49:00 GMT+0100 (GMT Daylight Time)]  Bycrypt error Error: data and hash arguments required
-info [Sun Jul 14 2019 21:49:01 GMT+0100 (GMT Daylight Time)]  User 
-info [Sun Jul 14 2019 21:49:01 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:49:03 GMT+0100 (GMT Daylight Time)]  User [object Object]
-info [Sun Jul 14 2019 21:49:04 GMT+0100 (GMT Daylight Time)]  true
-info [Sun Jul 14 2019 21:49:05 GMT+0100 (GMT Daylight Time)]  { error: null value in column "year" violates not-null constraint
+
+
+
+
+
+
+
+
+
+
+error [Tue Jul 16 2019 10:25:27 GMT+0100 (British Summer Time)]  { error: column "bookings" does not exist
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
     at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
+    at TLSSocket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at TLSSocket.Readable.push (_stream_readable.js:224:10)
+    at TLSWrap.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
   name: 'error',
-  length: 349,
+  length: 108,
   severity: 'ERROR',
-  code: '23502',
-  detail: 'Failing row contains (151, fUE8ShPAHgttUaQWEyQrzDxHBlHUv0SvdMQJbVrgbpzRnqppAjC670wkeUjUhqee..., yNFs5LWyY2ZtB4rg2JscHEufHRJUvXg5YorvvNUJb44u7Nci4gLNTzfe6R2hj0lD..., DMEDDEFRVT, SDRTEER, INNOSON, 150, f, null).',
+  code: '42703',
+  detail: undefined,
   hint: undefined,
-  position: undefined,
+  position: '29',
   internalPosition: undefined,
   internalQuery: undefined,
   where: undefined,
-  schema: 'public',
-  table: 'bus',
-  column: 'year',
+  schema: undefined,
+  table: undefined,
+  column: undefined,
   dataType: undefined,
   constraint: undefined,
-  file: 'execMain.c',
-  line: '2042',
-  routine: 'ExecConstraints' }
-error [Sun Jul 14 2019 21:49:14 GMT+0100 (GMT Daylight Time)]  { error: column "bookings" does not exist
+  file: 'parse_relation.c',
+  line: '3294',
+  routine: 'errorMissingColumn' }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+error [Tue Jul 16 2019 10:28:39 GMT+0100 (British Summer Time)]  { error: column "bookings" does not exist
     at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
     at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
     at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
-    at emitOne (events.js:116:13)
-    at TLSSocket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-    at TLSSocket.Readable.push (_stream_readable.js:208:10)
-    at TLSWrap.onread (net.js:601:20)
+    at TLSSocket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at TLSSocket.Readable.push (_stream_readable.js:224:10)
+    at TLSWrap.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+  name: 'error',
+  length: 108,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '29',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3294',
+  routine: 'errorMissingColumn' }
+error [Tue Jul 16 2019 10:28:44 GMT+0100 (British Summer Time)]  { error: column "bookings" does not exist
+    at Connection.parseE (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:602:11)
+    at Connection.parseMessage (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:399:19)
+    at TLSSocket.<anonymous> (C:\Users\USER3\Desktop\wayfarer\node_modules\pg\lib\connection.js:121:22)
+    at TLSSocket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at TLSSocket.Readable.push (_stream_readable.js:224:10)
+    at TLSWrap.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
   name: 'error',
   length: 108,
   severity: 'ERROR',
