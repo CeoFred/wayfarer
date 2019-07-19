@@ -41,12 +41,12 @@ router.post('/', authCheck, [
   if (!data.is_admin) {
     res.status(401).json(response.error('Access Denied'));
   }
-
+  const busId = 'axp3OrMLni6kWX3UNmmvcwOOyqqK6QhgObaQmR0Nl0ssAk8gTDVOR8Q0EnboUwkLi58S7Kyygd9079BKYNEO9LOvtNVj6oOcwDNYP5CMcDiMuTQzkFM9PDzsXzh90n6ZUZgDOyfVpEkGNRVWj5Y887Wy4VbxmuYSeGhwJtkjRhtd6JLxVvfjlDxbVz36pbbHXRqlrnOk';
   const uniqui = Utils.randomString(200);
 
   const query = {
-    text: 'INSERT INTO trips(user_id,origin,destination,trip_date,fare,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *',
-    values: [data.user_id, origin, destination, trip_date, fare, uniqui, 'Active'],
+    text: 'INSERT INTO trips(bus_id,user_id,origin,destination,trip_date,fare,trip_id,status) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *',
+    values: [busId, data.user_id, origin, destination, trip_date, fare, uniqui, 'Active'],
   };
 
   db.query(query).then((resp) => {
@@ -81,14 +81,13 @@ router.post('/', authCheck, [
       db.query(`UPDATE trips SET status = 'cancelled' WHERE trip_id = '${tripId}' AND status = 'Active'`).then((busData) => {
         res.status(200).json(response.success({ message: 'Trip cancelled successfully', busData }));
       }).catch((err) => {
-        res.status(500).json(response.error({ message: 'Trip failed to cancel' }));
         logger.error({ err, message: 'while canceling trip' });
+        return res.status(500).json(response.error({ message: 'Trip failed to cancel' }));
       });
     }
   }).catch((err) => {
     logger.error(err);
-
-    res.status(500).json(response.error('Failed to fetch trips'));
+    return res.status(500).json(response.error('Failed to fetch trips'));
   });
 });
 

@@ -243,3 +243,42 @@ error [Tue Jul 16 2019 10:28:44 GMT+0100 (British Summer Time)]  { error: column
   file: 'parse_relation.c',
   line: '3294',
   routine: 'errorMissingColumn' }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+error [Tue Jul 16 2019 10:34:17 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\trips.js:84:23
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+error [Tue Jul 16 2019 10:34:17 GMT+0100 (British Summer Time)]  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:470:11)
+    at ServerResponse.header (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (C:\Users\USER3\Desktop\wayfarer\node_modules\express\lib\response.js:267:15)
+    at C:\Users\USER3\Desktop\wayfarer\build\controllers\trips.js:84:23
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+
+
+
+
+
+
+
+
+
+
